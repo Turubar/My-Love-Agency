@@ -1,0 +1,336 @@
+﻿@{
+    string namePage = ViewBag.NamePage;
+}
+
+<div id="header" class="header">
+
+    <div class="header-margin burger-element">
+        @{
+            if (Context.Request.Cookies["Language"] == "en")
+            {
+                <a asp-controller="Main" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Home</p></a>
+            }
+            else
+            {
+                <a asp-controller="Main" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Головна</p></a>
+            }
+        }
+    </div>
+
+    <div class="header-margin burger-element">
+        <button type="button" class="btn dropdown-toggle-split btn-service" data-bs-toggle="dropdown" aria-expanded="true" data-display="static">
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p id="services-title" class="p-title" style="display: inline-block; line-height: 100%;">Services</p>
+                }
+                else
+                {
+                    <p id="services-title" class="p-title" style="display: inline-block; line-height: 100%;">Послуги</p>
+                }
+            }
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-service">
+            @{
+                for (int i = 0; i < DataClass.TypeService.Count(); i++)
+                {
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <li>
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" class="dropdown-item dropdown-item-service">
+                                <p class="type-service">@DataClass.TypeService[i].NameEn</p>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" class="dropdown-item dropdown-item-service">
+                                <p class="type-service">@DataClass.TypeService[i].NameUa</p>
+                            </a>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="header-margin burger-element">
+        @{
+            if (Context.Request.Cookies["Language"] == "en")
+            {
+                <a asp-controller="Main" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-title">Gallery</p></a>
+            }
+            else
+            {
+                <a asp-controller="Main" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-title">Галерея</p></a>
+            }
+        }
+
+    </div>
+
+    <div class="logo-div">
+        @{
+            if (namePage == "Manager")
+            {
+                <img class="logo-img" src="/data/logo_color.png" alt="" />
+            }
+            else
+            {
+                if (User?.FindFirst("Access")?.Value == DataClass.password)
+                {
+                    <a asp-controller="Main" asp-action="Manager"><img class="logo-img" src="/data/logo.png" alt="" onmouseover="this.src='/data/logo_color.png';" onmouseout="this.src='/data/logo.png';" /></a>
+                }
+                else
+                {
+                    <img class="logo-img" src="/data/logo.png" alt="" />
+                }
+            }
+        }
+    </div>
+
+    <div class="header-margin burger-element">
+        @{
+            <a asp-controller="Main" asp-action="FAQ" class="p-title-link"><p id="faq-title" class="p-title">FAQ</p></a>
+        }
+    </div>
+
+    <div class="header-margin burger-element">
+        @{
+            if (Context.Request.Cookies["Language"] == "en")
+            {
+                <a asp-controller="Main" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-title">Contact</p></a>
+            }
+            else
+            {
+                <a asp-controller="Main" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-title">Заявка</p></a>
+            }
+        }
+    </div>
+
+    <div class="header-margin header-flex burger-element">
+        <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle-split btn-flag" data-bs-toggle="dropdown" aria-expanded="false" data-display="static">
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <img class="header-img-flag" src="/data/en_flag.png" />
+                    }
+                    else
+                    {
+                        <img class="header-img-flag" src="/data/ua_flag.png" />
+                    }
+                }
+                <img class="header-toggle btn-toggle" src="/data/toggle.png" onmouseover="this.src='/data/toggle_color.png';" onmouseout="this.src='/data/toggle.png';" />
+            </button>
+
+            <ul class="dropdown-menu my-dropdowm-menu">
+                <li>
+                    <a asp-controller="Main" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="dropdown-item my-dropdown-item">
+                        @{
+                            if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <img class="header-img-flag" src="/data/ua_flag.png" />
+                            }
+                            else
+                            {
+                                <img class="header-img-flag" src="/data/en_flag.png" />
+                            }
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header-flex burger-element">
+        <div class="display-flex-center">
+            <a style="font-size: 0px;" href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="header-facebook" src="/data/facebook.png" alt="" onmouseover="this.src='/data/facebook_color.png';" onmouseout="this.src='/data/facebook.png';" /></a>
+        </div>
+
+        <div class="display-flex-center">
+            <a style="font-size: 0px;" href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="header-instagram" src="/data/instagram.png" alt="" onmouseover="this.src='/data/instagram_color.png';" onmouseout="this.src='/data/instagram.png';" /></a>
+        </div>
+
+        <div class="display-flex-center">
+            <a style="font-size: 0px;" href="https://t.me/valery_moshchenskaya" target="_blank"><img class="header-telegram" src="/data/telegram.png" alt="" onmouseover="this.src='/data/telegram_color.png';" onmouseout="this.src='/data/telegram.png';" /></a>
+        </div>
+    </div>
+
+    <div class="burger-div">
+        <button id="burger-btn" class="burger-btn" onclick="openMenu()">
+            <img src="/data/burger.png" width="35" alt="" />
+        </button>
+    </div>
+
+</div>
+
+<div id="modalMenu" class="modalMenu">
+    <div class="menu-content">
+        <div class="close-div">
+            <button id="close-btn" class="close-btn" onclick="closeMenu()">
+                <img class="close-img" src="/data/close.png" width="30" alt="" />
+            </button>
+        </div>
+
+        <div class="content-div">
+            <div>
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <a asp-controller="Main" asp-action="Home" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Home</p></a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Main" asp-action="Home" class="p-title-link"><p id="home-title" class="p-menu">Головна</p></a>
+                    }
+                }
+            </div>
+
+            <div>
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <p id="services-title" class="p-menu" onclick="showTypeServices()">Services</p>
+                    }
+                    else
+                    {
+                        <p id="services-title" class="p-menu" onclick="showTypeServices()">Послуги</p>
+                    }
+                }
+            </div>
+
+            <div id="type-services-div" class="type-services-div">
+                @{
+                    for (int i = 0; i < DataClass.TypeService.Count(); i++)
+                    {
+                        <div>
+                            @{
+                                if (Context.Request.Cookies["Language"] == "en")
+                                {
+                                    <a asp-controller="Main" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" style="text-decoration: none;"><p class="type-services-menu">@DataClass.TypeService[i].NameEn</p></a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Main" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" style="text-decoration: none;"><p class="type-services-menu">@DataClass.TypeService[i].NameUa</p></a>
+                                }
+                            }
+
+                        </div>
+                    }
+                }
+            </div>
+
+            <div>
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <a asp-controller="Main" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-menu">Gallery</p></a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Main" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-menu">Галерея</p></a>
+                    }
+                }
+            </div>
+
+            <div>
+                @{
+                    <a asp-controller="Main" asp-action="FAQ" class="p-title-link"><p id="faq-title" class="p-menu">FAQ</p></a>
+                }
+            </div>
+
+            <div>
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <a asp-controller="Main" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-menu">Contact</p></a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Main" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-menu">Заявка</p></a>
+                    }
+                }
+            </div>
+
+            <div class="header-flex">
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <a asp-controller="Main" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/en_flag.png" alt="" /></a>
+                        <a asp-controller="Main" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/ua_flag.png" alt="" /></a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Main" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/ua_flag.png" alt="" /></a>
+                        <a asp-controller="Main" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/en_flag.png" alt="" /></a>
+                    }
+                }
+            </div>
+
+            <div class="header-flex" style="margin-top: 10px;">
+                <div class="">
+                    <a href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="menu-facebook" src="/data/facebook.png" width="50" alt="" /></a>
+                </div>
+
+                <div class="">
+                    <a href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="menu-instagram" src="/data/instagram.png" width="50" alt="" /></a>
+                </div>
+
+                <div class="">
+                    <a href="https://t.me/valery_moshchenskaya" target="_blank"><img class="menu-telegram" src="/data/telegram.png" width="50" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    if (Context.Request.Cookies["UseCookies"] != "true")
+    {
+        <div id="cookies-notification" class="cookies-notification">
+            <div class="cookies-div">
+                @if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="p-cookies">
+                        This site uses cookies to provide top-level services.<br>By continuing to use the site, you agree to the use of cookies.
+                        <a style="text-decoration: none;" asp-controller="Main" asp-action="AcceptCookies" asp-route-refererPage="@(namePage)"><span class="p-accept-cookies">Accept</span></a>
+                    </p>
+                }
+                else
+                {
+                    <p class="p-cookies">
+                        Цей сайт використовує файли cookie.<br>Продовжуючи користуватися сайтом, ви погоджуєтеся на використання файлів cookie.
+                        <a style="text-decoration: none;" asp-controller="Main" asp-action="AcceptCookies" asp-route-refererPage="@(namePage)"><span class="p-accept-cookies">Погодитися</span></a>
+                    </p>
+                }
+            </div>
+        </div>
+    }
+}
+
+
+
+<script type="text/javascript">
+
+    let namePage = @Html.Raw(Json.Serialize(namePage));
+
+    function openMenu() {
+        document.getElementById("modalMenu").style.display = "flex";
+    }
+
+    function closeMenu() {
+        document.getElementById("modalMenu").style.display = "none";
+    }
+
+    function showTypeServices() {
+        var servicesDiv = document.getElementById("type-services-div");
+        if (servicesDiv.style.display == "none") {
+            servicesDiv.style.display = "flex";
+        }
+        else {
+            servicesDiv.style.display = "none";
+        }
+    }
+</script>

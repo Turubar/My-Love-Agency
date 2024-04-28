@@ -1,0 +1,750 @@
+﻿<video video autoplay loop muted playsinline class="background" id="background"></video>
+
+<div class="container-fluid contact-container">
+
+    <div id="contactFormContainer" class="col-9 contact-form-container">
+
+        <div class="col-12 contact-first-div">
+
+            <div class="col-4 contact-first-left-div">
+                @if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="contact-first-text-p">Are you interested in our services or package offers?</p>
+                    <p class="contact-first-text-mini-p">Fill out this contact form and we will definitely contact you and discuss how to make your loved one's day unforgettable.</p>
+                }
+                else
+                {
+                    <p class="contact-first-text-p">Вас зацікавили наші послуги або пакетні пропозиції?</p>
+                    <p class="contact-first-text-mini-p">Заповніть цю контактну форму, і ми обов'язково зв'яжемося з вами і обговоримо, як зробити день вашої коханої людини незабутнім.</p>
+                }
+            </div>
+
+            <div class="col-8 contact-first-right-div">
+
+                <div class="col-12">
+                    @if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <p class="contact-form-title">Contact form</p>
+                    }
+                    else
+                    {
+                        <p class="contact-form-title">Контактна форма</p>
+                    }
+                </div>
+
+                <div class="col-12 contact-select-div">
+
+                    <div class="col-12 contact-select-type-div">
+                        <select id="typeSelect" class="form-select service-select" onchange="changeTypeValue()">
+                            @if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <option value="0" selected>Choose the type of service</option>
+
+                                @for (int i = 0; i < DataClass.TypeService.Count(); i++)
+                                {
+                                    <option value="@DataClass.TypeService[i].Id">@DataClass.TypeService[i].NameEn</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="0" selected>Виберіть тип послуги</option>
+
+                                @for (int i = 0; i < DataClass.TypeService.Count(); i++)
+                                {
+                                    <option value="@DataClass.TypeService[i].Id">@DataClass.TypeService[i].NameUa</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-7 contact-select-service-div" onchange="changeServiceValue()">
+                        <select id="serviceSelect" class="form-select service-select">
+                            @if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <option value="0" selected>Choose a service</option>
+                            }
+                            else
+                            {
+                                <option value="0" selected>Виберіть послугу</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-4 contact-select-package-div">
+                        <select id="packageSelect" class="form-select service-select">
+                            @if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <option value="0" selected>Choose a package</option>
+                            }
+                            else
+                            {
+                                <option value="0" selected>Виберіть пакет</option>
+                            }
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-12 contact-form-div">
+
+                    <div class="col-5 contact-form-name-div">
+                        @if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <input id="nameInput" class="contact-input" type="text" maxlength="50" placeholder="Name" value="" />
+                        }
+                        else
+                        {
+                            <input id="nameInput" class="contact-input" type="text" maxlength="50" placeholder="Ім'я" value="" />
+                        }
+                    </div>
+
+                    <div class="col-5 contact-form-phone-div">
+                        @if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <input id="phoneNumberInput" class="contact-input" type="text" maxlength="20" placeholder="Phone number" value="" />
+                        }
+                        else
+                        {
+                            <input id="phoneNumberInput" class="contact-input" type="text" maxlength="20" placeholder="Номер телефону" value="" />
+                        }
+                    </div>
+
+                    <div class="col-5 contact-form-email-div">
+                        <input id="emailInput" class="contact-input" type="text" maxlength="50" placeholder="Email" value="" oninput="changeEmailInput(this)" />
+                    </div>
+
+                    <div class="col-5 contact-form-communication-div">
+                        <select id="communicationSelect" class="form-select service-select" style="padding-left: 2px; padding-block: 1px;">
+                            @if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <option value="0" selected>Сommunication method</option>
+                                <option value="1">Phone call</option>
+                            }
+                            else
+                            {
+                                <option value="0" selected>Спосіб зв'язку</option>
+                                <option value="1">Телефонний дзвінок</option>
+                            }
+
+                            <option value="2">Telegram</option>
+                            <option value="3">WhatsApp</option>
+                            <option value="4">Viber</option>
+                            <option value="5">Email</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 contact-form-message-div">
+                        @if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <textarea id="messageInput" class="contact-input contact-form-textarea" type="text" rows="5" maxlength="500" placeholder="Message" value=""></textarea>
+                        }
+                        else
+                        {
+                            <textarea id="messageInput" class="contact-input contact-form-textarea" type="text" rows="5" maxlength="500" placeholder="Повідомлення" value=""></textarea>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="col-12 contact-form-btn-div">
+                    @* @if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" name="labelCheck" />
+                            <label class="contact-form-label" for="labelCheck">I agree with the privacy policy of this site</label>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" name="labelCheck" />
+                            <label class="contact-form-label" for="labelCheck">Згоден з політикою конфіденційності цього сайту</label>
+                        </div>
+                    } *@
+
+                    @if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <button id="sendBtn" class="contact-form-btn" type="button" onclick="checkContactForm()">Send</button>
+                    }
+                    else
+                    {
+                        <button id="sendBtn" class="contact-form-btn" type="button" onclick="checkContactForm()">Відправити</button>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="contactModalMenu" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content contact-modal-content">
+
+                <div class="modal-header contact-modal-header">
+                    <p class="modal-title contact-modal-title-p" id="staticBackdropLabel">Lovely Love Agency</p>
+                </div>
+
+                <div class="modal-body contact-modal-body">
+                    <p id="contactModalMessage" class="contact-modal-message-p"></p>
+                </div>
+
+                <div class="modal-footer contact-modal-footer">
+
+                    <div id="contactModalCheck" class="col-12 contact-modal-footer-check">
+
+                        <input id="codeInput" maxlength="20" class="contact-modal-input" type="text" value="" />
+
+                        @if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <button id="sendContactFormBtn" type="button" class="btn contact-check-btn" onclick="sendContactForm()">Send</button>
+                        }
+                        else
+                        {
+                            <button id="sendContactFormBtn" type="button" class="btn contact-check-btn" onclick="sendContactForm()">Відправити</button>
+                        }
+
+                    </div>
+
+                    <div class="col-12 contact-modal-footer-close">
+                        @if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            if (Context.Request.Cookies["UseCookies"] != "true")
+                            {
+                                <button id="acceptCookiesWRBtn" type="button" class="btn contact-close-btn" data-bs-dismiss="modal" style="margin-bottom: 10px;" onclick="acceptCookiesWR()">Accept</button>
+                            }
+
+                            <button type="button" class="btn contact-close-btn" data-bs-dismiss="modal">Close</button>
+                        }
+                        else
+                        {
+                            if (Context.Request.Cookies["UseCookies"] != "true")
+                            {
+                                <button id="acceptCookiesWRBtn" type="button" class="btn contact-close-btn" data-bs-dismiss="modal" style="margin-bottom: 10px;" onclick="acceptCookiesWR()">Погодитись</button>
+                            }
+
+                            <button type="button" class="btn contact-close-btn" data-bs-dismiss="modal">Закрити</button>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <button id="contactModalMenuBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModalMenu" hidden></button>
+
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        setBackground();
+        setColorActiveTitle();
+        setMarginContact();
+
+        serializeData();
+    }
+
+    window.addEventListener('resize', function (event) {
+        setMarginContact();
+    });
+
+    function setBackground() {
+
+        var video = document.getElementById("background");
+        var ratio = window.screen.width / window.screen.height;
+
+        var arraySrc = new Array();
+
+        if (ratio > 1) {
+            arraySrc[0] = "/data/background_horizontal.mp4"
+            arraySrc[1] = "/data/background_horizontal.webm";
+            arraySrc[2] = "/data/background_horizontal.mov";
+            arraySrc[3] = "/data/background_horizontal.ogv";
+        }
+        else {
+            arraySrc[0] = "/data/background_vertical.mp4"
+            arraySrc[1] = "/data/background_vertical.webm";
+            arraySrc[2] = "/data/background_vertical.mov";
+            arraySrc[3] = "/data/background_vertical.ogv";
+        }
+
+        var arrayType = new Array();
+
+        arrayType[0] = "video/mp4";
+        arrayType[1] = "video/webm";
+        arrayType[2] = "video/mov"
+        arrayType[3] = "video/ogg";
+
+        for (var i = 0; i < arraySrc.length; i++) {
+            var source = document.createElement("source");
+
+            source.setAttribute("src", arraySrc[i]);
+            source.setAttribute("type", arrayType[i]);
+
+            video.appendChild(source);
+        }
+
+        document.querySelectorAll('video').forEach(v => { v.setAttribute('pip', 'false'); })
+    }
+
+    function setColorActiveTitle() {
+        document.getElementById("contact-title").style.color = "#d7bd8a";
+    }
+
+    var language = @Html.Raw(Json.Serialize(Context.Request.Cookies["Language"]));
+    var arrayType = @Html.Raw(Json.Serialize(DataClass.TypeService.Select(x => new {x.Id, x.NameEn, x.NameUa})));
+    var arrayService = @Html.Raw(Json.Serialize(DataClass.Services.Select(x => new {x.Id, x.NameEn, x.NameUa, x.IdType})));
+    var arrayPackage = @Html.Raw(Json.Serialize(DataClass.Packages.Select(x => new {x.Id, x.Name, x.IdService})));
+    var selectedData = @Html.Raw(Json.Serialize(ViewBag.SelectedData));
+
+    function serializeData() {
+        arrayType = arrayType["$values"];
+        arrayService = arrayService["$values"];
+        arrayPackage = arrayPackage["$values"];
+
+        var selectType = document.getElementById("typeSelect");
+        var selectService = document.getElementById("serviceSelect");
+        var selectPackage = document.getElementById("packageSelect");
+
+        if (selectedData == "") return;
+
+        if (selectedData.length == 1) {
+            var idServiceSelect = selectedData[0];
+            var idPackageSelect = selectedData[1];
+            var idTypeSelect = 0;
+
+            for (var i = 0; i < arrayService.length; i++) {
+                if (arrayService[i]["id"] == idServiceSelect) {
+                    idTypeSelect = arrayService[i]["idType"];
+                }
+            }
+
+            selectType.value = idTypeSelect;
+            changeTypeValue();
+
+            selectService.value = idServiceSelect;
+            changeServiceValue();
+        }
+        else if (selectedData.length == 2) {
+            var idServiceSelect = selectedData[0];
+            var idPackageSelect = selectedData[1];
+            var idTypeSelect = 0;
+
+            for (var i = 0; i < arrayService.length; i++) {
+                if (arrayService[i]["id"] == idServiceSelect) {
+                    idTypeSelect = arrayService[i]["idType"];
+                }
+            }
+
+            selectType.value = idTypeSelect;
+            changeTypeValue();
+
+            selectService.value = idServiceSelect;
+            changeServiceValue();
+
+            selectPackage.value = idPackageSelect;
+        }
+    }
+
+    function changeTypeValue() {
+        var selectType = document.getElementById("typeSelect");
+        var selectService = document.getElementById("serviceSelect");
+        var selectPackage = document.getElementById("packageSelect");
+
+        var arrayServiceSelect = [];
+        for (var i = 0; i < arrayService.length; i++) {
+            if (arrayService[i]["idType"] == selectType.value) {
+                arrayServiceSelect.push(arrayService[i]);
+            }
+        }
+
+        removeOptions(selectPackage);
+        removeOptions(selectService);
+
+        for (var i = 0; i < arrayServiceSelect.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = arrayServiceSelect[i]["id"];
+
+            if (language == "en") opt.innerHTML = arrayServiceSelect[i]["nameEn"];
+            else opt.innerHTML = arrayServiceSelect[i]["nameUa"];
+            selectService.appendChild(opt);
+        }
+    }
+
+    function changeServiceValue() {
+        var selectService = document.getElementById("serviceSelect");
+        var selectPackage = document.getElementById("packageSelect");
+
+        var arrayPackageSelect = [];
+        for (var i = 0; i < arrayPackage.length; i++) {
+            if (arrayPackage[i]["idService"] == selectService.value) {
+                arrayPackageSelect.push(arrayPackage[i]);
+            }
+        }
+
+        removeOptions(selectPackage);
+
+        for (var i = 0; i < arrayPackageSelect.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = arrayPackageSelect[i]["id"];
+            opt.innerHTML = arrayPackageSelect[i]["name"];
+            selectPackage.appendChild(opt);
+        }
+    }
+
+    function removeOptions(selectElement) {
+        var i, L = selectElement.options.length - 1;
+        for (i = L; i > 0; i--) {
+            selectElement.remove(i);
+        }
+    }
+
+    function setMarginContact() {
+        var width = window.screen.width;
+        var contact = document.getElementById("contactFormContainer");
+        var heightHeader = document.getElementById("header").offsetHeight;
+
+        if (width <= 1000) {
+            contact.style.marginTop = heightHeader + "px";
+            contact.style.marginBottom = "0";
+        }
+        else {
+
+            var heightScreen = window.innerHeight;
+            var heightBanner = contact.offsetHeight;
+
+            var notification = document.getElementById("cookies-notification");
+            var heightNotification = 0;
+            if (notification != null) heightNotification = notification.offsetHeight;
+
+            var margin = (heightScreen - (heightBanner + heightHeader + heightNotification)) / 2;
+
+            if (margin >= 15) {
+                contact.style.marginTop = (heightHeader + margin) + "px";
+                contact.style.marginBottom = margin + "px";
+            }
+            else {
+                contact.style.marginTop = (heightHeader + 15) + "px";
+                contact.style.marginBottom = 15 + "px";
+            }
+        }
+    }
+
+    function checkContactForm() {
+        var selectType = document.getElementById("typeSelect");
+        var selectService = document.getElementById("serviceSelect");
+        var selectPackage = document.getElementById("packageSelect");
+
+        var sendBtn = document.getElementById("sendBtn");
+
+        if (selectType.value == "0") {
+            disableBtn(sendBtn);
+            setTimeout(enableBtn, 3000, sendBtn);
+
+            changeColorSelect(selectType, "red");
+            setTimeout(changeColorSelect, 3000, selectType, "white");
+
+            return;
+        }
+
+        if (selectService.value == "0") {
+            disableBtn(sendBtn);
+            setTimeout(enableBtn, 3000, sendBtn);
+
+            changeColorSelect(selectService, "red");
+            setTimeout(changeColorSelect, 3000, selectService, "white");
+
+            return;
+        }
+
+        var idService = selectService.value;
+        var countPackage = 0;
+
+        for (var i = 0; i < arrayPackage.length; i++) {
+            if (arrayPackage[i]["idService"] == idService) {
+                countPackage++;
+            }
+        }
+
+        var idPackage = selectPackage.value;
+
+        if (countPackage > 0 && idPackage <= 0) {
+            disableBtn(sendBtn);
+            setTimeout(enableBtn, 3000, sendBtn);
+
+            changeColorSelect(selectPackage, "red");
+            setTimeout(changeColorSelect, 3000, selectPackage, "white");
+
+            return;
+        }
+
+        var nameInput = document.getElementById("nameInput");
+        var name = nameInput.value.replace(/\s+/g, ' ').trim();
+
+        if (name.length < 2 || name.length > 50) {
+            disableBtn(sendBtn);
+            setTimeout(enableBtn, 3000, sendBtn);
+
+            changeColorInput(nameInput, "red");
+            setTimeout(changeColorInput, 3000, nameInput, "white");
+
+            return;
+        }
+
+        var phoneInput = document.getElementById("phoneNumberInput");
+        var phone = phoneInput.value.replace(/\s+/g, ' ').trim();
+
+        if (phone.length < 1 || phone.length > 20) {
+            disableBtn(sendBtn);
+            setTimeout(enableBtn, 3000, sendBtn);
+
+            changeColorInput(phoneInput, "red");
+            setTimeout(changeColorInput, 3000, phoneInput, "white");
+
+            return;
+        }
+
+        var emailInput = document.getElementById("emailInput");
+
+        if (EMAIL_REGEXP.test(emailInput.value) == false || emailInput.value.length > 50) {
+            disableBtn(sendBtn);
+            setTimeout(enableBtn, 3000, sendBtn);
+
+            changeColorInput(emailInput, "red");
+            setTimeout(changeColorInput, 3000, emailInput, "white");
+
+            return;
+        }
+
+        sendEmail(emailInput.value.toLowerCase(), name);
+    }
+
+    function sendEmail(email, name) {
+        fetch("/Main/SendEmail?email=" + email, {
+            method: 'POST'
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                var modalMessage = document.getElementById("contactModalMessage");
+                var checkDiv = document.getElementById("contactModalCheck");
+
+                if (data == "false 0") {
+                    if (language == "en") modalMessage.innerHTML = "We apologize, there are technical problems at the moment and we are fixing them. Try sending the contact form later.";
+                    else modalMessage.innerHTML = "Приносимо свої вибачення, в даний момент виникли технічні неполадки і ми їх усуваємо. Спробуйте надіслати контактну форму трохи пізніше.";
+
+                    checkDiv.style.display = "none";
+                    document.getElementById("contactModalMenuBtn").click();
+                }
+                else if (data == "false 1") {
+                    if (language == "en") modalMessage.innerHTML = "To send the contact form, you need to agree to the use of cookies. This is necessary so that we can provide you with the highest quality of services.";
+                    else modalMessage.innerHTML = "Для відправки контактної форми, потрібно погодитися на використання файлів cookie. Це потрібно для того, щоб ми могли забезпечити вам якість послуг на вищому рівні.";
+
+                    checkDiv.style.display = "none";
+                    document.getElementById("contactModalMenuBtn").click();
+                }
+                else if (data == "false 2") {
+                    if (language == "en") modalMessage.innerHTML = "The entered email turned out to be incorrect. Close this window and check the entered email.";
+                    else modalMessage.innerHTML = "Введена електронна пошта виявилася невірною. Закрийте це вікно та перевірте введену пошту.";
+
+                    checkDiv.style.display = "none";
+                    document.getElementById("contactModalMenuBtn").click();
+                }
+                else if (data == "false 3") {
+                    if (language == "en") modalMessage.innerHTML = "We apologize, there are technical problems at the moment and we are fixing them. Try sending the contact form later.";
+                    else modalMessage.innerHTML = "Приносимо свої вибачення, в даний момент виникли технічні неполадки і ми їх усуваємо. Спробуйте надіслати контактну форму трохи пізніше.";
+
+                    checkDiv.style.display = "none";
+                    document.getElementById("contactModalMenuBtn").click();
+                }
+                else {
+                    if (language == "en") modalMessage.innerHTML = "Hello, " + name + "! To confirm sending the contact form, you need to enter the code that was sent to your email (" + email.toLowerCase() + ")";
+                    else modalMessage.innerHTML = "Привіт, " + name + "! Для підтвердження відправки контактної форми, вам потрібно ввести код, який був відправлений на зазначену пошту (" + email.toLowerCase() + ")";
+
+                    if (checkDiv.style.display != "flex") checkDiv.style.display = "flex";
+                    document.getElementById("contactModalMenuBtn").click();
+                }
+            })
+    }
+
+    function sendContactForm() {
+        var modalMessage = document.getElementById("contactModalMessage");
+        var checkDiv = document.getElementById("contactModalCheck");
+        var codeInput = document.getElementById("codeInput");
+        var sendContactBtn = document.getElementById("sendContactFormBtn");
+
+        var code = codeInput.value;
+        if (code.length <= 0 || code.length > 20 || code == "") {
+            changeColorCodeInput(codeInput, "red");
+            setTimeout(changeColorCodeInput, 3000, codeInput, "black");
+
+            disableBtn(sendContactBtn);
+            setTimeout(enableBtn, 3000, sendContactBtn);
+            return;
+        }
+
+        var nameInput = document.getElementById("nameInput");
+        var name = nameInput.value.replace(/\s+/g, ' ').trim();
+
+        var phoneInput = document.getElementById("phoneNumberInput");
+        var phone = phoneInput.value.replace(/\s+/g, ' ').trim();
+
+        var emailInput = document.getElementById("emailInput");
+        var email = emailInput.value.toLowerCase();
+
+        var communicationInput = document.getElementById("communicationSelect");
+        var communication = "Не указан";
+
+        if (communicationInput.value != "0") {
+            communication = communicationInput.options[communicationInput.value].text;
+        }
+
+        var messageInput = document.getElementById("messageInput");
+        var message = messageInput.value.replace(/\s+/g, ' ').trim();
+
+        var selectType = document.getElementById("typeSelect");
+
+        var selectService = document.getElementById("serviceSelect");
+        var idService = selectService.value;
+
+        var selectPackage = document.getElementById("packageSelect");
+        var idPackage = selectPackage.value;
+
+        fetch("/Main/SendContactForm?codeEmail=" + code + "&name=" + name + "&phoneNumber=" + phone + "&email=" + email + "&communication=" + communication
+            + "&message=" + message + "&idService=" + idService + "&idPackage=" + idPackage, {
+            method: 'POST'
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                if (data == "false 0") {
+                    if (language == "en") modalMessage.innerHTML = "We apologize, there are technical problems at the moment and we are fixing them. Try sending the contact form later.";
+                    else modalMessage.innerHTML = "Приносимо свої вибачення, в даний момент виникли технічні неполадки і ми їх усуваємо. Спробуйте надіслати контактну форму трохи пізніше.";
+
+                    codeInput.value = "";
+                    checkDiv.style.display = "none";
+                }
+                else if (data == "false 1") {
+                    if (language == "en") modalMessage.innerHTML = "We apologize, the entered data turned out to be incorrect. Close this window and try again.";
+                    else modalMessage.innerHTML = "Приносимо свої вибачення, введені дані виявилися некоректними. Закрийте це вікно і повторіть спробу.";
+
+                    codeInput.value = "";
+                    checkDiv.style.display = "none";
+                }
+                else if (data == "false 2") {
+                    if (language == "en") modalMessage.innerHTML = "We apologize, your confirmation code has expired. Please close this window and resend the contact form.";
+                    else modalMessage.innerHTML = "Просимо свої вибачення, ваш код підтвердження закінчився. Будь ласка, закрийте це вікно та повторіть подання контактної форми.";
+
+                    codeInput.value = "";
+                    checkDiv.style.display = "none";
+                }
+                else if (data == "false 3") {
+                    changeColorCodeInput(codeInput, "red");
+                    setTimeout(changeColorCodeInput, 3000, codeInput, "black");
+
+                    disableBtn(sendContactBtn);
+                    setTimeout(enableBtn, 3000, sendContactBtn);
+                }
+                else if (data == "false 4") {
+                    if (language == "en") modalMessage.innerHTML = "We apologize, you have reached the limit of sending contact forms. Try sending the contact form after a while.";
+                    else modalMessage.innerHTML = "Приносимо свої вибачення, ви вичерпали ліміт відправки контактних форм. Спробуйте надіслати контактну форму через деякий час.";
+
+                    codeInput.value = "";
+                    checkDiv.style.display = "none";
+                }
+                else {
+                    if (language == "en") modalMessage.innerHTML = "Your contact form has been sent successfully! We will definitely contact you soon.";
+                    else modalMessage.innerHTML = "Ваша контактна форма успішно надіслана! Незабаром ми з вами обов'язково зв'яжемося.";
+
+                    codeInput.value = "";
+                    checkDiv.style.display = "none";
+
+                    selectType.value = 0;
+                    communicationInput.value = 0;
+
+                    removeOptions(selectService);
+                    removeOptions(selectPackage);
+
+                    nameInput.value = "";
+                    phoneInput.value = "";
+                    emailInput.value = "";
+                    messageInput.value = "";
+                }
+            })
+    }
+
+    function disableBtn(element) {
+        element.disabled = "true";
+        element.style.color = "grey";
+        element.style.borderColor = "grey";
+    }
+
+    function enableBtn(element) {
+        element.removeAttribute("disabled");
+        element.style.color = "white";
+        element.style.borderColor = "white";
+    }
+
+    function changeColorSelect(element, value) {
+        element.style.color = value;
+    }
+
+    function changeColorInput(element, value) {
+        if (value == "red") {
+            element.style.color = "red";
+            element.classList.add("contact-input-red");
+        }
+        else {
+            element.style.color = "white";
+            element.classList.remove("contact-input-red");
+        }
+    }
+
+    function changeColorCodeInput(element, value) {
+        element.style.color = value;
+        element.style.borderColor = value;
+    }
+
+    const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@@"]+(\.[^<>()[\].,;:\s@@"]+)*)|(".+"))@@(([^<>()[\].,;:\s@@"]+\.)+[^<>()[\].,;:\s@@"]{2,})$/iu;
+
+    function changeEmailInput(email) {
+        if (email.value.length <= 0) {
+            email.style.color = "white";
+            return;
+        }
+
+        if (EMAIL_REGEXP.test(email.value)) {
+            email.style.color = "white";
+        }
+        else {
+            email.style.color = "red";
+        }
+    }
+
+    function acceptCookiesWR() {
+        fetch("/Main/AcceptCookiesWR?", {
+            method: 'GET'
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                var modalMenu = document.getElementById("contactModalMenu");
+
+                if (data == "true") {
+                    document.getElementById("acceptCookiesWRBtn").style.display = "none";
+                    modalMenu.style.display = "none";
+
+                    document.getElementById("cookies-notification").style.display = "none";
+                    document.getElementById("mainFooter").style.marginBottom = "0px";
+                    setMarginContact();
+                }
+                else {
+                    modalMenu.style.display = "none";
+                }
+            })
+    }
+
+</script>

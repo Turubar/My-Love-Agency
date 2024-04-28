@@ -1,0 +1,706 @@
+﻿<video video autoplay loop muted playsinline class="background" id="background"></video>
+
+<div class="container-fluid mp-container main-container">
+
+    <div id="mp-banner" class="col-9 mp-banner">
+
+        <div class="carousel" data-bs-ride="carousel" data-bs-touch="false" data-bs-interval="10000">
+            <div id="banner-carousel-div" class="carousel-inner" style="position: relative;">
+
+                <div class="big-title-div">
+                    <div><p class="banner-big-title">Lovely Love Agency</p></div>
+                    <div class="banner-line-div"><img class="banner-line-img" src="/data/mainpage/banner/line.png"></div>
+
+                    <div>
+                        @{
+                            if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <p class="banner-title">@Html.Raw(HomeModelEnglish.slogan)</p>
+                            }
+                            else
+                            {
+                                <p class="banner-title">@Html.Raw(HomeModelUkrainian.slogan)</p>
+                            }
+                        }
+                    </div>
+
+                    <div class="banner-line-div"><img class="banner-line-img" src="/data/mainpage/banner/line.png"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-9 mp-about-us">
+
+        <div class="col-8 about-text-div">
+            <div>
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <p class="about-title">About Us</p>
+                    }
+                    else
+                    {
+                        <p class="about-title">Про нас</p>
+                    }
+                }
+            </div>
+
+
+            <div>
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <p class="about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
+                    }
+                    else
+                    {
+                        <p class="about-text">@Html.Raw(HomeModelUkrainian.aboutUsText)</p>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="col-4 about-img-div">
+            <img class="about-img-pc" src="/data/mainpage/about_us/about_us_pc.jpg" alt="" />
+            <img class="about-img-tel" src="/data/mainpage/about_us/about_us_tel.jpg" alt="" />
+        </div>
+
+    </div>
+
+    <div class="col-9 mp-services">
+
+        <div class="services-title-div">
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="services-title">Services</p>
+                }
+                else
+                {
+                    <p class="services-title">Послуги</p>
+                }
+            }
+        </div>
+
+        <div class="services-img-div">
+            <div class="col-3 services-img-circle">
+                <div class="services-flex">
+                    <img class="services-img" src="/data/mainpage/services/datings.png" alt="" />
+                    @{
+                        if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Datings" class="services-name-link"><p class="services-name">Datings</p></a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Datings" class="services-name-link"><p class="services-name">Побачення</p></a>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="col-3 services-img-circle">
+                <div class="services-flex">
+                    <img class="services-img" src="/data/mainpage/services/surprises.png" alt="" />
+                    @{
+                        if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Surprises" class="services-name-link"><p class="services-name">Surprises</p></a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Surprises" class="services-name-link"><p class="services-name">Сюрпризи</p></a>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="col-3 services-img-circle">
+                <div class="services-flex">
+                    <img class="services-img" src="/data/mainpage/services/proposals.png" alt="" />
+                    @{
+                        if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Proposals" class="services-name-link"><p class="services-name">Proposals</p></a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Proposals" class="services-name-link"><p class="services-name">Пропозиції</p></a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-9 mp-advantages">
+
+        <div>
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="advantages-big-title">Our Advantages</p>
+                }
+                else
+                {
+                    <p class="advantages-big-title">Наші Переваги</p>
+                }
+            }
+        </div>
+
+        <div class="col-12 advantages-container">
+
+            <div class="col-1 advantages-btn-div">
+                <button class="advantages-btn" type="button" onclick="changeAdvantage(-1)" onmouseover="advantagesOver(0)" onmouseout="advantagesOut(0)">
+                    <img class="advantages-btn-img" src="/data/arrow_left.png" alt="" />
+                </button>
+            </div>
+
+            <div class="col-10 advantages-data">
+                <div class="col-9 advantages-div">
+                    @{
+                        if (Context.Request.Cookies["Language"] == "en")
+                        {
+                            for (int i = 0; i < HomeModelEnglish.advantageTitle.Count; i++)
+                            {
+                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelEnglish.advantageTitle[i]</p></div>
+                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelEnglish.advantageText[i]</p></div>
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < HomeModelUkrainian.advantageTitle.Count; i++)
+                            {
+                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelUkrainian.advantageTitle[i]</p></div>
+                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelUkrainian.advantageText[i]</p></div>
+                            }
+                        }
+                    }
+                </div>
+
+                <div class="col-3 advantages-img-div">
+                    <div><img class="advantages-img" src="/data/mainpage/advantages/1.png" alt="" /></div>
+                    <div><img class="advantages-img" src="/data/mainpage/advantages/2.png" alt="" /></div>
+                    <div><img class="advantages-img" src="/data/mainpage/advantages/3.png" alt="" /></div>
+                    <div><img class="advantages-img" src="/data/mainpage/advantages/4.png" alt="" /></div>
+                    <div><img class="advantages-img" src="/data/mainpage/advantages/5.png" alt="" /></div>
+                    <div><img class="advantages-img" src="/data/mainpage/advantages/6.png" alt="" /></div>
+                </div>
+            </div>
+            
+
+            <div class="col-1 advantages-btn-div">
+                <button class="advantages-btn" type="button" onclick="changeAdvantage(1)" onmouseover="advantagesOver(1)" onmouseout="advantagesOut(1)">
+                    <img class="advantages-btn-img" src="/data/arrow_right.png" alt="" />
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-9 mp-stages">
+        <div>
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="stages-big-title">Stages of organization</p>
+                }
+                else
+                {
+                    <p class="stages-big-title">Стадії організації</p>
+                }
+            }
+        </div>
+
+        <div class="col-12 stages-container">
+            <div class="col-3 stages-img-div">
+                <div><img class="stages-img" src="/data/mainpage/stages/glass.png" alt="" /></div>
+            </div>
+
+            <div class="col-9 stages-right-div">
+
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        for (int i = 0; i < HomeModelEnglish.stageTitle.Count; i++)
+                        {
+                            <div class="col-12 stages-div">
+                                <div style="display: flex; align-items: center;">
+                                    <div><p class="stages-index">@(i + 1)</p></div>
+                                </div>
+
+                                <div class="stages-text-div">
+                                    <p class="stages-title">@HomeModelEnglish.stageTitle[i]</p>
+                                    <p class="stages-text">@HomeModelEnglish.stageText[i]</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < HomeModelUkrainian.stageTitle.Count; i++)
+                        {
+                            <div class="col-12 stages-div">
+                                <div>
+                                    <p class="stages-index">@(i + 1)</p>
+                                </div>
+
+                                <div class="stages-text-div">
+                                    <p class="stages-title">@HomeModelUkrainian.stageTitle[i]</p>
+                                    <p class="stages-text">@HomeModelUkrainian.stageText[i]</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-9 mp-gallery">
+        <div class="gallery-big-title-div">
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="gallery-big-title">Gallery</p>
+                }
+                else
+                {
+                    <p class="gallery-big-title">Галерея</p>
+                }
+            }
+        </div>
+
+        <div class="col-12">
+            <div class="row gallery-row">
+                
+                <div class="col-4 mp-gallery-img-div">
+                    <img class="gallery-img" src="/data/mainpage/gallery/1.jpg" alt="" />
+                </div>
+
+                <div class="col-4 mp-gallery-img-div">
+                    <img class="gallery-img" src="/data/mainpage/gallery/2.jpg" alt="" />
+                </div>
+
+                <div class="col-4 mp-gallery-img-div">
+                    <img class="gallery-img" src="/data/mainpage/gallery/3.jpg" alt="" />
+                </div>
+                
+                <div class="col-4 mp-gallery-img-div">
+                    <img class="gallery-img" src="/data/mainpage/gallery/4.jpg" alt="" />
+                </div>
+
+                <div class="col-4 mp-gallery-img-div">
+                    <img class="gallery-img" src="/data/mainpage/gallery/5.jpg" alt="" />
+                </div>
+
+                <div class="col-4 mp-gallery-img-div">
+                    <img class="gallery-img" src="/data/mainpage/gallery/6.jpg" alt="" />
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="gallery-arrow-div">
+            <div class="gallery-seemore" onmouseover="galleryOver()" onmouseout="galleryOut()" onclick="galleryClick()">
+                <div class="gallery-link-div">
+                    <div>
+                        @{
+                            if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                <a asp-controller="Main" asp-action="Gallery" class="gallery-link-a"><p class="gallery-link">See more</p></a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Main" asp-action="Gallery" class="gallery-link-a"><p class="gallery-link">Більше</p></a>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="gallery-img-arrow-div">
+                    <a asp-controller="Main" asp-action="Gallery" class="gallery-link-a"><img class="gallery-arrow-img" src="/data/arrow_link.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-9 mp-feedback">
+        <div class="feedback-big-title-div">
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="feedback-big-title">Feedback</p>
+                }
+                else
+                {
+                    <p class="feedback-big-title">Відгуки</p>
+                }
+            }
+        </div>
+
+        <div class="col-12 feedback-container">
+
+            <div class="col-1 feedback-btn-div">
+                <button class="feedback-btn" type="button" onclick="changeFeedback(-1)" onmouseover="feedbackOver(0)" onmouseout="feedbackOut(0)">
+                    <img id="feedback-arrow-left" class="feedback-btn-img" src="/data/arrow_left.png" alt="" />
+                </button>
+            </div>
+
+            <div class="col-10 feedback-data-div">
+
+                <div class="col-4 feedback-img-div">
+                    <img class="feedback-img" src="/data/mainpage/feedback/1.jpg" alt="" />
+                    <img class="feedback-img" src="/data/mainpage/feedback/2.jpg" alt="" />
+                    <img class="feedback-img" src="/data/mainpage/feedback/3.jpg" alt="" />
+                    <img class="feedback-img" src="/data/mainpage/feedback/4.jpg" alt="" />
+                    <img class="feedback-img" src="/data/mainpage/feedback/5.jpg" alt="" />
+                    <img class="feedback-img" src="/data/mainpage/feedback/6.jpg" alt="" />
+                    <img class="feedback-img" src="/data/mainpage/feedback/7.jpg" alt="" />
+                </div>
+
+                <div class="col-8 feedback-text-div">
+                    <div>
+                        @{
+                            if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
+                                {
+                                    <p class="feedback-title">@HomeModelEnglish.feedbackTitle[i]</p>
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
+                                {
+                                    <p class="feedback-title">@HomeModelUkrainian.feedbackTitle[i]</p>
+                                }
+                            }
+                        }
+                    </div>
+
+                    <div>
+                        @{
+                            if (Context.Request.Cookies["Language"] == "en")
+                            {
+                                for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
+                                {
+                                    <p class="feedback-text">@HomeModelEnglish.feedbackText[i]</p>
+                                }
+                            }
+                            else
+                            {
+                                for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
+                                {
+                                    <p class="feedback-text">@HomeModelUkrainian.feedbackText[i]</p>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-1 feedback-btn-div">
+                <button class="feedback-btn" type="button" onclick="changeFeedback(1)" onmouseover="feedbackOver(1)" onmouseout="feedbackOut(1)">
+                    <img id="feedback-arrow-right" class="feedback-btn-img" src="/data/arrow_right.png" alt="" />
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        setBackground();
+        setColorActiveTitle();
+
+        setImageBanner();
+        setMarginBanner();
+    }
+
+    window.addEventListener('load', function () {
+        setMarginBanner();
+        changeAdvantage(0);
+        changeFeedback(0);
+    })
+
+    window.addEventListener('resize', function (event) {
+        setImageBanner();
+        setMarginBanner();
+    });
+
+    function setBackground() {
+
+        var video = document.getElementById("background");
+        var ratio = window.screen.width / window.screen.height;
+
+        var arraySrc = new Array();
+
+        if (ratio > 1) {
+            arraySrc[0] = "/data/background_horizontal.mp4"
+            arraySrc[1] = "/data/background_horizontal.webm";
+            arraySrc[2] = "/data/background_horizontal.mov";
+            arraySrc[3] = "/data/background_horizontal.ogv";
+        }
+        else {
+            arraySrc[0] = "/data/background_vertical.mp4"
+            arraySrc[1] = "/data/background_vertical.webm";
+            arraySrc[2] = "/data/background_vertical.mov";
+            arraySrc[3] = "/data/background_vertical.ogv";
+        }
+
+        var arrayType = new Array();
+
+        arrayType[0] = "video/mp4";
+        arrayType[1] = "video/webm";
+        arrayType[2] = "video/mov"
+        arrayType[3] = "video/ogg";
+
+        for (var i = 0; i < arraySrc.length; i++) {
+            var source = document.createElement("source");
+
+            source.setAttribute("src", arraySrc[i]);
+            source.setAttribute("type", arrayType[i]);
+
+            video.appendChild(source);
+        }
+
+        document.querySelectorAll('video').forEach(v => { v.setAttribute('pip', 'false'); })
+    }
+
+    function setColorActiveTitle() {
+        document.getElementById("home-title").style.color = "#d7bd8a";
+    }
+
+    let img_pc_1 = document.createElement("img");
+    img_pc_1.src = "/data/mainpage/banner/1_pc.jpg";
+    img_pc_1.className += "carousel-item active";
+
+    let img_pc_2 = document.createElement("img");
+    img_pc_2.src = "/data/mainpage/banner/2_pc.jpg";
+    img_pc_2.className += "carousel-item";
+
+    let img_pc_3 = document.createElement("img");
+    img_pc_3.src = "/data/mainpage/banner/3_pc.jpg";
+    img_pc_3.className += "carousel-item";
+
+    let img_tel_1 = document.createElement("img");
+    img_tel_1.src = "/data/mainpage/banner/1_tel.jpg";
+    img_tel_1.className += "carousel-item active";
+
+    let img_tel_2 = document.createElement("img");
+    img_tel_2.src = "/data/mainpage/banner/2_tel.jpg";
+    img_tel_2.className += "carousel-item";
+
+    let img_tel_3 = document.createElement("img");
+    img_tel_3.src = "/data/mainpage/banner/3_tel.jpg";
+    img_tel_3.className += "carousel-item";
+
+    function setImageBanner() {
+        var carousel = document.getElementById("banner-carousel-div");
+        var width = window.screen.width;
+
+        if (width >= 1000) {
+            carousel.prepend(img_pc_1);
+            carousel.prepend(img_pc_2);
+            carousel.prepend(img_pc_3);
+
+            if (carousel.contains(img_tel_1)) img_tel_1.parentNode.removeChild(img_tel_1);
+            if (carousel.contains(img_tel_2)) img_tel_2.parentNode.removeChild(img_tel_2);
+            if (carousel.contains(img_tel_3)) img_tel_3.parentNode.removeChild(img_tel_3);
+        }
+        else {
+            var windowInnerHeight = document.documentElement.clientHeight;
+            var heightHeader = document.getElementById("header").offsetHeight;
+            
+            var notification = document.getElementById("cookies-notification");
+            var heightNotification = 0;
+            if (notification != null) heightNotification = notification.offsetHeight;
+
+            var height = windowInnerHeight - (heightHeader + heightNotification);
+
+            img_tel_1.height = height;
+            img_tel_2.height = height;
+            img_tel_3.height = height;
+
+            carousel.prepend(img_tel_1);
+            carousel.prepend(img_tel_2);
+            carousel.prepend(img_tel_3);
+
+            if (carousel.contains(img_pc_1)) img_pc_1.parentNode.removeChild(img_pc_1);
+            if (carousel.contains(img_pc_2)) img_pc_2.parentNode.removeChild(img_pc_2);
+            if (carousel.contains(img_pc_3)) img_pc_3.parentNode.removeChild(img_pc_3);
+        }
+    }
+
+    function setMarginBanner() {
+        var width = window.screen.width;
+        var banner = document.getElementById("mp-banner");
+        var heightHeader = document.getElementById("header").offsetHeight;
+
+        if (width <= 1000) {
+            banner.style.marginTop = heightHeader + "px";
+            banner.style.marginBottom = "0";
+        }
+        else {
+            var heightScreen = window.innerHeight;
+            var heightBanner = banner.offsetHeight;
+
+            var notification = document.getElementById("cookies-notification");
+            var heightNotification = 0;
+            if (notification != null) heightNotification = notification.offsetHeight;
+
+            var margin = (heightScreen - (heightBanner + heightHeader + heightNotification)) / 2;
+
+            if (margin >= 25) {
+                banner.style.marginTop = (heightHeader + margin) + "px";
+                banner.style.marginBottom = margin + "px";
+            }
+            else {
+                banner.style.marginTop = (heightHeader + 25) + "px";
+                banner.style.marginBottom = 25 + "px";
+            }
+        }
+    }
+
+
+    let indexAdvantage = 0;
+    function changeAdvantage(step) {
+        var index = indexAdvantage + step;
+
+        if (index <= -2 || index >= 7) return;
+        if (index == -1) index = 5;
+        if (index == 6) index = 0;
+
+        var arrayTitle = document.getElementsByClassName("advantages-title-div");
+        var arrayText = document.getElementsByClassName("advantages-text-div");
+        var arrayImg = document.getElementsByClassName("advantages-img");
+
+        for (var i = 0; i < arrayTitle.length; i++) {
+            if (i == index) {
+                arrayTitle[i].style.display = "block";
+                arrayText[i].style.display = "block";
+                arrayImg[i].style.display = "block";
+            }
+            else {
+                arrayTitle[i].style.display = "none";
+                arrayText[i].style.display = "none";
+                arrayImg[i].style.display = "none";
+            }
+        }
+
+        indexAdvantage = index;
+    }
+
+    let indexFeedback = 0;
+    function changeFeedback(step) {
+        var index = indexFeedback + step;
+
+        if (index <= -2 || index >= 8) return;
+        if (index == -1) index = 6;
+        if (index == 7) index = 0;
+
+        var arrayTitle = document.getElementsByClassName("feedback-title");
+        var arrayText = document.getElementsByClassName("feedback-text");
+        var arrayImg = document.getElementsByClassName("feedback-img");
+
+        for (var i = 0; i < arrayTitle.length; i++) {
+            if (i == index) {
+                arrayTitle[i].style.display = "block";
+                arrayText[i].style.display = "block";
+                arrayImg[i].style.display = "block";
+            }
+            else {
+                arrayTitle[i].style.display = "none";
+                arrayText[i].style.display = "none";
+                arrayImg[i].style.display = "none";
+            }
+        }
+
+        indexFeedback = index;
+    }
+
+    function contactClick() {
+        document.getElementsByClassName("banner-contact-link")[0].click();
+    }
+
+    function contactOver() {
+        document.getElementsByClassName("banner-contact-p")[0].style.color = "#d7bd8a";
+        document.getElementsByClassName("banner-contact-img")[0].src = "/data/contact_color.png";
+        document.body.style.cursor = "pointer";
+    }
+
+    function contactOut() {
+        document.getElementsByClassName("banner-contact-p")[0].style.color = "white";
+        document.getElementsByClassName("banner-contact-img")[0].src = "/data/contact.png";
+        document.body.style.cursor = "default";
+    }
+
+    function galleryClick() {
+        document.getElementsByClassName("gallery-link")[0].click();
+    }
+
+    function galleryOver() {
+        document.getElementsByClassName("gallery-link")[0].style.color = "#d7bd8a";
+        document.getElementsByClassName("gallery-arrow-img")[0].src = "/data/arrow_link_color.png";
+        document.body.style.cursor = "pointer";
+    }
+
+    function galleryOut() {
+        document.getElementsByClassName("gallery-link")[0].style.color = "white";
+        document.getElementsByClassName("gallery-arrow-img")[0].src = "/data/arrow_link.png";
+        document.body.style.cursor = "default";
+    }
+
+    function advantagesOver(side) {
+        if (side == 0) {
+            document.getElementsByClassName("advantages-btn-img")[0].src = "/data/arrow_left_color.png";
+        }
+
+        if (side == 1) {
+            document.getElementsByClassName("advantages-btn-img")[1].src = "/data/arrow_right_color.png";
+        }
+    }
+
+    function advantagesOut(side) {
+        if (side == 0) {
+            document.getElementsByClassName("advantages-btn-img")[0].src = "/data/arrow_left.png";
+        }
+
+        if (side == 1) {
+            document.getElementsByClassName("advantages-btn-img")[1].src = "/data/arrow_right.png";
+        }
+    }
+
+    function feedbackOver(side) {
+        if (side == 0) {
+            document.getElementsByClassName("feedback-btn-img")[0].src = "/data/arrow_left_color.png";
+        }
+
+        if (side == 1) {
+            document.getElementsByClassName("feedback-btn-img")[1].src = "/data/arrow_right_color.png";
+        }
+    }
+
+    function feedbackOut(side) {
+        if (side == 0) {
+            document.getElementsByClassName("feedback-btn-img")[0].src = "/data/arrow_left.png";
+        }
+
+        if (side == 1) {
+            document.getElementsByClassName("feedback-btn-img")[1].src = "/data/arrow_right.png";
+        }
+    }
+
+</script>

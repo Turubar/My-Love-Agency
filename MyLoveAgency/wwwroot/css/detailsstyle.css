@@ -1,0 +1,547 @@
+﻿.details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.details-service-data {
+    background: rgba(0, 0, 0, .6);
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 50px;
+}
+
+.details-first-div {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.details-first-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.details-first-data-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.details-first-name-div {
+    padding-right: 25px;
+    margin-bottom: 25px;
+}
+
+.details-name-p {
+    font-family: "Scientia-Medium";
+    color: white;
+    font-size: 45px;
+    margin-bottom: 0;
+    line-height: 100%;
+}
+
+.details-first-text-div {
+    padding-right: 15px;
+    flex-grow: 1;
+}
+
+.details-text-p {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 0;
+    line-height: 125%;
+    text-align: justify;
+    overflow-y: auto;
+    scrollbar-color: white darkgrey;
+    scrollbar-width: thin;
+    padding-right: 15px;
+}
+
+.details-text-p::-webkit-scrollbar {
+    width: 6px;
+}
+
+.details-text-p::-webkit-scrollbar-track {
+    border-radius: 15px;
+    background-color: darkgrey;
+}
+
+.details-text-p::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: white;
+}
+
+.carousel-inner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.details-btn {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+}
+
+.details-btn-img {
+    width: 75%;
+    padding: 0;
+}
+
+.details-carousel-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-carousel-img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+.carousel-indicator-btn {
+    border: 1px solid black !important;
+    display: flex;
+}
+
+.details-second-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.details-second-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details-price-p {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 26px;
+    margin-bottom: 15px;
+    line-height: 100%;
+}
+
+.details-btn-contact {
+    font-family: "Scientia-Regular";    
+    font-size: 20px;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    border-radius: 25px;
+}
+
+.details-btn-contact:hover {
+    color: #d7bd8a;
+    background-color: transparent;
+    border-color: #d7bd8a;
+}
+
+.details-package-data {
+    margin: 0;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.package-container {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    width: 30%;
+    margin-bottom: 50px;
+}
+
+.more-package-container {
+    margin-right: 10%;
+}
+
+.package-first-div {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    border-radius: 25px;
+}
+
+.package-name-p {
+    font-family: "Scientia-Regular";
+    color: #d7bd8a;
+    font-size: 32px;
+    margin-block: 15px;
+    line-height: 100%;
+    text-align: center;
+}
+
+.package-second-div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.package-details-p {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 26px;
+    line-height: 100%;
+    margin-bottom: 10px;
+}
+
+.package-description-p {
+    color: white;
+    font-size: 22px;
+    line-height: 100%;
+    margin-bottom: 5px;
+    text-indent: -20px;
+    padding-left: 20px;
+}
+
+.package-duration-p {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 26px;
+    line-height: 100%;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.package-price-p {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 26px;
+    line-height: 100%;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.package-third-div {
+    padding: 20px;
+    padding-top: 0;
+}
+
+.details-btn-package {
+    font-family: "Scientia-Regular";
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    font-size: 26px;
+    width: 100%;
+    border-radius: 25px;
+    line-height: 115%;
+}
+
+.details-btn-package:hover {
+    color: #d7bd8a;
+    background-color: transparent;
+    border-color: #d7bd8a;
+}
+
+
+@media (max-width: 1600px) {
+    .details-service-data {
+        padding: 45px;
+    }
+
+    .details-second-div {
+        margin-top: 45px;
+    }
+
+    .details-name-p {
+        font-size: 40px;
+    }
+
+    .details-text-p {
+        font-size: 23px;
+    }
+
+    .details-price-p {
+        font-size: 25px;
+    }
+
+    .package-name-p {
+        font-size: 30px;
+    }
+
+    .package-details-p {
+        font-size: 25px;
+    }
+
+    .package-description-p {
+        font-size: 21px;
+    }
+
+    .package-duration-p {
+        font-size: 25px;
+    }
+
+    .package-price-p {
+        font-size: 25px;
+    }
+
+    .details-btn-package {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .details-service-data {
+        padding: 35px;
+    }
+
+    .details-second-div {
+        margin-top: 35px;
+    }
+
+    .details-name-p {
+        font-size: 35px;
+    }
+
+    .details-text-p {
+        font-size: 20px;
+    }
+
+    .details-price-p {
+        font-size: 23px;
+    }
+
+    .package-second-div {
+        padding: 15px;
+    }
+
+    .package-third-div {
+        padding: 15px;
+        padding-top: 0;
+    }
+
+    .package-name-p {
+        font-size: 26px;
+        margin-block: 10px;
+    }
+
+    .package-details-p {
+        font-size: 22px;
+    }
+
+    .package-description-p {
+        font-size: 16px;
+        text-indent: -15px;
+        padding-left: 15px;
+    }
+
+    .package-duration-p {
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .package-price-p {
+        font-size: 22px;
+    }
+
+    .details-btn-package {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1000px)  {
+    .details-service-data {
+        width: 100%;
+        padding: 25px;
+        margin-bottom: 0;
+    }
+
+    .details-name-p {
+        font-size: 40px;
+    }
+
+    .details-first-container {
+        flex-wrap: wrap;
+    }
+
+    .details-first-name-div {
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .details-first-text-div {
+        padding-right: 0;
+    }
+
+    .details-text-p {
+        padding-right: 0;
+        max-height: none;
+    }
+
+    .details-first-data-div {
+        width: 100%;
+    }
+
+    .details-second-div {
+        margin-bottom: 25px;
+    }
+
+    .details-text-p {
+        font-size: 22px;
+    }
+
+    .details-btn-div {
+        display: none;
+    }
+
+    .carousel-inner-container {
+        width: 100%;
+    }
+
+    .details-carousel-div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+
+    .details-carousel-img {
+        width: 47%;
+        display: block;
+        margin-bottom: 25px;
+    }
+
+    .carousel-indicator-btn {
+        display: none;
+    }
+
+    .details-second-div {
+        margin-top: 25px;
+    }
+
+    .package-container {
+        width: 45%;
+    }
+
+    .details-package-data {
+        margin-bottom: 0;
+        margin-top: 25px;
+    }
+
+    .package-name-p {
+        font-size: 30px;
+    }
+
+    .package-description-p {
+        font-size: 18px;
+    }
+
+    .package-details-p {
+        font-size: 24px;
+    }
+
+    .package-duration-p {
+        font-size: 24px;
+    }
+
+    .package-price-p {
+        font-size: 24px;
+    }
+
+    .details-btn-package {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 800px) {
+    .details-package-data {
+        padding-inline: 25px;
+    }
+
+    .package-container {
+        width: 100%;
+    }
+
+    .details-name-p {
+        font-size: 35px;
+    }
+
+    .details-text-p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .details-package-data {
+        padding-inline: 20px;
+        margin-top: 20px;
+    }
+
+    .package-container {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .details-name-p {
+        font-size: 28px;
+    }
+
+    .details-text-p {
+        font-size: 18px;
+    }
+
+    .details-price-p {
+        margin-bottom: 10px;
+    }
+
+    .details-service-data {
+        padding: 20px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .details-carousel-div {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .details-carousel-img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .package-name-p {
+        font-size: 26px;
+    }
+
+    .package-details-p {
+        font-size: 22px;
+    }
+
+    .package-description-p {
+        font-size: 16px;
+    }
+
+    .package-duration-p {
+        font-size: 22px;
+    }
+
+    .package-price-p {
+        font-size: 22px;
+    }
+
+    .details-btn-package {
+        font-size: 22px;
+    }
+
+    .details-second-div {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+}

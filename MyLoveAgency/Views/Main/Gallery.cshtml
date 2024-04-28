@@ -1,0 +1,187 @@
+﻿<video video autoplay loop muted playsinline class="background" id="background"></video>
+
+<div class="container-fluid gallery-container">
+
+    <div class="col-9 gallery-div">
+        
+        <div>
+            @if (Context.Request.Cookies["Language"] == "en")
+            {
+                <p class="gallery-title-p">Our Lovely Gallery</p>
+            }
+            else
+            {
+                <p class="gallery-title-p">Наша прекрасна галерея</p>
+            }
+            
+        </div>
+
+        <div id="galleryImageContainer" class="col-12 gallery-image-container">
+
+            @if (DataClass.GalleryImages.Count() > 12)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    <div class="gallery-image-div">
+                        <img class="gallery-image" src="/data/gallery/@(DataClass.GalleryImages[i].Path)" alt="" />
+                    </div>
+                }
+            }
+            else
+            {
+                for (int i = 0; i < DataClass.GalleryImages.Count(); i++)
+                {
+                    <div class="gallery-image-div">
+                        <img class="gallery-image" src="/data/gallery/@(DataClass.GalleryImages[i].Path)" alt="" />
+                    </div>
+                }
+            }
+
+        </div>
+
+        @if (DataClass.GalleryImages.Count() > 12)
+        {
+            <div id="galleryBtnDiv" class="gallery-btn-div">
+
+                @if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <button class="btn gallery-btn" type="button" onclick="loadMoreImages()">Load More</button>
+                }
+                else
+                {
+                    <button class="btn gallery-btn" type="button" onclick="loadMoreImages()">Більше фото</button>
+                }
+
+            </div>
+        }
+
+        <div id="galleryImageTemplate" class="gallery-image-div" style="display: none;">
+            <img class="gallery-image" style="display: none;" src="" alt="" />
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        setBackground();
+        setColorActiveTitle();
+        changeImageGallerySize();
+    }
+
+    window.addEventListener('load', function () {
+        changeImageGallerySize();
+    })
+
+    window.onresize = function () {
+        changeImageGallerySize();
+    }
+
+    function setBackground() {
+
+        var video = document.getElementById("background");
+        var ratio = window.screen.width / window.screen.height;
+
+        var arraySrc = new Array();
+
+        if (ratio > 1) {
+            arraySrc[0] = "/data/background_horizontal.mp4"
+            arraySrc[1] = "/data/background_horizontal.webm";
+            arraySrc[2] = "/data/background_horizontal.mov";
+            arraySrc[3] = "/data/background_horizontal.ogv";
+        }
+        else {
+            arraySrc[0] = "/data/background_vertical.mp4"
+            arraySrc[1] = "/data/background_vertical.webm";
+            arraySrc[2] = "/data/background_vertical.mov";
+            arraySrc[3] = "/data/background_vertical.ogv";
+        }
+
+        var arrayType = new Array();
+
+        arrayType[0] = "video/mp4";
+        arrayType[1] = "video/webm";
+        arrayType[2] = "video/mov"
+        arrayType[3] = "video/ogg";
+
+        for (var i = 0; i < arraySrc.length; i++) {
+            var source = document.createElement("source");
+
+            source.setAttribute("src", arraySrc[i]);
+            source.setAttribute("type", arrayType[i]);
+
+            video.appendChild(source);
+        }
+
+        document.querySelectorAll('video').forEach(v => { v.setAttribute('pip', 'false'); })
+    }
+
+    function setColorActiveTitle() {
+        document.getElementById("gallery-title").style.color = "#d7bd8a";
+    }
+
+    function changeImageGallerySize() {
+        var arrayDiv = document.getElementsByClassName("gallery-image-div");
+        var arrayImg = document.getElementsByClassName("gallery-image");
+
+        for (var i = 0; i < arrayDiv.length; i++) {
+            arrayImg[i].height = arrayDiv[i].clientWidth;
+        }
+    }
+
+    var galleryArray = @Html.Raw(Json.Serialize(DataClass.GalleryImages));
+    var pointer = 12;
+    var increment = 3;
+
+    function loadMoreImages() {
+        var container = document.getElementById("galleryImageContainer");
+        var template = document.getElementById("galleryImageTemplate");
+        var galleryParse = galleryArray["$values"];
+        var length = galleryParse.length;
+
+        if (pointer < length) {
+            var width = window.screen.width;
+            if (width > 800) increment = 3;
+            else increment = 2;
+
+            if (length - pointer > increment) {
+                for (var i = pointer; i < pointer + increment; i++) {
+                    var div = template.cloneNode(true);
+                    var img = div.getElementsByClassName("gallery-image");
+
+                    div.id = "";
+                    img[0].src = "/data/gallery/" + galleryParse[i]["path"];
+
+                    container.appendChild(div);
+                    div.style.display = "block";
+                    img[0].style.display = "block";
+
+                    changeImageGallerySize();
+                }
+
+                pointer += increment;
+            }
+            else {
+                for (var i = pointer; i < length; i++) {
+                    var div = template.cloneNode(true);
+                    var img = div.getElementsByClassName("gallery-image");
+
+                    div.id = "";
+                    img[0].src = "/data/gallery/" + galleryParse[i]["path"];
+
+                    container.appendChild(div);
+                    div.style.display = "block";
+                    img[0].style.display = "block";
+
+                    changeImageGallerySize();
+                    pointer++;
+                }
+
+                document.getElementById("galleryBtnDiv").style.display = "none";
+            }
+        }
+    }
+
+</script>

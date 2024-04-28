@@ -1,0 +1,390 @@
+﻿.header {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    background: rgba(0, 0, 0, 1);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    font-size: 30px;
+    z-index: 200;
+}
+
+.p-title {
+    
+    color: white;
+    margin-bottom: 0;
+    font-size: 30px;
+}
+
+.p-title:hover {
+    color: #d7bd8a;
+}
+
+.p-title-link {
+    text-decoration: none;
+}
+
+.logo-div {
+    margin-inline: 30px;
+}
+
+.logo-img {
+    height: 85px;
+}
+
+.flag {
+    width: 40px;
+}
+
+.header-margin {
+    margin-inline: 20px;
+}
+
+.header-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.burger-div {
+    display: none;
+}
+
+.burger-btn {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.my-dropdowm-menu {
+    --bs-dropdown-min-width: 0 !important;
+    --bs-dropdown-padding-y: 0 !important;
+    --bs-dropdown-link-hover-bg: black;
+    --bs-dropdown-border-color: none;
+    --bs-dropdown-font-size: 25px;
+
+    background-color: black;
+    color: black;
+}
+
+.header-img-flag {
+    width: 40px;
+}
+
+.btn-flag {
+    padding: 0;
+    border: none;
+}
+
+.btn-toggle {
+    width: 15px;
+}
+
+.my-dropdowm-menu:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.my-dropdown-item {
+    padding: 0 !important;
+}
+
+.btn-group {
+    padding-top: 2px;
+}
+
+.btn-service {
+    border: none;
+    padding: 0;
+}
+
+.dropdown-menu-service {
+    border: none;
+    padding-block: 0;
+    background-color: black;
+    --bs-dropdown-link-hover-color: none;
+    --bs-dropdown-link-hover-bg: none;
+    --bs-dropdown-min-width: max-content;
+}
+
+.dropdowm-menu-service:hover {
+    background-color: black;
+}
+
+.dropdown-item-service {
+    padding: 0 !important;
+    width: max-content !important;
+}
+
+.type-service {
+    color: white;
+    font-family: "Chrysanthi";
+    font-size: 24px;
+    padding-inline: 25px;
+    line-height: 100%;
+    margin-block: 25px;
+}
+
+.type-service:hover {
+    color: #d7bd8a;
+    background-color: transparent;
+}
+
+.display-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-facebook, .header-instagram, .header-telegram {
+    width: 30px;
+}
+
+.header-instagram {
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+
+.modalMenu {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, .8);
+}
+
+.menu-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    margin-top: 80px;
+
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.close-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    padding-right: 17px;
+    padding-top: 17px;
+}
+
+.close-btn {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.content-div {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-menu {
+    color: white;
+    font-size: 24px;
+    margin-block: 10px;
+}
+
+.menu-facebook, .menu-instagram, .menu-telegram {
+    width: 45px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.menu-facebook {
+    margin-right: 15px;
+}
+
+.menu-instagram {
+
+}
+
+.menu-telegram {
+    margin-left: 22px;
+}
+
+.type-services-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-services-menu {
+    color: white;
+    font-family: "Chrysanthi";
+    font-size: 20px;
+    margin-block: 3px;
+}
+
+
+.cookies-notification {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+.p-cookies {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0;
+    line-height: 110%;
+    margin-right: 5px;
+}
+
+.p-accept-cookies {
+    font-family: Scientia-Medium;
+    color: #d7bd8a;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0;
+    text-decoration: none;
+}
+
+.p-accept-cookies:hover {
+    color: white;
+}
+
+@media (max-width: 1400px) {
+    .header-margin {
+        margin-inline: 10px;
+    }
+
+    .logo-div {
+        margin-inline: 20px;
+    }
+
+    .p-cookies {
+        font-size: 18px;
+    }
+
+    .p-accept-cookies {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .p-title {
+        font-size: 24px;
+    }
+
+    .flag {
+        width: 35px;
+    }
+
+    .type-service {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .burger-element {
+        display: none;
+    }
+
+    .burger-div {
+        display: flex;
+    }
+
+    .header {
+        justify-content: space-between;
+    }
+
+    .header {
+        height: 80px;
+    }
+
+    .logo-div {
+        margin: 0;
+        margin-left: 10px;
+    }
+
+    .logo-img {
+        height: 65px;
+    }
+
+    .burger-div {
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+
+    .flag {
+        width: 45px;
+        margin: 10px;
+    }
+
+    .p-cookies {
+        font-size: 16px;
+    }
+
+    .p-accept-cookies {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 800px)
+{
+    .p-cookies {
+        font-size: 13.5px;
+    }
+
+    .p-accept-cookies {
+        font-size: 13.5px;
+    }
+}
+
+@media (max-width : 600px) {
+    .p-cookies {
+        font-size: 10.5px;
+    }
+
+    .p-accept-cookies {
+        font-size: 10.5px;
+    }
+}
+
+@media (max-width : 450px) {
+    .p-cookies {
+        font-size: 10px;
+    }
+
+    .p-accept-cookies {
+        font-size: 10px;
+    }
+}

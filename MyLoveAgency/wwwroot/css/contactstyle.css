@@ -1,0 +1,720 @@
+﻿.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.contact-form-container {
+    background: rgba(0, 0, 0, .6);
+    margin-top: 150px;
+    margin-bottom: 25px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-first-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact-first-left-div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 25px;
+}
+
+.contact-first-text-p {
+    font-family: "Scientia-Regular";
+    color: white;
+    /*text-align: justify;*/
+    font-size: 35px;
+    line-height: 100%;
+    margin-bottom: 50px;
+}
+
+.contact-first-text-mini-p {
+    font-family: "Scientia-Regular";
+    color: white;
+    text-align: justify;
+    font-size: 22px;
+    line-height: 125%;
+    margin: 0;
+}
+
+
+.contact-first-right-div {
+    border: 3px solid white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.contact-select-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact-select-type-div, .contact-select-service-div, .contact-select-package-div {
+    margin-bottom: 25px;
+}
+
+.service-select {
+    font-family: "Scientia-Regular";
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    border-width: 0 0 2px 0;
+    padding-left: 2px;
+    padding-block: 1px;
+    --bs-form-select-bg-img: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Cpath%20fill='none'%20stroke='white'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20d='m2%205%206%206%206-6'/%3E%3C/svg%3E");
+}
+
+.service-select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.service-select option {
+    color: white !important;
+    background-color: black !important;
+}
+
+.service-select.decorated option:hover {
+    box-shadow: 0 0 10px 100px #1882A8 inset;
+}
+
+
+.contact-form-div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.contact-form-title {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 50px;
+    line-height: 100%;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.contact-form-name-div, .contact-form-phone-div, .contact-form-email-div, .contact-form-communication-div {
+    margin-bottom: 25px;
+}
+
+.contact-input {
+    width: 100%;
+    font-family: "Scientia-Regular";
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 0;
+    border: 2px solid white;
+    border-radius: 5px;
+    border-width: 0 0 2px 0;
+}
+
+.contact-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.contact-input::-webkit-input-placeholder {
+    color: white;
+}
+
+.contact-input-red::-webkit-input-placeholder {
+    color: red;
+}
+
+.contact-input:-moz-placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.contact-input-red:-moz-placeholder {
+    color: red;
+    opacity: 1;
+}
+
+.contact-input::-moz-placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.contact-input-red::-moz-placeholder {
+    color: red;
+    opacity: 1;
+}
+
+.contact-input:-ms-input-placeholder {
+    color: white;
+}
+
+.contact-input-red:-ms-input-placeholder {
+    color: red;
+}
+
+.contact-input::placeholder {
+    color: white;
+}
+
+.contact-input-red::placeholder {
+    color: red;
+}
+
+.contact-form-message-div {
+    margin-bottom: 0;
+}
+
+.contact-form-textarea {
+    border-width: 2px;
+    border-radius: 25px;
+    border-width: 2px;
+    padding: 15px;
+    resize: none;
+}
+
+.contact-form-btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 25px;
+}
+
+.contact-form-btn {
+    width: 150px;
+    font-family: "Scientia-Regular";
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding-inline: 10px;
+    padding-block: 5px;
+}
+
+.contact-form-label {
+    font-family: "Scientia-Regular";
+    font-size: 20px;
+    color: white;
+    padding-left: 5px;
+}
+
+
+.contact-modal-content {
+    width: 100%;
+    color: white;
+    background-color: black;
+    border: 3px solid white;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.contact-modal-header {
+    border-bottom: 2px solid white;
+    padding: 0;
+}
+
+.contact-modal-title-p {
+    font-size: 35px;
+    font-family: "Scientia-Medium";
+    line-height: 100%;
+    margin-bottom: 15px;
+}
+
+.contact-modal-body {
+    border-radius: 25px;
+    border: none;
+    padding: 0;
+}
+
+.contact-modal-message-p {
+    font-family: "Scientia-Regular";
+    font-size: 20px;
+    margin-block: 15px;
+    line-height: 125%;
+    text-align: justify;
+}
+
+.contact-modal-footer {
+    padding: 0;
+    padding-top: 15px;
+    border-top: 2px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-modal-footer-check {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.contact-modal-input {
+    font-family: "Scientia-Regular";
+    color: black;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 60%;
+    margin: 0;
+    padding-block: 3px;
+    text-align: center;
+}
+
+.contact-check-btn {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 35%;
+    margin: 0;
+    padding-block: 3px;
+}
+
+.contact-check-btn:hover {
+    color: #d7bd8a;
+    border: 2px solid #d7bd8a;
+    border-radius: 25px;
+}
+
+.contact-modal-footer-close {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.contact-close-btn {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    width: 100%;
+    margin: 0;
+    padding-block: 3px;
+}
+
+.contact-close-btn:hover {
+    color: #d7bd8a;
+    border: 2px solid #d7bd8a;
+    border-radius: 25px;
+}
+
+
+@media (max-width: 1525px) {
+    .contact-form-container {
+        padding: 40px;
+    }
+
+    .contact-first-left-div {
+        padding-right: 20px;
+    }
+
+    .contact-first-text-p {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+
+    .contact-first-text-mini-p {
+        font-size: 20px;
+    }
+
+    .contact-first-right-div {
+        padding: 20px;
+    }
+
+    .contact-form-title {
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+
+    .contact-form-div {
+        padding: 20px;
+    }
+
+    .service-select {
+        font-size: 18px;
+    }
+
+    .contact-input {
+        font-size: 18px;
+    }
+
+    .contact-form-btn-div {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .contact-form-container {
+        padding: 30px;
+    }
+
+    .contact-first-left-div {
+        padding-right: 15px;
+    }
+
+    .contact-first-text-p {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .contact-first-text-mini-p {
+        font-size: 18px;
+    }
+
+    .contact-first-right-div {
+        padding: 15px;
+    }
+
+    .service-select {
+        font-size: 16px;
+    }
+
+    .contact-input {
+        font-size: 16px;
+    }
+
+    .contact-form-btn {
+        font-size: 16px;
+    }
+
+    .contact-form-title {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .contact-form-div {
+        padding: 15px;
+    }
+
+    .contact-form-btn-div {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .contact-form-container {
+        padding: 20px;
+    }
+
+    .contact-first-left-div {
+        padding-right: 10px;
+    }
+
+    .contact-first-text-p {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .contact-first-text-mini-p {
+        font-size: 16px;
+    }
+
+    .contact-first-right-div {
+        padding: 10px;
+    }
+
+    .service-select {
+        font-size: 14px;
+    }
+
+    .contact-input {
+        font-size: 14px;
+    }
+
+    .contact-form-btn {
+        font-size: 14px;
+    }
+
+    .contact-form-title {
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+
+    .contact-form-div {
+        padding: 10px;
+    }
+
+    .contact-form-btn-div {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .contact-form-container {
+        width: 100%;
+        padding: 40px;
+    }
+
+    .contact-first-div {
+        flex-direction: column;
+    }
+
+    .contact-first-left-div {
+        width: 66%;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .contact-first-text-p {
+        font-size: 35px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .contact-first-text-mini-p {
+        font-size: 22px;
+        text-align: left;
+        text-align: center;
+    }
+
+    .contact-first-right-div {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .contact-form-title {
+        margin-bottom: 25px;
+    }
+
+    .contact-form-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .contact-form-div {
+        padding: 20px;
+    }
+
+    .service-select {
+        font-size: 16px;
+    }
+
+    .contact-input {
+        font-size: 16px;
+    }
+
+    .contact-form-btn {
+        font-size: 16px;
+    }
+
+    .contact-form-btn-div {
+        margin-top: 20px;
+    }
+
+    .contact-select-type-div {
+        margin-bottom: 20px;
+    }
+
+    .contact-select-service-div {
+        margin-bottom: 20px;
+    }
+
+    .contact-select-package-div {
+        margin-bottom: 20px;
+    }
+
+    .contact-form-name-div, .contact-form-phone-div, .contact-form-email-div, .contact-form-communication-div {
+        margin-bottom: 20px;
+    }
+
+    .contact-form-name-div, .contact-form-email-div {
+        width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    .contact-form-container {
+        padding: 30px;
+    }
+
+    .contact-first-text-p {
+        margin-bottom: 15px;
+    }
+
+    .contact-first-left-div {
+        margin-bottom: 30px;
+        width: 90%;
+    }
+
+    .contact-first-right-div {
+        padding: 15px;
+    }
+
+    .contact-form-div {
+        padding: 15px;
+    }
+
+    .contact-form-title {
+        margin-bottom: 15px;
+    }
+
+    .contact-form-btn-div {
+        margin-top: 15px;
+    }
+
+    .contact-select-type-div {
+        margin-bottom: 15px;
+    }
+
+    .contact-select-service-div {
+        margin-bottom: 15px;
+    }
+
+    .contact-select-package-div {
+        margin-bottom: 15px;
+    }
+
+    .service-select {
+        font-size: 14px;
+    }
+
+    .contact-input {
+        font-size: 14px;
+    }
+
+    .contact-form-name-div, .contact-form-phone-div, .contact-form-email-div, .contact-form-communication-div {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 650px) {
+    .contact-form-container {
+        padding: 20px;
+        padding-top: 40px;
+    }
+
+    .contact-first-text-p {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .contact-first-text-mini-p {
+        font-size: 20px;
+    }
+
+    .contact-first-left-div {
+        margin-bottom: 40px;
+    }
+
+    .contact-form-title {
+        font-size: 26px;
+    }
+
+    .contact-select-service-div, .contact-select-package-div, .contact-form-name-div, .contact-form-phone-div, .contact-form-email-div, .contact-form-communication-div {
+        width: 100%;
+    }
+
+    .contact-form-btn {
+        width: 100%;
+    }
+
+    .contact-modal-title-p {
+        font-size: 30px;
+    }
+
+    .contact-modal-message-p {
+        font-size: 18px;
+    }
+
+    .contact-modal-input {
+        font-size: 18px;
+    }
+
+    .contact-check-btn {
+        font-size: 18px;
+    }
+
+    .contact-close-btn {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-first-text-p {
+        font-size: 28px;
+    }
+
+    .contact-first-text-mini-p {
+        font-size: 18px;
+    }
+
+    .contact-form-title {
+        font-size: 24px;
+    }
+
+    .contact-first-left-div {
+        width: 100%;
+    }
+
+    .contact-modal-title-p {
+        font-size: 26px;
+    }
+
+    .contact-modal-message-p {
+        font-size: 16px;
+    }
+
+    .contact-modal-input {
+        font-size: 16px;
+    }
+
+    .contact-check-btn {
+        font-size: 16px;
+    }
+
+    .contact-close-btn {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-modal-input {
+        width: 48%;
+    }
+
+    .contact-check-btn {
+        width: 48%;
+    }
+}
+
+@media (max-width: 350px) {
+    .contact-modal-title-p {
+        font-size: 22px;
+    }
+
+    .contact-modal-message-p {
+        font-size: 14px;
+    }
+
+    .contact-modal-input {
+        font-size: 14px;
+    }
+
+    .contact-check-btn {
+        font-size: 14px;
+    }
+
+    .contact-close-btn {
+        font-size: 14px;
+    }
+}

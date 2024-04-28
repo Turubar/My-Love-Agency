@@ -1,0 +1,244 @@
+﻿.services-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.banner-service-title {
+    text-align: center;
+    color: white;
+    font-family: Scientia-Regular;
+    font-size: 45px;
+    margin-bottom: 0;
+}
+
+.services-type-div {
+    margin-bottom: 100px;
+}
+
+.services-type-title {
+    font-family: "Scientia-Regular";
+    color: white;
+    font-size: 45px;
+    line-height: 100%;
+    margin-bottom: 0;
+}
+
+.services-type-description {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+.services-container {
+    margin: 0;
+    margin-top: 25px;
+    display: flex;
+    align-items: stretch;
+}
+
+.services-div {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    padding-bottom: 22.5px;
+    transition: 1s;
+    color: white;
+}
+
+.services-div:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    color: #d7bd8a;
+}
+
+.services-inner-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, .6);
+    height: 100%;
+    border-radius: 25px;
+
+}
+
+.services-inner-img {
+    position: relative;
+    /*border: 1px solid white;*/
+}
+
+.carousel-service-img {
+    border-radius: 25px;
+}
+
+.services-inner-price {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    background: rgba(0, 0, 0, .6);
+    padding: 10px;
+    width: 100%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.services-price-p {
+    font-size: 20px;
+    font-family: Scientia-Regular;
+    line-height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.services-inner-name {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-name-p {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+.services-link-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.services-link {
+    color: white;
+    font-size: 40px;
+    line-height: 100%;
+    margin-bottom: 0;
+    margin-right: 15px;
+}
+
+@media (max-width: 1650px) {
+    .banner-service-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .banner-service-title {
+        font-size: 35px;
+    }
+
+    .services-price-p {
+        font-size: 16px;
+    }
+
+    .services-name-p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .banner-service-title {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .services-type-div {
+        width: 100%;
+        padding-top: 25px;
+        margin-bottom: 0;
+    }
+
+    .services-container {
+        margin-top: 0;
+        justify-content: space-around;
+    }
+
+    .services-div {
+        width: 45%;
+        padding: 0 !important;
+        padding-bottom: 25px !important;
+    }
+
+    .banner-service-title {
+        font-size: 45px;
+    }
+
+    .services-price-p {
+        font-size: 18px;
+    }
+
+    .services-name-p {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 900px) {
+    .banner-service-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 700px) {
+    .services-div {
+        width: 80%;
+        padding: 0 !important;
+        padding-bottom: 25px !important;
+    }
+
+    .services-price-p {
+        font-size: 20px;
+    }
+
+    .services-name-p {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .banner-service-title {
+        font-size: 30px;
+    }
+    
+    .services-price-p {
+        font-size: 18px;
+    }
+
+    .services-name-p {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 500px) {
+    .services-price-p {
+        font-size: 16px;
+    }
+
+    .services-name-p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .banner-service-title {
+        font-size: 20px;
+    }
+    
+    .services-price-p {
+        font-size: 14px;
+    }
+
+    .services-name-p {
+        font-size: 18px;
+    }
+}

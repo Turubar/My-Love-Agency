@@ -1,0 +1,107 @@
+﻿<video video autoplay loop muted playsinline class="background" id="background"></video>
+
+<div class="container-fluid faq-main-container">
+
+    <div class="col-9 faq-div">
+
+        @if (Context.Request.Cookies["Language"] == "en")
+        {
+            <p class="faq-big-title-p">Frequently Asked Questions</p>
+            <p class="faq-title-p">
+                In the FAQ section you can find answers to the most frequently asked questions. If you have not found an answer to your question here,
+                then you can go to the contact form page and easily fill in all the fields, do not forget to specify your question in the "Message" field.
+            </p>
+        }
+        else
+        {
+            <p class="faq-big-title-p">Часті питання</p>
+            <p class="faq-title-p">
+                У розділі FAQ ви можете знайти відповіді на найбільш задані питання. Якщо ви не знайшли тут відповіді на своє питання, 
+                то можете перейти на сторінку контактної форми і легко заповнити всі поля, не забувши вказати своє питання в поле "Повідомлення".
+            </p>
+        }
+
+    </div>
+
+    @for (int i = 0; i < DataClass.FAQ.Count(); i++)
+    {
+        <div class="col-9 faq-section-div">
+
+            <button id="faqBtn@(DataClass.FAQ[i].Id)" class="btn faq-question-btn" type="button" data-bs-toggle="collapse" data-bs-target="#@(DataClass.FAQ[i].Id)" aria-expanded="false">
+                @if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p id="faqQuestion@(DataClass.FAQ[i].Id)" class="faq-question-p">@(DataClass.FAQ[i].QuestionEn)</p>
+                }
+                else
+                {
+                    <p id="faqQuestion@(DataClass.FAQ[i].Id)" class="faq-question-p">@(DataClass.FAQ[i].QuestionUa)</p>
+                }
+            </button>
+
+            <div id="@(DataClass.FAQ[i].Id)" class="collapse">
+                @if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="faq-answer-p">@(DataClass.FAQ[i].AnswerEn)</p>
+                }
+                else
+                {
+                    <p class="faq-answer-p">@(DataClass.FAQ[i].AnswerUa)</p>
+                }
+            </div>
+
+        </div>
+    }
+
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        setBackground();
+        setColorActiveTitle();
+    }
+
+    function setBackground() {
+
+        var video = document.getElementById("background");
+        var ratio = window.screen.width / window.screen.height;
+
+        var arraySrc = new Array();
+
+        if (ratio > 1) {
+            arraySrc[0] = "/data/background_horizontal.mp4"
+            arraySrc[1] = "/data/background_horizontal.webm";
+            arraySrc[2] = "/data/background_horizontal.mov";
+            arraySrc[3] = "/data/background_horizontal.ogv";
+        }
+        else {
+            arraySrc[0] = "/data/background_vertical.mp4"
+            arraySrc[1] = "/data/background_vertical.webm";
+            arraySrc[2] = "/data/background_vertical.mov";
+            arraySrc[3] = "/data/background_vertical.ogv";
+        }
+
+        var arrayType = new Array();
+
+        arrayType[0] = "video/mp4";
+        arrayType[1] = "video/webm";
+        arrayType[2] = "video/mov"
+        arrayType[3] = "video/ogg";
+
+        for (var i = 0; i < arraySrc.length; i++) {
+            var source = document.createElement("source");
+
+            source.setAttribute("src", arraySrc[i]);
+            source.setAttribute("type", arrayType[i]);
+
+            video.appendChild(source);
+        }
+
+        document.querySelectorAll('video').forEach(v => { v.setAttribute('pip', 'false'); })
+    }
+
+    function setColorActiveTitle() {
+        document.getElementById("faq-title").style.color = "#d7bd8a";
+    }
+
+</script>

@@ -1,0 +1,349 @@
+﻿<video video autoplay loop muted playsinline class="background" id="background"></video>
+
+<div class="container-fluid services-main-container">
+    @{
+        for (int i = 0; i < DataClass.TypeService.Count(); i++)
+        {
+            if (DataClass.TypeService[i].NameEn == ViewBag.SelectedType)
+            {
+                <div id="mp-banner" class="col-9 mp-banner">
+
+                    <div class="carousel" data-bs-touch="false">
+                        <div id="banner-carousel-div" class="carousel-inner" style="position: relative;">
+
+                            <div class="big-title-div">
+                                <div><p class="banner-big-title">Lovely Love Agency</p></div>
+                                <div class="banner-line-div"><img class="banner-line-img" src="/data/mainpage/banner/line.png"></div>
+
+                                <div>
+                                    @{
+                                        if (Context.Request.Cookies["Language"] == "en")
+                                        {
+                                            if (ViewBag.SelectedType == "Datings")
+                                            {
+                                                <p class="banner-service-title">Romantic dates</p>
+                                            }
+                                            else if (ViewBag.SelectedType == "Surprises")
+                                            {
+                                                <p class="banner-service-title">Romantic surprises</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="banner-service-title">Proposals</p>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (ViewBag.SelectedType == "Datings")
+                                            {
+                                                <p class="banner-service-title">Романтичні побачення</p>
+                                            }
+                                            else if (ViewBag.SelectedType == "Surprises")
+                                            {
+                                                <p class="banner-service-title">Романтичні сюрпризи</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="banner-service-title">Пропозиції руки та серця</p>
+                                            }
+                                        }
+                                    }
+                                </div>
+
+                                <div class="banner-line-div"><img class="banner-line-img" src="/data/mainpage/banner/line.png"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-9 services-type-div">
+
+                    <div class="col-12 row services-container">
+                        @{
+                            List<Service> serviceList = DataClass.Services.Where(x => x.IdType == DataClass.TypeService[i].Id).ToList();
+
+                            for (int j = 0; j < serviceList.Count(); j++)
+                            {
+                                List<StorageImageService> listImg = DataClass.ServiceImages.Where(x => x.IdService == serviceList[j].Id).OrderBy(x => x.Number).ToList();
+                                int countImg = listImg.Count();
+
+
+                                <div class="col-4 services-div" onclick="goToDetailsPage(@(serviceList[j].Id))" @if (j % 3 == 0)
+                                {
+                                    @:style="padding-right: 15px;"
+                                }
+                                else if (j % 3 == 1)
+                                {
+                                    @:style="padding-inline: 7.5px;"
+                                }
+                                else
+                                {
+                                    @:style="padding-left: 15px;"
+                                }>
+
+                                    <div class="col-12 services-inner-div">
+
+                                        <a id="ServiceLink@(serviceList[j].Id)" asp-controller="Main" asp-action="Service" asp-route-id="@serviceList[j].Id"></a>
+
+                                        <div class="col-12 services-inner-img">
+
+                                            <div id="carouselService@(serviceList[j].Id)" class="carousel slide">
+
+                                                <div id="carouselInner@(serviceList[j].Id)" class="carousel-inner">
+                                                    @{
+                                                        if (countImg > 0)
+                                                        {
+                                                            <div class="carousel-item active">
+                                                                <img src="/data/services/@(listImg[0].Path)" class="d-block w-100 carousel-service-img" alt="">
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="carousel-item active">
+                                                                <img src="/data/no-image.png" class="d-block w-100 carousel-service-img" alt="">
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+
+                                            </div>
+
+                                            <div class="services-inner-price">
+                                                @if (Context.Request.Cookies["Language"] == "en")
+                                                {
+                                                    <p class="services-price-p">Price: start to @(serviceList[j].PriceZloty)</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="services-price-p">Вартість: від @(serviceList[j].PriceZloty)</p>
+                                                }
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-12 services-inner-name">
+                                            @if (Context.Request.Cookies["Language"] == "en")
+                                            {
+                                                <p class="services-name-p">@serviceList[j].NameEn</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="services-name-p">@serviceList[j].NameUa</p>
+                                            }
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            }
+                        }
+                    </div>
+
+                </div>
+            }
+        }
+    }
+
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        setColorActiveTitle();
+        setBackground();
+
+        setImageBanner();
+        changeSlideBanner();
+        setMarginBanner();
+        changeServiceImgSize();
+    }
+
+    window.addEventListener('load', function () {
+        setImageBanner();
+        setMarginBanner();
+        changeServiceImgSize();
+    })
+
+    window.addEventListener('resize', function (event) {
+        setImageBanner();
+        setMarginBanner();
+        changeServiceImgSize();
+    });
+
+    function setBackground() {
+
+        var video = document.getElementById("background");
+        var ratio = window.screen.width / window.screen.height;
+
+        var arraySrc = new Array();
+
+        if (ratio > 1) {
+            arraySrc[0] = "/data/background_horizontal.mp4"
+            arraySrc[1] = "/data/background_horizontal.webm";
+            arraySrc[2] = "/data/background_horizontal.mov";
+            arraySrc[3] = "/data/background_horizontal.ogv";
+        }
+        else {
+            arraySrc[0] = "/data/background_vertical.mp4"
+            arraySrc[1] = "/data/background_vertical.webm";
+            arraySrc[2] = "/data/background_vertical.mov";
+            arraySrc[3] = "/data/background_vertical.ogv";
+        }
+
+        var arrayType = new Array();
+
+        arrayType[0] = "video/mp4";
+        arrayType[1] = "video/webm";
+        arrayType[2] = "video/mov"
+        arrayType[3] = "video/ogg";
+
+        for (var i = 0; i < arraySrc.length; i++) {
+            var source = document.createElement("source");
+
+            source.setAttribute("src", arraySrc[i]);
+            source.setAttribute("type", arrayType[i]);
+
+            video.appendChild(source);
+        }
+
+        document.querySelectorAll('video').forEach(v => { v.setAttribute('pip', 'false'); })
+    }
+
+    function setColorActiveTitle() {
+        document.getElementById("services-title").style.color = "#d7bd8a";
+    }
+
+    let img_pc_1 = document.createElement("img");
+    img_pc_1.src = "/data/servicepage/banner/1_pc.jpg";
+    img_pc_1.className += "carousel-item carousel-banner-item";
+
+    let img_pc_2 = document.createElement("img");
+    img_pc_2.src = "/data/servicepage/banner/2_pc.jpg";
+    img_pc_2.className += "carousel-item carousel-banner-item";
+
+    let img_pc_3 = document.createElement("img");
+    img_pc_3.src = "/data/servicepage/banner/3_pc.jpg";
+    img_pc_3.className += "carousel-item carousel-banner-item";
+
+    let img_tel_1 = document.createElement("img");
+    img_tel_1.src = "/data/servicepage/banner/1_tel.jpg";
+    img_tel_1.className += "carousel-item carousel-banner-item";
+
+    let img_tel_2 = document.createElement("img");
+    img_tel_2.src = "/data/servicepage/banner/2_tel.jpg";
+    img_tel_2.className += "carousel-item carousel-banner-item";
+
+    let img_tel_3 = document.createElement("img");
+    img_tel_3.src = "/data/servicepage/banner/3_tel.jpg";
+    img_tel_3.className += "carousel-item carousel-banner-item";
+
+    function setImageBanner() {
+        var carousel = document.getElementById("banner-carousel-div");
+        var width = window.screen.width;
+
+        if (width >= 1000) {
+
+            carousel.prepend(img_pc_3);
+            carousel.prepend(img_pc_2);
+            carousel.prepend(img_pc_1);
+
+            if (carousel.contains(img_tel_1)) img_tel_1.parentNode.removeChild(img_tel_1);
+            if (carousel.contains(img_tel_2)) img_tel_2.parentNode.removeChild(img_tel_2);
+            if (carousel.contains(img_tel_3)) img_tel_3.parentNode.removeChild(img_tel_3);
+        }
+        else {
+            var windowInnerHeight = document.documentElement.clientHeight;
+            var heightHeader = document.getElementById("header").offsetHeight;
+
+            var notification = document.getElementById("cookies-notification");
+            var heightNotification = 0;
+            if (notification != null) heightNotification = notification.offsetHeight;
+
+            var height = windowInnerHeight - (heightHeader + heightNotification);
+
+            img_tel_1.height = height;
+            img_tel_2.height = height;
+            img_tel_3.height = height;
+
+            carousel.prepend(img_tel_3);
+            carousel.prepend(img_tel_2);
+            carousel.prepend(img_tel_1);
+
+            if (carousel.contains(img_pc_1)) img_pc_1.parentNode.removeChild(img_pc_1);
+            if (carousel.contains(img_pc_2)) img_pc_2.parentNode.removeChild(img_pc_2);
+            if (carousel.contains(img_pc_3)) img_pc_3.parentNode.removeChild(img_pc_3);
+        }
+    }
+
+    setInterval(() => changeSlideBanner(), 10000)
+
+    var indexActive = -1;
+    function changeSlideBanner() {
+        var arraySlide = document.getElementsByClassName("carousel-banner-item");
+
+        if (indexActive < 0) {
+            arraySlide[0].classList.add("active");
+            indexActive = 0;
+        }
+        else {
+            arraySlide[indexActive].classList.remove("active");
+            indexActive += 1;
+
+            if (indexActive >= arraySlide.length) indexActive = 0;
+            arraySlide[indexActive].classList.add("active");
+        }
+    }
+
+    function setMarginBanner() {
+        var width = window.screen.width;
+        var banner = document.getElementById("mp-banner");
+        var heightHeader = document.getElementById("header").offsetHeight;
+
+        if (width <= 1000) {
+            banner.style.marginTop = heightHeader + "px";
+            banner.style.marginBottom = "0";
+        }
+        else {
+
+            var heightScreen = window.innerHeight;
+            var heightBanner = banner.offsetHeight;
+
+            var notification = document.getElementById("cookies-notification");
+            var heightNotification = 0;
+            if (notification != null) heightNotification = notification.offsetHeight;
+
+            var margin = (heightScreen - (heightBanner + heightHeader + heightNotification)) / 2;
+
+            if (margin >= 25) {
+                banner.style.marginTop = (heightHeader + margin) + "px";
+                banner.style.marginBottom = margin + "px";
+            }
+            else {
+                banner.style.marginTop = (heightHeader + 25) + "px";
+                banner.style.marginBottom = 25 + "px";
+            }
+        }
+    }
+
+    function changeServiceImgSize() {
+        var divArray = document.getElementsByClassName("services-inner-img");
+        if (divArray.length > 0) {
+            var widthDiv = divArray[0].clientWidth;
+            var arrayImg = document.getElementsByClassName("carousel-service-img");
+
+            for (var i = 0; i < arrayImg.length; i++) {
+                arrayImg[i].height = widthDiv;
+            }
+        }
+    }
+
+    function goToDetailsPage(id) {
+        if (id == null || id == "" || id < 1) return;
+
+        document.getElementById("ServiceLink" + id).click();
+    }
+
+</script>

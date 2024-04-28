@@ -1,0 +1,1452 @@
+﻿<video video autoplay loop muted playsinline class="background" id="background"></video>
+
+<div class="container-fluid manager-container">
+
+    <div class="col-9 manager-div" style="margin-bottom: 75vh;">
+        <p class="manager-main-title">Страница редактирования данных</p>
+
+        <br />
+        <br />
+
+        <button class="btn manager-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServices" aria-expanded="false" aria-controls="collapseServices">
+            <p class="manager-title">Редактирование услуг агенства</p>
+        </button>
+
+        <div class="collapse" id="collapseServices">
+
+            <button class="btn collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAllServices" onclick="changeServicesSize();" aria-expanded="false" aria-controls="collapseAllServices">
+                <p class="small-title">1) Список всех eслуг</p>
+            </button>
+
+            <div class="collapse all-services-div" id="collapseAllServices">
+                @{
+                    for (int i = 0; i < DataClass.Services.Count(); i++)
+                    {
+                        <div id="serviceMainContainer@(DataClass.Services[i].Id)" class="service-div">
+
+                            <div class="service-first-div">
+
+                                <div class="col-7 service-data-div">
+
+                                    <div class="col-12 service-row">
+
+                                        <div class="col-7">
+                                            <p class="service-title">Название услуги (En)</p>
+                                            <input id="serviceNameEn@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].NameEn" />
+                                        </div>
+
+                                        <div class="col-4">
+                                            <p class="service-title">Цена услуги</p>
+                                            <input id="servicePrice@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].PriceZloty" style="text-align: center;" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 service-row">
+
+                                        <div class="col-7">
+                                            <p class="service-title">Название услуги (Ua)</p>
+                                            <input id="serviceNameUa@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].NameUa" />
+                                        </div>
+
+                                        <div class="col-4">
+                                            <p class="service-title">Тип услуги</p>
+                                            <input id="serviceType@(DataClass.Services[i].Id)" list="typeServices" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].IdType" style="text-align: center;" />
+                                            <datalist id="typeServices">
+                                                @{
+                                                    for (int j = 0; j < DataClass.TypeService.Count; j++)
+                                                    {
+                                                        <option>@DataClass.TypeService[j].Id</option>
+                                                    }
+                                                }
+                                            </datalist>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 service-description">
+                                        <p class="service-title">Описание услуги (En)</p>
+                                        <textarea id="serviceDescriptionEn@(DataClass.Services[i].Id)" class="data-input" type="text" rows="3">@DataClass.Services[i].DescriptionEn</textarea>
+                                    </div>
+
+                                    <div class="col-12 service-description">
+                                        <p class="service-title">Описание услуги (Ua)</p>
+                                        <textarea id="serviceDescriptionUa@(DataClass.Services[i].Id)" class="data-input" type="text" rows="3">@DataClass.Services[i].DescriptionUa</textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-4 service-img-div">
+
+                                    <div id="carouselService@(DataClass.Services[i].Id)" class="carousel slide">
+
+                                        <div id="carouselIndicator@(DataClass.Services[i].Id)" class="carousel-indicators">
+                                            @{
+                                                List<StorageImageService> listImg = DataClass.ServiceImages.Where(x => x.IdService == DataClass.Services[i].Id).OrderBy(x => x.Number).ToList();
+                                                int countImg = listImg.Count();
+
+                                                if (countImg > 0)
+                                                {
+                                                    for (int j = 0; j < countImg; j++)
+                                                    {
+                                                        if (j == 0)
+                                                        {
+                                                            <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="@(j)" class="active" aria-current="true"></button>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="@(j)"></button>
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                                                }
+                                            }
+                                        </div>
+
+                                        <div id="carouselInner@(DataClass.Services[i].Id)" class="carousel-inner">
+                                            @{
+                                                if (countImg > 0)
+                                                {
+                                                    for (int j = 0; j < countImg; j++)
+                                                    {
+                                                        if (j == 0)
+                                                        {
+                                                            <div class="carousel-item active">
+                                                                <img src="/data/services/@(listImg[j].Path)" class="d-block w-100 carousel-service-img" alt="">
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="carousel-item">
+                                                                <img src="/data/services/@(listImg[j].Path)" class="d-block w-100 carousel-service-img" alt="">
+                                                            </div>
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="carousel-item active">
+                                                        <img src="/data/no-image.png" class="d-block w-100 carousel-service-img" alt="">
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
+                                        </button>
+
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black;"></span>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div style="display: flex; flex-direction: row; justify-content: right;">
+                                <div style="padding-right: 20px;">
+                                    <form id="imageServiceForm@(DataClass.Services[i].Id)" asp-controller="Main" asp-action="AddImageService" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                                        <button id="addImageServiceBtn@(DataClass.Services[i].Id)" type="submit" class="btn btn-success" onclick="selectImageService(@(DataClass.Services[i].Id))">Добавить</button>
+                                        <button id="deleteImageServiceBtn@(DataClass.Services[i].Id)" type="submit" class="btn btn-danger" onclick="deleteImageService(@(DataClass.Services[i].Id))">Удалить</button>
+                                        <input id="imageServiceInput@(DataClass.Services[i].Id)" name="imageServiceInput" type="file" class="form-control" hidden onchange="loadImageService(@(DataClass.Services[i].Id))" />
+                                        <input id="idImageServiceInput" name="idService" type="text" hidden value="@(DataClass.Services[i].Id)" />
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="service-second-div">
+                                @{
+                                    List<PackageService> listPackages = DataClass.Packages.Where(x => x.IdService == DataClass.Services[i].Id).ToList();
+                                    int countPackage = listPackages.Count();
+                                }
+                                <p id="listServicesTitle" class="service-title">Список пакетов</p>
+
+                                <div id="servicePackageDiv@(DataClass.Services[i].Id)" class="services-packages-div">
+                                    @{
+                                        if (countPackage > 0)
+                                        {
+                                            for (int j = 0; j < countPackage; j++)
+                                            {
+                                                <div id="packageId@(listPackages[j].Id)" class="package-div">
+                                                    <div class="col-12 package-row">
+                                                        <p class="service-title">Название пакета</p>
+                                                        <input class="data-input packageName" type="text" maxlength="100" value="@listPackages[j].Name" style="text-align: center;" />
+                                                    </div>
+
+                                                    <div class="col-12 package-row">
+                                                        <p class="service-title">Цена пакета</p>
+                                                        <input class="data-input packagePrice" type="text" maxlength="100" value="@listPackages[j].PriceZloty" style="text-align: center;" />
+                                                    </div>
+
+                                                    <div class="col-12 package-row">
+                                                        <p class="service-title">Продолжительность (En)</p>
+                                                        <input class="data-input packageDurationEn" type="text" maxlength="100" value="@listPackages[j].DurationEn" style="text-align: center;" />
+                                                    </div>
+
+                                                    <div class="col-12 package-row">
+                                                        <p class="service-title">Продолжительность (Ua)</p>
+                                                        <input class="data-input packageDurationUa" type="text" maxlength="100" value="@listPackages[j].DurationUa" style="text-align: center;" />
+                                                    </div>
+
+                                                    @{
+                                                        string? descriptionEn = listPackages[j]?.DescriptionEn?.Replace("|", "\n");
+                                                        string? descriptionUa = listPackages[j]?.DescriptionUa?.Replace("|", "\n");
+                                                    }
+
+                                                    <div class="col-12 package-row">
+                                                        <p class="service-title">Детали пакета (En)</p>
+                                                        <textarea class="data-input packageDescriptionEn" cols="50" rows="10" style="text-align: center;">@Html.Raw(descriptionEn)</textarea>
+                                                    </div>
+
+                                                    <div class="col-12 package-row" style="margin-bottom: 0;">
+                                                        <p class="service-title">Детали пакета (Ua)</p>
+                                                        <textarea class="data-input packageDescriptionUa" cols="50" rows="10" style="text-align: center;">@Html.Raw(descriptionUa)</textarea>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div id="countServicesTitle@(DataClass.Services[i].Id)">
+                                                <p class="service-title">Пакеты отсутствуют</p>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="service-third-div">
+                                <div>
+                                    <button id="addServicePackageBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-primary" onclick="addPackageServiceTemplate(@(DataClass.Services[i].Id))" style="width: 200px;">Добавить пакет</button>
+                                </div>
+
+                                <div>
+                                    <button id="deleteServicePackageBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-danger" onclick="deletePackageService(@(DataClass.Services[i].Id))" style="width: 200px; margin-inline: 25px;">Удалить пакет</button>
+                                </div>
+
+                                <div>
+                                    <button id="deleteServiceBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-danger" onclick="deleteService(@(DataClass.Services[i].Id))" style="width: 200px; margin-inline: 25px;">Удалить услугу</button>
+                                </div>
+
+                                <div>
+                                    <button id="updateServiceDataBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-success" onclick="updateServiceData(@(DataClass.Services[i].Id))" style="width: 200px;">Сохранить</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                }
+            </div>
+
+            <div id="servicePackageDivTemplate" class="package-div" style="display: none;">
+                <div class="col-12 package-row">
+                    <p class="service-title">Название пакета</p>
+                    <input class="data-input packageName service-name-input" type="text" maxlength="100" value="" style="text-align: center;" />
+                </div>
+
+                <div class="col-12 package-row">
+                    <p class="service-title">Цена пакета</p>
+                    <input class="data-input packagePrice service-price-input" type="text" maxlength="100" value="" style="text-align: center;" />
+                </div>
+
+                <div class="col-12 package-row">
+                    <p class="service-title">Продолжительность (En)</p>
+                    <input class="data-input packageDurationEn service-durationEn-input" type="text" maxlength="100" value="" style="text-align: center;" />
+                </div>
+
+                <div class="col-12 package-row">
+                    <p class="service-title">Продолжительность (Ua)</p>
+                    <input class="data-input packageDurationUa service-durationUa-input" type="text" maxlength="100" value="" style="text-align: center;" />
+                </div>
+
+                <div class="col-12 package-row">
+                    <p class="service-title">Детали пакета (En)</p>
+                    <textarea class="data-input packageDescriptionEn service-descriptionEn-input" cols="50" rows="10" style="text-align: center;"></textarea>
+                </div>
+
+                <div class="col-12 package-row" style="margin-bottom: 0;">
+                    <p class="service-title">Детали пакета (Ua)</p>
+                    <textarea class="data-input packageDescriptionUa service-descriptionUa-input" cols="50" rows="10" style="text-align: center;"></textarea>
+                </div>
+
+                <div class="col-12" style="display: flex; flex-direction: row; justify-content: center;">
+                    <button type="button" class="btn btn-lg btn-success" style="width: 200px; margin-top: 10px;" onclick="addPackageService(this)">Сохранить</button>
+                </div>
+            </div>
+
+            <div id="countServiceTitleTemplate" style="display: none;">
+                <p class="service-title">Пакеты отсутствуют</p>
+            </div>
+
+            <br />
+
+            <button class="btn collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAddServices" aria-expanded="false" aria-controls="collapseAddServices" style="margin-bottom: 15px;">
+                <p class="small-title">2) Добавить услугу</p>
+            </button>
+
+            <div class="collapse add-service-div" id="collapseAddServices">
+                <div class="col-12 service-data-div">
+
+                    <div class="col-12 add-service-row">
+
+                        <div class="col-7">
+                            <p class="service-title">Название услуги (En)</p>
+                            <input id="addServiceNameEn" class="data-input" type="text" minlength="4" maxlength="100" value="" />
+                        </div>
+
+                        <div class="col-4">
+                            <p class="service-title">Цена услуги</p>
+                            <input id="addServicePrice" class="data-input" type="text" minlength="4" maxlength="100" value="" style="text-align: center;" />
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 add-service-row">
+
+                        <div class="col-7">
+                            <p class="service-title">Название услуги (Ua)</p>
+                            <input id="addServiceNameUa" class="data-input" type="text" minlength="4" maxlength="100" value="" />
+                        </div>
+
+                        <div class="col-4">
+                            <p class="service-title">Тип услуги</p>
+                            <input id="addServiceType" list="addTypeServices" class="data-input" type="text" minlength="4" maxlength="100" value="" style="text-align: center;" />
+                            <datalist id="addTypeServices">
+                                @{
+                                    for (int i = 0; i < DataClass.TypeService.Count; i++)
+                                    {
+                                        <option>@DataClass.TypeService[i].Id</option>
+                                    }
+                                }
+                            </datalist>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 add-service-description">
+                        <p class="service-title">Описание услуги (En)</p>
+                        <textarea id="addServiceDescriptionEn" class="data-input" type="text" rows="3"></textarea>
+                    </div>
+
+                    <div class="col-12 add-service-description">
+                        <p class="service-title">Описание услуги (Ua)</p>
+                        <textarea id="addServiceDescriptionUa" class="data-input" type="text" rows="3"></textarea>
+                    </div>
+
+                    <div class="col-12 add-service-row" style="justify-content: right; margin-bottom: 15px;">
+                        <div>
+                            <button type="button" class="btn btn-lg btn-success" onclick="addService()" style="width: 200px;">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+
+        <button class="btn manager-btn" type="button" onclick="changeGallerySize()" data-bs-toggle="collapse" data-bs-target="#collapseGallery" aria-expanded="false" aria-controls="collapseGallery">
+            <p class="manager-title">Редактирование галереи</p>
+        </button>
+
+        <div class="collapse collapse-gallery-div" id="collapseGallery">
+            <div>
+                <form id="imageGalleryForm" asp-controller="Main" asp-action="AddImageGallery" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                    <button id="addImageGalleryBtn" type="submit" class="btn btn-success" onclick="selectImageGallery()" style="width: 200px; margin-bottom: 15px;">Добавить</button>
+                    <input id="addImageGalleryInput" name="imageGalleryInput" type="file" class="form-control" hidden onchange="loadImageGallery()" />
+                </form>
+            </div>
+
+            <div class="col-12">
+                <div id="galleryContainer" class="col-12 row">
+                    @{
+                        for (int i = 0; i < DataClass.GalleryImages.Count(); i++)
+                        {
+                            <div id="galleryId@(DataClass.GalleryImages[i].Id)" class="col-3 gallery-img-div">
+                                <div class="col-12 gallery-img-container">
+                                    <img id="galleryImg@(DataClass.GalleryImages[i].Id)" class="gallery-img" src="/data/gallery/@(DataClass.GalleryImages[i].Path)" alt="" />
+                                </div>
+                                <div class="col-12 gallery-data">
+                                    <div class="col-5">
+                                        <input id="galleryInput@(DataClass.GalleryImages[i].Id)" class="gallery-input" type="text" onchange="changeImageGallery(this)" value="@(DataClass.GalleryImages[i].Number)" style="width: 100%; text-align: center;" />
+                                    </div>
+                                    <div class="col-5">
+                                        <button id="galleryDeleteBtn@(DataClass.GalleryImages[i].Id)" type="button" class="btn btn-danger" onclick="deleteImageGallery(this)" style="width: 100%; padding: 4px;">Удалить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div id="galleryTemplate" class="col-3 gallery-img-div" style="display: none;">
+                <div class="col-12 gallery-img-container">
+                    <img id="galleryImgTemplate" class="gallery-img" src="" alt="" />
+                </div>
+                <div class="col-12 gallery-data">
+                    <div class="col-5">
+                        <input id="galleryInputTemplate" type="text" onchange="changeImageGallery(this)" class="gallery-input" value="" style="width: 100%; text-align: center;" />
+                    </div>
+                    <div class="col-5">
+                        <button id="galleryDeleteBtnTemplate" type="button" class="btn btn-danger" onclick="deleteImageGallery(this)" style="width: 100%; padding: 4px;">Удалить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <button class="btn manager-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFAQ" aria-expanded="false" aria-controls="collapseFAQ">
+            <p class="manager-title">Редактирование FAQ</p>
+        </button>
+
+        <div class="collapse collapse-faq-div" id="collapseFAQ">
+            <div id="all-faq-div" class="all-faq-div">
+                @{
+                    for (int i = 0; i < DataClass.FAQ.Count(); i++)
+                    {
+                        <div id="faqId@(DataClass.FAQ[i].Id)" class="col-12 faq-container">
+
+                            <div class="col-12">
+                                <p class="faq-title">Вопрос En</p>
+                                <textarea id="faqQuestionEn@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea question-en-textarea">@DataClass.FAQ[i].QuestionEn</textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <p class="faq-title">Вопрос Ua</p>
+                                <textarea id="faqQuestionUa@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea question-ua-textarea">@DataClass.FAQ[i].QuestionUa</textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <p class="faq-title">Ответ En</p>
+                                <textarea id="faqAnswerEn@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea answer-en-textarea">@DataClass.FAQ[i].AnswerEn</textarea>
+                            </div>
+
+                            <div class="col-12" style="margin-bottom: 15px;">
+                                <p class="faq-title">Ответ Ua</p>
+                                <textarea id="faqAnswerUa@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea answer-ua-textarea">@DataClass.FAQ[i].AnswerUa</textarea>
+                            </div>
+
+                            <div class="col-12 faq-btn-div">
+                                <button id="faqDeleteBtn@(DataClass.FAQ[i].Id)" onclick="deleteFAQ(this)" class="btn btn-danger">Удалить</button>
+                                <button id="faqUpdateBtn@(DataClass.FAQ[i].Id)" onclick="updateFAQ(this)" class="btn btn-success" style="margin-left: 15px;">Сохранить</button>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <br />
+            <p class="faq-main-title">Добавление FAQ</p>
+            <div id="faqIdTemplate" class="col-12 faq-container">
+
+                <div class="col-12">
+                    <p class="faq-title">Вопрос En</p>
+                    <textarea id="faqQuestionEnTemplate" rows="3" class="faq-textarea question-en-textarea"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <p class="faq-title">Вопрос Ua</p>
+                    <textarea id="faqQuestionUaTemplate" rows="3" class="faq-textarea question-ua-textarea"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <p class="faq-title">Ответ En</p>
+                    <textarea id="faqAnswerEnTemplate" rows="3" class="faq-textarea answer-en-textarea"></textarea>
+                </div>
+
+                <div class="col-12" style="margin-bottom: 15px;">
+                    <p class="faq-title">Ответ Ua</p>
+                    <textarea id="faqAnswerUaTemplate" rows="3" class="faq-textarea answer-ua-textarea"></textarea>
+                </div>
+
+                <div class="col-12 faq-btn-div">
+                    <button onclick="addFAQ()" class="btn btn-success btn-add" style="margin-left: 15px;">Добавить</button>
+                    <button id="faqDeleteBtnTemplate" onclick="deleteFAQ(this)" class="btn btn-danger" style="display: none;">Удалить</button>
+                    <button id="faqUpdateBtnTemplate" onclick="updateFAQ(this)" class="btn btn-success" style="display: none; margin-left: 15px;">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <button class="btn manager-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseContacts" aria-expanded="false" aria-controls="collapseContacts">
+            <p class="manager-title">Просмотр заявок</p>
+        </button>
+
+        <div class="collapse collapse-contacts-div" id="collapseContacts">
+
+            @for (int i = DataClass.Contacts.Count() - 1; i >= 0; i--)
+            {
+                Service? service = DataClass.Services.Find(x => x.Id == DataClass.Contacts[i].IdService);
+                PackageService? package = DataClass.Packages.Find(x => x.Id == DataClass.Contacts[i].IdPackage);
+
+                string serviceName = "Отсутствует";
+                if (service != null) serviceName = service.NameUa;
+
+                string packageName = "Отсутствует";
+                if (package != null) packageName = package.Name;
+
+                string? message = "Отсутствует";
+                if (DataClass.Contacts[i].Message != null)
+                {
+                    if (DataClass.Contacts[i].Message != "") message = DataClass.Contacts[i].Message;
+                }
+
+                <div id="managerContactDiv@(DataClass.Contacts[i].Id)" class="manager-contact-div">
+
+                    <div class="col-12 manager-contact-date-div">
+
+                        <div>
+                            <p class="manager-contact-p" style="text-align: right; margin-bottom: 10px;">@DataClass.Contacts[i].Date.ToString("H:mm dd.MM.yyyy")</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 manager-contact-first-div">
+
+                        <div>
+                            <p class="manager-contact-p">Имя: @DataClass.Contacts[i].Name</p>
+                        </div>
+
+                        <div>
+                            <p class="manager-contact-p">Телефон: @DataClass.Contacts[i].PhoneNumber</p>
+                        </div>
+
+                        <div>
+                            <p class="manager-contact-p">Emai: @DataClass.Contacts[i].Email</p>
+                        </div>
+
+                        <div>
+                            <p class="manager-contact-p">Способ связи: @DataClass.Contacts[i].Communication</p>
+                        </div>
+
+                        <div>
+                            <p class="manager-contact-p">Услуга: @serviceName</p>
+                        </div>
+
+                        <div>
+                            <p class="manager-contact-p">Пакет: @packageName</p>
+                        </div>
+
+                        <div>
+                            <p class="manager-contact-p">Сообщение: @message</p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 manager-contact-btn-div" style="display: flex;">
+                        <div class="col-12">
+                            <button class="btn manager-contact-btn" onclick="deleteContact(@DataClass.Contacts[i].Id)">Удалить</button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+        <br />
+
+        <button class="btn manager-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePassword" aria-expanded="false" aria-controls="collapsePassword">
+            <p class="manager-title">Изменить пароль</p>
+        </button>
+
+        <div class="collapse collapse-password-div" id="collapsePassword">
+            <input id="passwordInput" class="password-input" type="text" value="" />
+            <button class="btn password-btn" onclick="changePassword()">Сохранить</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        setBackground();
+    }
+
+    window.onresize = function () {
+        changeServicesSize();
+        changeGallerySize();
+    }
+
+    function setBackground() {
+
+        var video = document.getElementById("background");
+        var ratio = window.screen.width / window.screen.height;
+
+        var arraySrc = new Array();
+
+        if (ratio > 1) {
+            arraySrc[0] = "/data/background_horizontal.mp4"
+            arraySrc[1] = "/data/background_horizontal.webm";
+            arraySrc[2] = "/data/background_horizontal.mov";
+            arraySrc[3] = "/data/background_horizontal.ogv";
+        }
+        else {
+            arraySrc[0] = "/data/background_vertical.mp4"
+            arraySrc[1] = "/data/background_vertical.webm";
+            arraySrc[2] = "/data/background_vertical.mov";
+            arraySrc[3] = "/data/background_vertical.ogv";
+        }
+
+        var arrayType = new Array();
+
+        arrayType[0] = "video/mp4";
+        arrayType[1] = "video/webm";
+        arrayType[2] = "video/mov"
+        arrayType[3] = "video/ogg";
+
+        for (var i = 0; i < arraySrc.length; i++) {
+            var source = document.createElement("source");
+
+            source.setAttribute("src", arraySrc[i]);
+            source.setAttribute("type", arrayType[i]);
+
+            video.appendChild(source);
+        }
+
+        document.querySelectorAll('video').forEach(v => { v.setAttribute('pip', 'false'); })
+    }
+
+    function changeServicesSize() {
+        var widthDiv = document.getElementsByClassName("service-img-div")[0].clientWidth - 40;
+        var arrayImg = document.getElementsByClassName("carousel-service-img");
+
+        for (var i = 0; i < arrayImg.length; i++) {
+            arrayImg[i].height = widthDiv;
+        }
+    }
+
+    function selectImageService(idService) {
+        document.getElementById("imageServiceInput" + idService).click();
+    }
+
+    function loadImageService(idService) {
+        var inputFile = document.getElementById("imageServiceInput" + idService);
+
+        if (inputFile.files[0] != null) {
+            var form = document.getElementById("imageServiceForm" + idService)
+            var formData = new FormData(form);
+
+            fetch("/Main/AddImageService", {
+                method: 'POST',
+                body: formData
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != "false") {
+                        var carouselIndicator = document.getElementById("carouselIndicator" + idService);
+                        var arrayBtn = carouselIndicator.querySelectorAll("button");
+                        var carouselInner = document.getElementById("carouselInner" + idService);
+                        var arrayDiv = carouselInner.querySelectorAll("div");
+
+                        var countDiv = arrayDiv[arrayDiv.length - 1].querySelectorAll("img");
+                        if (countDiv[0].getAttribute("src") == "/data/no-image.png") {
+                            countDiv[0].setAttribute("src", "/data/services/" + data);
+                        }
+                        else {
+                            var newImg = arrayDiv[arrayDiv.length - 1].cloneNode(true);
+                            var img = newImg.querySelectorAll("img");
+
+                            img[0].setAttribute("src", "/data/services/" + data);
+                            carouselInner.appendChild(newImg);
+
+                            var newBtn = arrayBtn[arrayBtn.length - 1].cloneNode(true);
+                            newBtn.setAttribute("data-bs-slide-to", arrayBtn.length);
+                            carouselIndicator.appendChild(newBtn);
+                        }
+
+
+                        arrayBtn = carouselIndicator.querySelectorAll("button");
+                        arrayDiv = carouselInner.querySelectorAll("div");
+
+                        for (var i = 0; i < arrayDiv.length; i++) {
+                            if (i != arrayDiv.length - 1) {
+                                arrayDiv[i].classList.remove("active");
+                                arrayBtn[i].classList.remove("active");
+                            }
+                            else {
+                                arrayDiv[i].classList.add("active");
+                                arrayBtn[i].classList.add("active");
+                            }
+                        }
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось добавить изображение...");
+                    }
+                })
+        }
+        else {
+            alert("Фотография не выбрана!");
+        }
+    }
+
+    function deleteImageService(idService) {
+        var carouselInner = document.getElementById("carouselInner" + idService);
+        var carouselIndicator = document.getElementById("carouselIndicator" + idService);
+        var arrayDiv = carouselInner.querySelectorAll("div");
+        var arrayBtn = carouselIndicator.querySelectorAll("button");
+
+        var number = -1;
+
+        for (var i = 0; i < arrayDiv.length; i++) {
+            if (arrayDiv[i].classList.contains("active")) {
+                number = i + 1;
+            }
+        }
+
+        if (number < 1) {
+            alert("Изображение не выбрано!");
+            return;
+        }
+
+        var countDiv = arrayDiv[number - 1].querySelectorAll("img");
+        if (number == 1 && countDiv[0].getAttribute("src") == "/data/no-image.png") {
+            alert("Изображение не выбрано!");
+            return;
+        }
+
+        var isDelete = confirm("Удалить изображение №" + number);
+
+        if (isDelete) {
+            fetch("/Main/DeleteImageService?idService=" + idService + "&number=" + number, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data == "true") {
+
+                        if (arrayDiv.length == 1) {
+                            countDiv = arrayDiv[number - 1].querySelectorAll("img");
+                            countDiv[0].setAttribute("src", "/data/no-image.png");
+                        }
+                        else {
+
+                            carouselInner.removeChild(arrayDiv[number - 1]);
+                            carouselIndicator.removeChild(arrayBtn[number - 1]);
+
+                            arrayBtn = carouselIndicator.querySelectorAll("button");
+                            arrayDiv = carouselInner.querySelectorAll("div");
+
+                            for (var i = 0; i < arrayDiv.length; i++) {
+                                if (i != arrayDiv.length - 1) {
+                                    arrayDiv[i].classList.remove("active");
+                                    arrayBtn[i].classList.remove("active");
+                                }
+                                else {
+                                    arrayDiv[i].classList.add("active");
+                                    arrayBtn[i].classList.add("active");
+                                }
+
+                                arrayBtn[i].setAttribute("data-bs-slide-to", i);
+                            }
+                        }
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить изображение...")
+                    }
+                })
+        }
+    }
+
+    function addPackageServiceTemplate(idService) {
+        var packageContainer = document.getElementById("servicePackageDiv" + idService);
+        var newPackage = document.getElementById("servicePackageDivTemplate").cloneNode(true);
+
+        var oldPackage = document.getElementById("newServicePackageDiv" + idService);
+        if (oldPackage != null) {
+            alert("Чтобы добавить новый пакет, нужно заполнить старый!");
+            return;
+        }
+
+        newPackage.style.display = "flex";
+        newPackage.id = "newServicePackageDiv" + idService;
+
+        var savePackageBtn = newPackage.querySelectorAll("button");
+
+        savePackageBtn[0].id = "savePackageBtn" + idService;
+
+        var countTitle = document.getElementById("countServicesTitle" + idService);
+        if (countTitle != null) {
+            packageContainer.removeChild(countTitle);
+        }
+
+        packageContainer.appendChild(newPackage);
+    }
+
+    function addPackageService(btn) {
+        var idService = (btn.id).replace("savePackageBtn", "");
+        var packageDiv = document.getElementById("servicePackageDiv" + idService);
+
+        var name = packageDiv.getElementsByClassName("service-name-input");
+        var price = packageDiv.getElementsByClassName("service-price-input");
+        var durationEn = packageDiv.getElementsByClassName("service-durationEn-input");
+        var durationUa = packageDiv.getElementsByClassName("service-durationUa-input");
+        var descriptionEn = packageDiv.getElementsByClassName("service-descriptionEn-input");
+        var descriptionUa = packageDiv.getElementsByClassName("service-descriptionUa-input");
+
+        var stringName = name[0].value.replace(/\s+/g, ' ').trim();
+        var stringPrice = price[0].value.replace(/\s+/g, ' ').trim();
+        var stringDurationEn = durationEn[0].value.replace(/\s+/g, ' ').trim();
+        var stringDurationUa = durationUa[0].value.replace(/\s+/g, ' ').trim();
+
+        var listDescEn = descriptionEn[0].value.split("\n");
+        var clearDescEn = new Array();
+        var stringDescEn = "";
+
+        var listDescUa = descriptionUa[0].value.split("\n");
+        var clearDescUa = new Array();
+        var stringDescUa = "";
+
+        for (var i = 0; i < listDescEn.length; i++) {
+            var value = listDescEn[i].replace(/\s+/g, ' ').trim();
+
+            if (value != "") {
+                clearDescEn.push(value);
+            }
+        }
+
+        for (var i = 0; i < clearDescEn.length; i++) {
+            if (i != clearDescEn.length - 1) {
+                stringDescEn += clearDescEn[i] + "|";
+            }
+            else {
+                stringDescEn += clearDescEn[i];
+            }
+        }
+
+        for (var i = 0; i < listDescUa.length; i++) {
+            var value = listDescUa[i].replace(/\s+/g, ' ').trim();
+
+            if (value != "") {
+                clearDescUa.push(value);
+            }
+        }
+
+        for (var i = 0; i < clearDescUa.length; i++) {
+            if (i != clearDescUa.length - 1) {
+                stringDescUa += clearDescUa[i] + "|";
+            }
+            else {
+                stringDescUa += clearDescUa[i];
+            }
+        }
+
+        if (stringName == "" || stringPrice == "") {
+            alert("Не все поля заполнены!");
+            return;
+        }
+
+        fetch("/Main/AddPackageService?idService=" + idService + "&name=" + stringName + "&price=" + stringPrice + "&durationEn=" +
+            stringDurationEn + "&durationUa=" + stringDurationUa + "&descriptionEn=" + stringDescEn + "&descriptionUa=" + stringDescUa, {
+            method: 'POST'
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                if (data.indexOf("true") >= 0) {
+                    var idPackage = data.replace("true", "");
+
+                    var newPackage = document.getElementById("newServicePackageDiv" + idService);
+                    var saveBtn = document.getElementById("savePackageBtn" + idService);
+
+                    name[name.length - 1].value = stringName;
+                    name[name.length - 1].classList.remove("service-name-input");
+
+                    price[price.length - 1].value = stringPrice;
+                    price[price.length - 1].classList.remove("service-price-input");
+
+                    durationEn[durationEn.length - 1].value = stringDurationEn;
+                    durationEn[durationEn.length - 1].classList.remove("service-durationEn-input");
+
+                    durationUa[durationUa.length - 1].value = stringDurationUa;
+                    durationUa[durationUa.length - 1].classList.remove("service-durationUa-input");
+
+                    var newDescEn = stringDescEn.replaceAll("|", "\n");
+                    descriptionEn[descriptionEn.length - 1].value = newDescEn;
+                    descriptionEn[descriptionEn.length - 1].classList.remove("service-descriptionEn-input");
+
+                    var newDescUa = stringDescUa.replaceAll("|", "\n");
+                    descriptionUa[descriptionUa.length - 1].value = newDescUa;
+                    descriptionUa[descriptionUa.length - 1].classList.remove("service-descriptionUa-input");
+
+                    saveBtn.remove();
+                    newPackage.id = "packageId" + idPackage;
+
+                    alert("Пакет успешно добавлен!");
+                }
+                else {
+                    alert("Что-то пошло не так! Не удалось добавить пакет...");
+                }
+            })
+    }
+
+    function deletePackageService(idService) {
+        var serviceName = prompt("Введите название пакета, который хотите удалить:", "");
+
+        if (serviceName != null && serviceName != "") {
+            fetch("/Main/DeletePackageService?idService=" + idService + "&name=" + serviceName, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data.indexOf("true") >= 0) {
+                        alert("Пакет успешно удален!");
+
+                        var idPackage = data.replace("true", "");
+                        var deletedPackage = document.getElementById("packageId" + idPackage)
+                        deletedPackage.remove();
+
+                        var servicePackageDiv = document.getElementById("servicePackageDiv" + idService);
+                        var arrayPackage = servicePackageDiv.getElementsByClassName("package-div");
+
+                        if (arrayPackage.length <= 0) {
+                            var newTitleDiv = document.getElementById("countServiceTitleTemplate").cloneNode(true);
+                            newTitleDiv.id = "countServicesTitle" + idService;
+                            newTitleDiv.style.display = "flex";
+                            servicePackageDiv.appendChild(newTitleDiv);
+                        }
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить пакет...");
+                    }
+                })
+        }
+    }
+
+    function deleteService(idService) {
+        var nameEn = document.getElementById("serviceNameEn" + idService);
+
+        var isAnswer = confirm("Вы хотите удалить услугу [" + nameEn.value + "]?");
+        if (isAnswer) {
+            var packageContainer = document.getElementById("servicePackageDiv" + idService);
+            var packageArray = packageContainer.getElementsByClassName("package-div");
+
+            var confirmNumber = Math.floor(Math.random() * 899999) + 100000;
+            var inputNumber = prompt("Услуга имеет [" + packageArray.length + "] пакет(а/ов), которые также будут удалены!\nВведите код [" + confirmNumber + "] для подтверждения удаления:", "");
+
+            if (inputNumber == confirmNumber) {
+                fetch("/Main/DeleteService?idService=" + idService, {
+                    method: 'POST'
+                })
+                    .then((response) => response.text())
+                    .then((data) => {
+                        if (data == "true") {
+                            alert("Услуга успешно удалена!");
+                            document.getElementById("serviceMainContainer" + idService).remove();
+                        }
+                        else {
+                            alert("Что-то пошло не так! Не удалось удалить услугу...");
+                        }
+                    })
+            }
+            else {
+                alert("Действие отменено!");
+            }
+        }
+    }
+
+    function updateServiceData(idService) {
+        var isUpdate = confirm("Сохранить изменения этой услуги и ее пакетов?");
+        if (isUpdate) {
+            var packageContainer = document.getElementById("servicePackageDiv" + idService);
+            var packageDivArray = packageContainer.getElementsByClassName("package-div");
+
+            var packageArray = new Array();
+            for (var i = 0; i < packageDivArray.length; i++) {
+
+                if (packageDivArray[i].id.indexOf("packageId") >= 0) {
+                    packageArray.push(packageDivArray[i]);
+                }
+            }
+
+            var idType = document.getElementById("serviceType" + idService).value.replace(/\s+/g, ' ').trim();
+            var nameEn = document.getElementById("serviceNameEn" + idService).value.replace(/\s+/g, ' ').trim();
+            var nameUa = document.getElementById("serviceNameUa" + idService).value.replace(/\s+/g, ' ').trim();
+            var priceService = document.getElementById("servicePrice" + idService).value.replace(/\s+/g, ' ').trim();
+            var descriptionServiceEn = document.getElementById("serviceDescriptionEn" + idService).value.replace(/\s+/g, ' ').trim();
+            var descriptionServiceUa = document.getElementById("serviceDescriptionUa" + idService).value.replace(/\s+/g, ' ').trim();
+
+            var stringPackages = "";
+
+            if (packageArray.length >= 1) {
+                for (var i = 0; i < packageArray.length; i++) {
+                    var idPackage = packageArray[i].id.replace("packageId", "");
+                    var name = packageArray[i].getElementsByClassName("packageName");
+                    var price = packageArray[i].getElementsByClassName("packagePrice");
+                    var durationEn = packageArray[i].getElementsByClassName("packageDurationEn");
+                    var durationUa = packageArray[i].getElementsByClassName("packageDurationUa");
+                    var descriptionEn = packageArray[i].getElementsByClassName("packageDescriptionEn");
+                    var descriptionUa = packageArray[i].getElementsByClassName("packageDescriptionUa");
+
+                    var stringName = name[0].value.replace(/\s+/g, ' ').trim();
+                    var stringPrice = price[0].value.replace(/\s+/g, ' ').trim();
+                    var stringDurationEn = durationEn[0].value.replace(/\s+/g, ' ').trim();
+                    var stringDurationUa = durationUa[0].value.replace(/\s+/g, ' ').trim();
+
+                    var listDescEn = descriptionEn[0].value.split("\n");
+                    var clearDescEn = new Array();
+                    var stringDescEn = "";
+
+                    var listDescUa = descriptionUa[0].value.split("\n");
+                    var clearDescUa = new Array();
+                    var stringDescUa = "";
+
+                    for (var j = 0; j < listDescEn.length; j++) {
+                        var value = listDescEn[j].replace(/\s+/g, ' ').trim();
+
+                        if (value != "") {
+                            clearDescEn.push(value);
+                        }
+                    }
+
+                    for (var j = 0; j < clearDescEn.length; j++) {
+                        if (j != clearDescEn.length - 1) {
+                            stringDescEn += clearDescEn[j] + "|";
+                        }
+                        else {
+                            stringDescEn += clearDescEn[j];
+                        }
+                    }
+
+                    for (var j = 0; j < listDescUa.length; j++) {
+                        var value = listDescUa[j].replace(/\s+/g, ' ').trim();
+
+                        if (value != "") {
+                            clearDescUa.push(value);
+                        }
+                    }
+
+                    for (var j = 0; j < clearDescUa.length; j++) {
+                        if (j != clearDescUa.length - 1) {
+                            stringDescUa += clearDescUa[j] + "|";
+                        }
+                        else {
+                            stringDescUa += clearDescUa[j];
+                        }
+                    }
+
+                    if (stringName.value == "" || stringPrice.value == "") {
+                        alert("Не все поля пакета №" + (i + 1) + " были заполнены!");
+                        return;
+                    }
+
+                    stringPackages += "&packages[" + i + "][0]=" + idPackage + "&packages[" + i + "][1]=" + stringName + "&packages[" + i + "][2]=" + stringPrice + "&packages[" + i + "][3]=" + stringDurationEn + "&packages[" + i + "][4]=" + stringDurationUa + "&packages[" + i + "][5]=" + stringDescEn + "&packages[" + i + "][6]=" + stringDescUa
+                }
+            }
+            else {
+                stringPackages = "&" + null;
+            }
+
+
+            fetch("/Main/UpdateServiceAndPackages?idService=" + idService + "&idType=" + idType + "&nameEn=" + nameEn + "&nameUa=" + nameUa + "&price=" + priceService + "&descriptionEn=" +
+                descriptionServiceEn + "&descriptionUa=" + descriptionServiceUa + stringPackages, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data == "true") {
+                        alert("Услуга и ее пакеты успешно изменены!");
+                        location.reload();
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось обновить данные услуги и ее пакетов" + "\r" + data);
+                        window.location.reload();
+                        return;
+                    }
+                })
+        }
+    }
+
+    function addService() {
+
+        var nameEn = document.getElementById("addServiceNameEn").value.replace(/\s+/g, ' ').trim();
+        var nameUa = document.getElementById("addServiceNameUa").value.replace(/\s+/g, ' ').trim();
+        var price = document.getElementById("addServicePrice").value.replace(/\s+/g, ' ').trim();
+        var type = document.getElementById("addServiceType").value.replace(/\s+/g, ' ').trim();
+        var descriptionEn = document.getElementById("addServiceDescriptionEn").value.replace(/\s+/g, ' ').trim();
+        var descriptionUa = document.getElementById("addServiceDescriptionUa").value.replace(/\s+/g, ' ').trim();
+
+        if (nameEn.length < 1 || nameUa.length < 1 || price.length < 1 || type.length < 1) {
+            alert("Не все поля заполнены!");
+            return;
+        }
+
+        fetch("/Main/AddService?nameEn=" + nameEn + "&nameUa=" + nameUa + "&price=" + price + "&idType=" + type + "&descriptionEn=" + descriptionEn + "&descriptionUa=" + descriptionUa, {
+            method: 'POST'
+        })
+            .then((response) => response.text())
+            .then((data) => {
+                if (data == "true") {
+                    alert("Услуга успешно добавлена!");
+                    location.reload();
+                }
+                else {
+                    alert("Что-то пошло не так! Не удалось добавить услугу...");
+                }
+            })
+    }
+
+    function changeGallerySize() {
+        var divArray = document.getElementsByClassName("gallery-img-div");
+        if (divArray.length > 0) {
+            var widthDiv = divArray[0].clientWidth - 30;
+            var arrayImg = document.getElementsByClassName("gallery-img");
+
+            for (var i = 0; i < arrayImg.length; i++) {
+                arrayImg[i].height = widthDiv;
+            }
+        }
+    }
+
+    function selectImageGallery() {
+        document.getElementById("addImageGalleryInput").click();
+    }
+
+    var galleryArray = @Html.Raw(Json.Serialize(DataClass.GalleryImages));
+
+    function loadImageGallery() {
+        var inputFile = document.getElementById("addImageGalleryInput");
+
+        if (inputFile.files[0] != null) {
+            var form = document.getElementById("imageGalleryForm")
+            var formData = new FormData(form);
+
+            fetch("/Main/AddImageGallery", {
+                method: 'POST',
+                body: formData
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != null) {
+                        galleryArray = JSON.parse(data);
+                        var galleryParse = galleryArray["$values"];
+
+                        var number = galleryParse.length;
+                        var id = "";
+                        var path = "";
+
+                        for (var i = 0; i < galleryParse.length; i++) {
+                            var gallery = galleryParse[i];
+
+                            var idGallery = gallery["id"];
+                            var pathGallery = gallery["path"];
+                            var numberGallery = gallery["number"];
+
+                            if (numberGallery == number) {
+                                id = idGallery;
+                                path = pathGallery;
+                            }
+                        }
+
+                        var galleryContainer = document.getElementById("galleryContainer");
+                        var galleryTemplate = document.getElementById("galleryTemplate").cloneNode(true);
+
+                        var img = galleryTemplate.getElementsByTagName("img");
+                        var input = galleryTemplate.getElementsByTagName("input");
+                        var btn = galleryTemplate.getElementsByTagName("button");
+
+                        img[0].src = "/data/gallery/" + path;
+                        img[0].id = "galleryImg" + id;
+                        input[0].value = number;
+                        input[0].id = "galleryInput" + id;
+                        btn[0].id = "galleryDeleteBtn" + id;
+
+                        galleryTemplate.style.display = "flex";
+                        galleryTemplate.id = "galleryId" + id;
+
+                        galleryContainer.appendChild(galleryTemplate);
+                        changeGallerySize();
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось добавить изображение...");
+                    }
+                })
+        }
+        else {
+            alert("Фотография не выбрана!");
+        }
+    }
+
+    function deleteImageGallery(btn) {
+        var id = btn.id.replace("galleryDeleteBtn", "");
+        var number = document.getElementById("galleryInput" + id).value;
+
+        if (number == null || number == "") {
+            alert("Фотография не выбрана!");
+            return;
+        }
+
+        var isDelete = confirm("Удалить фотографию №" + number + "?");
+
+        if (isDelete) {
+            fetch("/Main/DeleteImageGallery?idImage=" + id, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != null) {
+                        document.getElementById("galleryId" + id).remove();
+
+                        galleryArray = JSON.parse(data);
+
+                        for (var i = 0; i < galleryArray.length; i++) {
+                            var gallery = Object.values(galleryArray[i]);
+                            var idGallery = gallery[0];
+                            var number = gallery[2];
+                            document.getElementById("galleryInput" + idGallery).value = number;
+                        }
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить изображение...");
+                    }
+                })
+        }
+    }
+
+    function changeImageGallery(input) {
+        var oldId = input.id.replace("galleryInput", "");
+        var newId = "";
+
+        var newNumber = Number(input.value);
+        var oldNumber = "";
+
+        var galleryParse = galleryArray["$values"];
+
+        var isCorrect = false;
+        for (var i = 0; i < galleryParse.length; i++) {
+            var gallery = galleryParse[i];
+
+            var idGallery = gallery["id"];
+            var pathGallery = gallery["path"];
+            var numberGallery = gallery["number"];
+
+            if (oldId == idGallery) {
+                oldNumber = numberGallery;
+            }
+
+            if (newNumber == numberGallery) {
+                newId = idGallery;
+                isCorrect = true;
+            }
+        }
+
+        if (oldNumber == newNumber) return;
+
+        if (isCorrect) {
+            fetch("/Main/ChangeImageGallery?oldId=" + oldId + "&newId=" + newId, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != null) {
+                        galleryArray = JSON.parse(data);
+                        galleryParse = galleryArray["$values"];
+
+                        for (var i = 0; i < galleryParse.length; i++) {
+                            var gallery = galleryParse[i];
+
+                            var idGallery = gallery["id"];
+                            var path = gallery["path"];
+                            var number = gallery["number"];
+
+                            document.getElementById("galleryInput" + idGallery).value = number;
+                            document.getElementById("galleryImg" + idGallery).src = "/data/gallery/" + path;
+                        }
+
+                        changeGallerySize();
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось добавить изображение...");
+                    }
+                })
+        }
+        else {
+            alert("Вы ввели неверное значение!");
+            input.removeEventListener("onchange", changeImageGallery, false);
+            input.value = oldNumber;
+            input.addEventListener("onchange", changeImageGallery, false);
+        }
+    }
+
+    function updateFAQ(btn) {
+        var id = btn.id.replace("faqUpdateBtn", "");
+
+        var questionEn = document.getElementById("faqQuestionEn" + id).value.replace(/\s+/g, ' ').trim();
+        var questionUa = document.getElementById("faqQuestionUa" + id).value.replace(/\s+/g, ' ').trim();
+        var answerEn = document.getElementById("faqAnswerEn" + id).value.replace(/\s+/g, ' ').trim();
+        var answerUa = document.getElementById("faqAnswerUa" + id).value.replace(/\s+/g, ' ').trim();
+
+        if (questionEn.length > 0 && questionUa.length > 0 && answerEn.length > 0 && answerUa.length > 0) {
+            fetch("/Main/UpdateFAQ?id=" + id + "&questionEn=" + questionEn + "&questionUa=" + questionUa + "&answerEn=" + answerEn + "&answerUa=" + answerUa, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data == "true") {
+                        document.getElementById("faqQuestionEn" + id).value = questionEn;
+                        document.getElementById("faqQuestionUa" + id).value = questionUa;
+                        document.getElementById("faqAnswerEn" + id).value = answerEn;
+                        document.getElementById("faqAnswerUa" + id).value = answerUa;
+
+                        alert("Изменения сохранены!");
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось сохранить изменения...");
+                    }
+                })
+        }
+        else {
+            alert("Не все поля заполнены!");
+        }
+    }
+
+    function deleteFAQ(btn) {
+        var id = btn.id.replace("faqDeleteBtn", "");
+
+        var isDelete = confirm("Удалить вопрос/ответ (FAQ)?");
+        if (isDelete) {
+            fetch("/Main/DeleteFAQ?id=" + id, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data == "true") {
+                        document.getElementById("faqId" + id).remove();
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить вопрос/ответ (FAQ)...");
+                    }
+                })
+        }
+    }
+
+    function addFAQ() {
+        var questionEn = document.getElementById("faqQuestionEnTemplate").value.replace(/\s+/g, ' ').trim();
+        var questionUa = document.getElementById("faqQuestionUaTemplate").value.replace(/\s+/g, ' ').trim();
+        var answerEn = document.getElementById("faqAnswerEnTemplate").value.replace(/\s+/g, ' ').trim();
+        var answerUa = document.getElementById("faqAnswerUaTemplate").value.replace(/\s+/g, ' ').trim();
+
+        if (questionEn.length > 0 && questionUa.length > 0 && answerEn.length > 0 && answerUa.length > 0) {
+            fetch("/Main/AddFAQ?questionEn=" + questionEn + "&questionUa=" + questionUa + "&answerEn=" + answerEn + "&answerUa=" + answerUa, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data.indexOf("true") >= 0) {
+                        var idFaq = data.replace("true:", "");
+
+                        var newFaqDiv = document.getElementById("faqIdTemplate").cloneNode(true);
+                        var newQuestionEn = newFaqDiv.getElementsByClassName("question-en-textarea");
+                        var newQuestionUa = newFaqDiv.getElementsByClassName("question-ua-textarea");
+                        var newAnswerEn = newFaqDiv.getElementsByClassName("answer-en-textarea");
+                        var newAnswerUa = newFaqDiv.getElementsByClassName("answer-ua-textarea");
+
+                        var newBtnAdd = newFaqDiv.getElementsByClassName("btn-add");
+                        var newBtnDelete = newFaqDiv.getElementsByClassName("btn-danger");
+                        var newBtnUpdate = newFaqDiv.getElementsByClassName("btn-success");
+
+                        newQuestionEn[0].id = "faqQuestionEn" + idFaq;
+                        newQuestionEn[0].value = questionEn;
+
+                        newQuestionUa[0].id = "faqQuestionUa" + idFaq;
+                        newQuestionUa[0].value = questionUa;
+
+                        newAnswerEn[0].id = "faqAnswerEn" + idFaq;
+                        newAnswerEn[0].value = answerEn;
+
+                        newAnswerUa[0].id = "faqAnswerUa" + idFaq;
+                        newAnswerUa[0].value = answerUa;
+
+                        newBtnAdd[0].remove();
+
+                        newBtnDelete[0].id = "faqDeleteBtn" + idFaq;
+                        newBtnDelete[0].style.display = "block";
+
+                        newBtnUpdate[0].id = "faqUpdateBtn" + idFaq;
+                        newBtnUpdate[0].style.display = "block";
+
+                        newFaqDiv.id = "faqId" + idFaq;
+                        document.getElementById("all-faq-div").appendChild(newFaqDiv);
+
+                        document.getElementById("faqQuestionEnTemplate").value = "";
+                        document.getElementById("faqQuestionUaTemplate").value = "";
+                        document.getElementById("faqAnswerEnTemplate").value = "";
+                        document.getElementById("faqAnswerUaTemplate").value = "";
+
+                        alert("FAQ успешно добавлен!");
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось добавить FAQ...");
+                    }
+                })
+        }
+        else {
+            alert("Не все поля заполнены!");
+        }
+    }
+
+    function deleteContact(id) {
+        var idContact = id;
+        if (typeof idContact == "number") {
+            var result = confirm("Удалить эту заявку?");
+
+            if (result) {
+                fetch("/Main/DeleteContact?id=" + idContact, {
+                    method: 'POST'
+                })
+                    .then((response) => response.text())
+                    .then((data) => {
+                        if (data == "true") {
+                            document.getElementById("managerContactDiv" + idContact).remove();
+                        }
+                        else {
+                            alert("Что-то пошло не так, не удалось удалить заявку!");
+                        }
+                    })
+            }
+        }
+    }
+
+    function changePassword() {
+        var newPassword = document.getElementById("passwordInput").value;
+        if (newPassword.length >= 10 && newPassword.length <= 32) {
+            var oldPassword = prompt("Для подтверждения смены пароля, введите текущий пароль!", "");
+
+            if (oldPassword != null && oldPassword != undefined) {
+                fetch("/Main/ChangePassword?oldPassword=" + oldPassword + "&newPassword=" + newPassword, {
+                    method: 'POST'
+                })
+                    .then((response) => response.text())
+                    .then((data) => {
+                        if (data == "true") {
+                            alert("Пароль успешно изменен! Страница будет перезагружена в целях безопасности!");
+                            location.reload();
+                        }
+                        else {
+                            alert("Что-то пошло не так, не удалось изменить пароль!");
+                        }
+                    })
+            }
+            else {
+                alert("Некорректные данные!");
+            }
+        }
+        else {
+            alert("Длина пароля должна быть манимум от 10 и максимум до 32 символов!");
+        }
+    }
+
+</script>

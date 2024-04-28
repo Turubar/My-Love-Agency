@@ -1,0 +1,226 @@
+﻿.gallery-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.gallery-div {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, .6);
+    margin-top: 140px;
+    margin-bottom: 50px;
+    padding: 50px;
+    padding-bottom: 25px;
+}
+
+.gallery-title-p {
+    font-family: "Scientia-Medium";
+    color: white;
+    font-size: 50px;
+    line-height: 100%;
+    margin-bottom: 0;
+}
+
+.gallery-image-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.gallery-image-div {
+    width: 32%;
+    padding-bottom: 25px;
+}
+
+.gallery-image-div:nth-child(3n+2) {
+    margin-inline: 2%;
+}
+
+.gallery-image {
+    width: 100%;
+}
+
+.gallery-btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-block: 25px;
+}
+
+.gallery-btn {
+    font-family: "Scientia-Regular";
+    font-size: 30px;
+    color: white;
+    border: 2px solid white;
+}
+
+.gallery-btn:hover {
+    color: #d7bd8a;
+    border: 2px solid #d7bd8a;
+}
+
+@media (max-width: 1500px) {
+    .gallery-div {
+        padding: 40px;
+        padding-bottom: 20px;
+    }
+
+    .gallery-title-p {
+        font-size: 45px;
+    }
+
+    .gallery-image-container {
+        margin-top: 40px;
+    }
+
+    .gallery-image-div {
+        padding-bottom: 20px;
+    }
+
+    .gallery-btn-div {
+        padding-block: 20px;
+    }
+
+    .gallery-btn {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .gallery-div {
+        padding: 30px;
+        padding-bottom: 15px;
+    }
+
+    .gallery-title-p {
+        font-size: 35px;
+    }
+
+    .gallery-image-container {
+        margin-top: 30px;
+    }
+
+    .gallery-image-div {
+        padding-bottom: 15px;
+    }
+
+    .gallery-btn-div {
+        padding-block: 15px;
+    }
+
+    .gallery-btn {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .gallery-div {
+        margin-top: 80px;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .gallery-title-p {
+        font-size: 40px;
+    }
+
+    .gallery-btn-div {
+        padding-block: 45px;
+    }
+
+    .gallery-btn {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 800px) {
+    .gallery-div {
+        padding: 25px;
+    }
+
+    .gallery-title-p {
+        font-size: 35px;
+    }
+
+    .gallery-image-container {
+        justify-content: space-between;
+        margin-top: 25px;
+    }
+
+    .gallery-image-div {
+        width: 48%;
+        padding-bottom: 25px;
+    }
+
+    .gallery-image-div:nth-child(3n+2) {
+        margin-inline: 0;
+    }
+
+    .gallery-btn-div {
+        padding-block: 25px;
+    }
+
+    .gallery-btn {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-div {
+        padding: 20px;
+    }
+
+    .gallery-title-p {
+        font-size: 30px;
+    }
+
+    .gallery-image-container {
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .gallery-image-div {
+        padding-bottom: 20px;
+    } 
+
+    .gallery-btn-div {
+        padding-block: 20px;
+    }
+
+    .gallery-btn {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .gallery-div {
+        padding: 15px;
+    }
+
+    .gallery-title-p {
+        font-size: 26px;
+        padding-block: 5px;
+    }
+
+    .gallery-image-container {
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    .gallery-image-div {
+        padding-bottom: 15px;
+    }
+
+    .gallery-btn-div {
+        padding-block: 15px;
+    }
+
+    .gallery-btn {
+        font-size: 16px;
+    }
+}

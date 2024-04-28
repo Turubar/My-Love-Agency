@@ -1,0 +1,65 @@
+﻿@{
+    if (Context.Request.Cookies["UseCookies"] != "true")
+    {
+        <style>
+            .footer {
+                margin-bottom: 60px;
+            }
+        </style>
+    }
+}
+
+<div id="mainFooter" class="col-12 footer">
+
+    <div class="col-4 footer-logo-div">
+        <img class="footer-logo" src="/data/footer_logo.png" alt="" />
+    </div>
+
+    <div class="col-4 footer-social">
+        <div class="footer-center-div">
+            <div class="">
+                <a href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="footer-social-img" src="/data/facebook.png" alt="" onmouseover="this.src='/data/facebook_color.png';" onmouseout="this.src='/data/facebook.png';" /></a>
+            </div>
+
+            <div class="">
+                <a href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="footer-social-img footer-instagram" src="/data/instagram.png" alt="" onmouseover="this.src='/data/instagram_color.png';" onmouseout="this.src='/data/instagram.png';" /></a>
+            </div>
+
+            <div class="">
+                <a href="https://t.me/valery_moshchenskaya" target="_blank"><img class="footer-social-img" src="/data/telegram.png" alt="" onmouseover="this.src='/data/telegram_color.png';" onmouseout="this.src='/data/telegram.png';" /></a>
+            </div>
+        </div>
+
+        <div>
+            <p class="p-copy">Copyrights ©️ 2024 Lovely Love Agency</p>
+        </div>
+
+    </div>
+
+    <div class="col-4 footer-contact-div" onmouseover="footerOver()" onmouseout="footerOut()" onclick="footerClick()">
+        <div class="footer-contact">
+            <div>
+                <a asp-controller="Main" asp-action="Contact" class="footer-contact-link"><img class="footer-contact-img" src="/data/contact.png" alt="" onmouseover="this.src='/data/contact_color.png';" onmouseout="this.src='/data/contact.png';" /></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function footerClick() {
+        document.getElementsByClassName("footer-contact-link")[0].click();
+    }
+
+    function footerOver() {
+        document.getElementsByClassName("footer-contact-img")[0].src = "/data/contact_color.png";
+        document.body.style.cursor = "pointer";
+    }
+
+    function footerOut() {
+        document.getElementsByClassName("footer-contact-img")[0].src = "/data/contact.png";
+        document.body.style.cursor = "default";
+    }
+
+</script>

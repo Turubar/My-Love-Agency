@@ -1,0 +1,1677 @@
+﻿@font-face {
+    font-family: "Scientia-Regular";
+    src: url(/fonts/ScientiaRegular.ttf);
+}
+
+@font-face {
+    font-family: "Scientia-Medium";
+    src: url(/fonts/ScientiaMedium.ttf);
+}
+
+@font-face {
+    font-family: "Chrysanthi";
+    src: url(/fonts/ChrysanthiUnicodeRegular.ttf);
+}
+
+body {
+    font-family: Chrysanthi;
+}
+
+.background {
+    position: fixed;
+    -webkit-backface-visibility: hidden;
+    z-index: -100;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.mp-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.mp-banner {
+    background: rgba(0, 0, 0, .6);
+}
+
+.carousel-item {
+    transition: transform 0s;
+}
+
+.big-title-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-block: 15px;
+    width: 50%;
+}
+
+.banner-big-title {
+    text-align: center;
+    color: white;
+    font-family: "Scientia-Medium";
+    font-size: 55px;
+    margin-bottom: 0;
+}
+
+.banner-title {
+    text-align: center;
+    color: white;
+    font-family: Scientia-Regular;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.banner-line-div {
+    display: flex
+}
+
+.banner-line-img {
+    padding-block: 15px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.banner-contact-div {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%,-100%);
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-block: 5px;
+    padding-inline: 20px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+
+.banner-contact-p {
+    color: white;
+    font-family: Scientia-Regular;
+    font-size: 40px;
+    margin-bottom: 0;
+    margin-right: 15px;
+}
+
+.banner-contact-link {
+    text-decoration: none;
+}
+
+.banner-contact-img {
+    width: 60px;
+}
+
+
+.mp-about-us {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.about-text-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 75px;
+}
+
+.about-title {
+    font-family: Scientia-Regular;
+    font-size: 50px;
+    color: white;
+    line-height: 100%;
+    margin-bottom: 0;
+}
+
+.about-text {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 0px;
+    line-height: 130%;
+    text-align: justify;
+}
+
+.about-img-pc {
+    width: 100%;
+    display: block;
+}
+
+.about-img-tel {
+    width: 100%;
+    display: none;
+}
+
+.mp-services {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.services-title {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 50px;
+    padding-left: 75px;
+    padding-top: 75px;
+    line-height: 100%;
+    margin-bottom: 0px;
+}
+
+.services-img-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 75px;
+    padding-top: 60px;
+}
+
+.services-img-circle {
+    width: 30%;
+}
+
+.services-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-img {
+    width: 100%;
+}
+
+.services-name {
+    color: white;
+    font-size: 40px;
+    padding-top: 35px;
+    line-height: 100%;
+    margin-bottom: 0px;
+    transition: 1s;
+    text-align: center;
+}
+
+.services-name:hover {
+    color: #d7bd8a;
+    transform: scale(1.2);
+}
+
+.services-name-link {
+    text-decoration: none;
+}
+
+.mp-advantages {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.advantages-big-title {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 50px;
+    padding: 0;
+    padding-left: 75px;
+    padding-top: 75px;
+    line-height: 100%;
+    margin-bottom: 0;
+}
+
+.advantages-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+    padding-bottom: 75px;
+}
+
+.advantages-btn{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.advantages-btn-img{
+    padding-top: 20px;
+    width: 25%;
+}
+
+.advantages-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.advantages-data {
+    display: flex;
+    flex-direction: row;
+}
+
+.advantages-title {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.advantages-text {
+    color: white;
+    font-size: 26px;
+    margin-bottom: 0;
+    margin-right: 25px;
+    text-align: justify;
+}
+
+.advantages-img-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.advantages-img {
+    width: 100%;
+}
+
+.mp-stages {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.stages-big-title {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 50px;
+    padding-left: 75px;
+    padding-top: 75px;
+    line-height: 100%;
+    margin-bottom: 0;
+}
+
+.stages-container {
+    display: flex;
+    flex-direction: row;
+    padding: 75px;
+    padding-top: 50px;
+}
+
+.stages-img-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.stages-img {
+    width: 100%;
+}
+
+.stages-right-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stages-div {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+}
+
+.stages-index {
+    color: white;
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 75px;
+    line-height: 90%;
+    margin: 0;
+    margin-right: 30px;
+}
+
+.stages-title {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+    line-height: 100%;
+}
+
+.stages-text {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 0;
+    line-height: 125%;
+    text-align: justify;
+}
+
+.mp-gallery {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.gallery-big-title {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 50px;
+    padding-top: 75px;
+    padding-left: 75px;
+    margin-bottom: 0;
+    line-height: 100%;
+}
+
+.gallery-row {
+    display: flex;
+    flex-direction: row;
+    padding-inline: 65px;
+    padding-top: 25px;
+    margin: 0;
+}
+
+.mp-gallery-img-div {
+    padding: 10px;
+}
+
+
+.gallery-img {
+    width: 100%;
+}
+
+.gallery-arrow-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    padding-right: 65px;
+}
+
+.gallery-link-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.gallery-link {
+    color: white;
+    font-size: 40px;
+    line-height: 100%;
+    margin-bottom: 0;
+    margin-right: 15px;
+}
+
+.gallery-link:hover {
+    color: #d7bd8a;
+}
+
+.gallery-img-div {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.gallery-seemore {
+    display: flex;
+    flex-direction: row;
+}
+
+.gallery-arrow-img {
+    padding-top: 5px;
+    width: 80px;
+    margin-right: 10px;
+}
+
+.gallery-link-a {
+    text-decoration: none;
+}
+
+.mp-feedback {
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 150px;
+}
+
+.feedback-big-title {
+    font-family: Scientia-Regular;
+    color: white;
+    font-size: 50px;
+    line-height: 100%;
+    padding-top: 75px;
+    padding-left: 75px;
+    margin-bottom: 0;
+}
+
+.feedback-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+    padding-bottom: 75px;
+}
+
+.feedback-btn {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.feedback-btn-img {
+    width: 25%;
+}
+
+.feedback-data-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.feedback-img-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-img {
+    width: 100%;
+}
+
+.feedback-text-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-left: 35px;
+}
+
+.feedback-title {
+    color: white;
+    font-size: 40px;
+    line-height: 0.6;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.feedback-text {
+    color: white;
+    font-size: 30px;
+    margin-bottom: 0;
+    text-align: justify;
+}
+
+
+@media (max-width: 1750px) {
+    .about-title {
+        font-size: 50px;
+    }
+
+    .about-text {
+        font-size: 25px;
+    }
+
+
+}
+
+@media (max-width: 1650px) {
+    .banner-big-title {
+        font-size: 45px;
+    }
+
+    .banner-title {
+        font-size: 30px;
+    }
+
+    .banner-contact-p {
+        font-size: 30px;
+    }
+
+    .banner-contact-img {
+        width: 50px;
+    }
+
+    .about-text-div {
+        padding: 60px;
+    }
+
+    .about-title {
+        font-size: 45px;
+    }
+
+    .about-text {
+        font-size: 23px;
+    }
+
+    .services-img-div {
+        padding: 60px;
+        padding-top: 45px;
+    }
+
+    .services-title {
+        font-size: 45px;
+        padding-left: 60px;
+        padding-top: 60px;
+    }
+
+    .services-name {
+        font-size: 35px;
+        padding-top: 30px;
+    }
+
+    .advantages-big-title {
+        font-size: 45px;
+        padding-left: 60px;
+        padding-top: 60px;
+    }
+
+    .advantages-container {
+        padding-top: 35px;
+        padding-bottom: 60px;
+    }
+
+    .advantages-title {
+        font-size: 35px;
+        margin-bottom: 16px;
+    }
+
+    .advantages-text {
+        font-size: 24px;
+    }
+
+    .stages-big-title {
+        font-size: 45px;
+        padding-top: 60px;
+        padding-left: 60px;
+    }
+
+    .stages-container {
+        padding: 60px;
+        padding-top: 35px;
+    }
+
+    .stages-div {
+        padding-bottom: 15px;
+    }
+
+    .stages-index {
+        font-size: 60px;
+    }
+
+    .stages-title {
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .stages-text {
+        font-size: 22px;
+    }
+
+    .gallery-big-title {
+        font-size: 45px;
+        padding-left: 60px;
+        padding-top: 60px;
+    }
+
+    .gallery-row {
+        padding-inline: 50px;
+    }
+
+    .gallery-first {
+        margin-right: 17.5px;
+    }
+
+    .gallery-second {
+        margin-left: 17.5px;
+        margin-right: 17.5px
+    }
+
+    .gallery-third {
+        margin-left: 17.5px;
+    }
+
+    .gallery-arrow-div {
+        padding-top: 30px;
+        padding-bottom: 40px;
+        padding-right: 50px;
+    }
+
+    .gallery-link {
+        font-size: 35px;
+    }
+
+    .feedback-big-title {
+        font-size: 45px;
+        padding-top: 60px;
+        padding-left: 60px;
+    }
+
+    .feedback-container {
+        padding-top: 35px;
+        padding-bottom: 60px;
+    }
+
+    .feedback-title {
+        font-size: 35px;
+    }
+
+    .feedback-text {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1450px) {
+    .about-title {
+        font-size: 40px;
+    }
+
+    .about-text {
+        font-size: 20px;
+    }
+
+    .services-title {
+        font-size: 40px;
+    }
+
+    .services-name {
+        font-size: 30px;
+    }
+
+    .advantages-big-title {
+        font-size: 40px;
+    }
+
+    .advantages-text {
+        font-size: 22px;
+    }
+
+    .stages-big-title {
+        font-size: 40px;
+    }
+
+    .stages-index {
+        margin-right: 25px;
+    }
+
+    .stages-title {
+        font-size: 30px;
+    }
+
+    .stages-text {
+        font-size: 20px;
+    }
+
+    .gallery-big-title {
+        font-size: 40px;
+    }
+
+    .gallery-row {
+        padding-top: 15px;
+    }
+
+    .gallery-link {
+        font-size: 30px;
+    }
+
+    .feedback-big-title {
+        font-size: 40px;
+    }
+
+    .feedback-title {
+        font-size: 30px;
+    }
+
+    .feedback-text {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .banner-big-title {
+        font-size: 40px;
+    }
+
+    .banner-title {
+        font-size: 25px;
+    }
+
+    .banner-contact-p {
+        font-size: 25px;
+    }
+
+    .banner-contact-img {
+        width: 45px;
+    }
+
+    .banner-line-img {
+        padding-block: 10px;
+    }
+}
+
+@media (max-width: 1300px){
+    .about-text-div {
+        padding: 50px;
+    }
+
+    .about-title {
+        font-size: 36px;
+    }
+
+    .about-text {
+        font-size: 18px;
+    }
+
+    .services-img-div {
+        padding: 50px;
+        padding-top: 35px;
+    }
+
+    .services-title {
+        font-size: 36px;
+        padding-left: 50px;
+        padding-top: 50px;
+    }
+
+    .services-name {
+        font-size: 25px;
+        padding-top: 25px;
+    }
+
+    .advantages-big-title {
+        font-size: 36px;
+        padding-left: 50px;
+        padding-top: 50px;
+    }
+
+    .advantages-container {
+        padding-top: 25px;
+        padding-bottom: 50px;
+    }
+
+    .advantages-title {
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+
+    .advantages-text {
+        font-size: 18px;
+    }
+
+    .stages-big-title {
+        font-size: 36px;
+        padding-top: 50px;
+        padding-left: 50px;
+    }
+
+    .stages-container {
+        padding: 50px;
+        padding-top: 25px;
+    }
+
+    .stages-div {
+        padding-bottom: 15px;
+    }
+
+    .stages-index {
+        font-size: 60px;
+    }
+
+    .stages-title {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .stages-text {
+        font-size: 20px;
+    }
+
+    .gallery-big-title {
+        font-size: 36px;
+        padding-left: 50px;
+        padding-top: 50px;
+    }
+
+    .gallery-row {
+        padding-inline: 40px;
+    }
+
+    .gallery-arrow-div {
+        padding-top: 15px;
+        padding-bottom: 25px;
+        padding-right: 40px;
+    }
+
+    .gallery-arrow-img {
+        width: 50px;
+        padding-top: 3px;
+    }
+
+    .gallery-link {
+        font-size: 26px;
+    }
+
+    .feedback-big-title {
+        font-size: 36px;
+        padding-top: 50px;
+        padding-left: 50px;
+    }
+
+    .feedback-container {
+        padding-top: 25px;
+        padding-bottom: 50px;
+    }
+
+    .feedback-title {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    .feedback-text {
+        font-size: 20px;
+        line-height: 140%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .banner-big-title {
+        font-size: 35px;
+    }
+
+    .banner-title {
+        font-size: 20px;
+    }
+
+    .banner-contact-p {
+        font-size: 20px;
+    }
+
+    .banner-contact-img {
+        width: 40px;
+    }
+
+    .about-text-div {
+        padding: 40px;
+    }
+
+    .about-title {
+        font-size: 32px;
+    }
+
+    .about-text {
+        font-size: 16px;
+    }
+
+    .services-img-div {
+        padding: 40px;
+        padding-top: 25px;
+    }
+
+    .services-title {
+        font-size: 32px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+
+    .services-name {
+        font-size: 24px;
+        padding-top: 20px;
+    }
+
+    .advantages-big-title {
+        font-size: 32px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+
+    .advantages-container {
+        padding-top: 15px;
+        padding-bottom: 40px;
+    }
+
+    .advantages-title {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    .advantages-text {
+        font-size: 18px;
+    }
+
+    .stages-big-title {
+        font-size: 32px;
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+
+    .stages-container {
+        padding: 40px;
+        padding-top: 25px;
+    }
+
+    .stages-div {
+        padding-bottom: 10px;
+    }
+
+    .stages-index {
+        font-size: 50px;
+        margin-right: 20px;
+    }
+
+    .stages-title {
+        font-size: 26px;
+        margin-bottom: 12px;
+    }
+
+    .stages-text {
+        font-size: 17px;
+    }
+
+    .gallery-big-title {
+        font-size: 32px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+
+    .gallery-row {
+        padding-inline: 30px;
+        padding-top: 10px;
+    }
+
+    .gallery-link {
+        font-size: 24px;
+    }
+
+    .gallery-arrow-div {
+        padding-right: 30px;
+    }
+
+    .feedback-big-title {
+        font-size: 32px;
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+
+    .feedback-container {
+        padding-top: 22px;
+        padding-top: 25px;
+        padding-bottom: 40px;
+    }
+
+    .feedback-title {
+        font-size: 25px;
+    }
+
+    .feedback-text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .mp-banner {
+        width: 100%;
+        margin-top: 80px;
+        margin-bottom: 0;
+    }
+
+    .big-title-div {
+        width: 75%;
+    }
+
+    .banner-big-title {
+        font-size: 55px;
+    }
+
+    .banner-title {
+        font-size: 40px;
+    }
+
+    .banner-contact-p {
+        font-size: 40px;
+    }
+
+    .banner-contact-img {
+        width: 60px;
+    }
+
+    .banner-contact-div {
+        margin-left: -12.5%;
+        margin-top: -20px;
+    }
+
+    .mp-about-us {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .about-text-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        width: 100%;
+        padding: 40px;
+    }
+
+    .about-title {
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+
+    .about-text {
+        font-size: 25px;
+    }
+
+    .about-img-div {
+        width: 100%;
+    }
+
+    .about-img-pc {
+        display: none;
+    }
+
+    .about-img-tel {
+        display: block;
+        width: 100%;
+    }
+
+    .mp-services {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+    .services-img-div {
+        padding: 40px;
+        padding-top: 25px;
+    }
+
+    .services-title {
+        font-size: 50px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+
+    .services-name {
+        font-size: 35px;
+        padding-top: 20px;
+    }
+
+    .mp-advantages {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .advantages-big-title {
+        font-size: 50px;
+        padding-top: 40px;
+    }
+
+    .advantages-container {
+        padding-top: 25px;
+    }
+
+    .advantages-title {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .advantages-text {
+        font-size: 20px;
+    }
+
+    .mp-stages {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .stages-big-title {
+        font-size: 50px;
+        padding-top: 40px;
+    }
+
+    .stages-container {
+        padding-inline: 0;
+        padding-right: 20px;
+    }
+
+    .stages-title {
+        font-size: 30px;
+    }
+
+    .mp-gallery {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .gallery-big-title {
+        font-size: 50px;
+    }
+    
+    .gallery-row {
+        padding-top: 15px;
+    }
+
+    .gallery-first {
+        margin-right: 12.5px;
+    }
+
+    .gallery-second {
+        margin-left: 12.5px;
+        margin-right: 12.5px
+    }
+
+    .gallery-third {
+        margin-left: 12.5px;
+    }
+
+    .gallery-arrow-div {
+        padding-top: 5px;
+        padding-bottom: 15px;
+    }
+
+    .gallery-link {
+        font-size: 30px;
+    }
+
+    .mp-feedback {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .feedback-big-title {
+        font-size: 50px;
+    }
+
+    .feedback-title {
+        font-size: 35px;
+    }
+
+    .feedback-text {
+        font-size: 20px;
+        line-height: 130%;
+    }
+}
+
+@media (max-width: 800px) {
+    .banner-big-title {
+        font-size: 45px;
+    }
+
+    .banner-title {
+        font-size: 30px;
+    }
+
+    .banner-line-img {
+        padding-block: 5px;
+    }
+
+    .banner-contact-p {
+        font-size: 30px;
+    }
+
+    .banner-contact-img {
+        width: 50px;
+    }
+
+    .big-title-div {
+        padding-block: 5px;
+    }
+
+    .about-title {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        font-size: 20px;
+    }
+
+    .services-img-div {
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-img-circle {
+        padding-top: 25px;
+        width: 50%;
+    }
+
+    .services-title {
+        font-size: 40px;
+    }
+
+    .services-name {
+        padding-top: 0;
+        font-size: 35px;
+    }
+
+    .advantages-big-title {
+        padding-top: 80px;
+        font-size: 40px;
+    }
+
+    .advantages-container {
+        padding-top: 20px;
+        padding-bottom: 0;
+    }
+
+    .advantages-btn-img {
+        padding-top: 0;
+        padding-bottom: 20px;
+    }
+
+    .advantages-btn-div {
+        width: 13%;
+    }
+
+    .advantages-data {
+        width: 74%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .advantages-div {
+        width: 100%;
+    }
+
+    .advantages-img-div {
+        width: 60%;
+    }
+
+    .advantages-img {
+        padding-left: 5%;
+    }
+
+    .advantages-title {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .advantages-text {
+        line-height: 130%;
+        font-size: 22px;
+        margin-right: 0;
+    }
+
+    .stages-container {
+        padding-bottom: 0;
+    }
+
+    .stages-big-title {
+        padding-top: 80px;
+        font-size: 40px;
+    }
+
+    .stages-index {
+        margin-right: 10px;
+    }
+
+    .stages-title {
+        font-size: 24px;
+    }
+
+    .stages-text {
+        font-size: 15px;
+    }
+
+    .gallery-big-title {
+        padding-top: 80px;
+        font-size: 40px;
+    }
+
+    .gallery-row {
+        padding-top: 10px;
+    }
+
+    .mp-gallery-img-div {
+        width: 50%;
+    }
+
+    .gallery-arrow-div {
+        padding-bottom: 0;
+    }
+
+    .feedback-big-title {
+        padding-left: 30px;
+        font-size: 40px;
+    }
+
+    .feedback-container {
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+
+    .feedback-btn-div {
+        width: 13%;
+    }
+
+    .feedback-data-div {
+        width: 74%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .feedback-img-div {
+        width: 100%;
+    }
+
+    .feedback-text-div {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .feedback-title {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+
+        line-height: 100%;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .feedback-text {
+        font-size: 20px;
+        line-height: 140%;
+    }
+}
+
+@media (max-width: 600px) {
+    .banner-big-title {
+        font-size: 35px;
+    }
+
+    .banner-title {
+        font-size: 20px;
+    }
+
+    .banner-contact-p {
+        font-size: 20px;
+    }
+
+    .banner-contact-img {
+        width: 40px;
+    }
+
+    .banner-contact-div {
+        margin-top: -10px;
+    }
+
+    .about-text-div {
+        padding: 30px;
+    }
+
+    .about-title {
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .about-text {
+        font-size: 16px;
+    }
+
+    .services-img-circle {
+        padding-top: 15px;
+        width: 65%;
+    }
+
+    .services-title {
+        font-size: 35px;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
+    .services-name {
+        font-size: 30px;
+    }
+
+    .advantages-big-title {
+        font-size: 35px;
+        padding-top: 60px;
+        padding-left: 30px;
+    }
+
+    .advantages-container {
+        padding-top: 17.5px;
+    }
+
+    .advantages-img-div {
+        width: 65%;
+    }
+
+    .advantages-title {
+        font-size: 25px;
+        margin-bottom: 8px;
+    }
+
+    .advantages-text {
+        font-size: 18px;
+    }
+
+    .stages-big-title {
+        font-size: 35px;
+        padding-left: 30px;
+        padding-top: 60px;
+    }
+
+    .stages-container {
+        padding-top: 15px;
+        padding-right: 10px;
+    }
+
+    .stages-index {
+        margin-right: 10px;
+        font-size: 40px;
+    }
+
+    .stages-title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .stages-text {
+        font-size: 12px;
+        line-height: 100%;
+    }
+
+    .gallery-big-title {
+        font-size: 35px;
+        padding-left: 30px;
+        padding-top: 60px;
+    }
+
+    .gallery-row {
+        padding-inline: 20px;
+    }
+
+    .gallery-link {
+        font-size: 25px;
+        margin-right: 10px;
+    }
+
+    .gallery-arrow-img {
+        width: 40px;
+        margin-right: 0;
+    }
+
+    .gallery-arrow-div {
+        padding-top: 5px;
+        padding-right: 30px;
+    }
+
+    .gallery-img-arrow-div {
+        /*padding: 5px;
+        padding-left: 0;
+        padding-right: 5px;*/
+    }
+
+    .feedback-big-title {
+        font-size: 35px;
+        padding-top: 30px;
+        padding-left: 30px;
+    }
+
+    .feedback-container {
+        padding-top: 15px;
+    }
+
+    .feedback-title {
+        font-size: 25px;
+    } 
+
+    .feedback-text {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 475px) {
+    .about-text-div {
+        padding: 25px;
+    }
+
+    .about-title {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .about-text {
+        font-size: 14px;
+    }
+
+    .services-img-circle {
+        padding-top: 15px;
+        width: 65%;
+    }
+
+    .services-title {
+        font-size: 30px;
+        padding-left: 25px;
+        padding-top: 25px;
+    }
+
+    .services-name {
+        font-size: 25px;
+    }
+
+    .advantages-big-title {
+        font-size: 30px;
+        padding-top: 60px;
+        padding-left: 25px;
+    }
+
+    .advantages-container {
+        padding-top: 15px;
+    }
+
+    .advantages-img-div {
+        width: 70%;
+    }
+
+    .advantages-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .advantages-text {
+        font-size: 14px;
+    }
+
+    .stages-big-title {
+        padding-left: 25px;
+        padding-top: 60px;
+        font-size: 30px;
+    }
+
+    .stages-index {
+        font-size: 35px;
+    }
+
+    .stages-title {
+        font-size: 18px;
+    }
+
+    .gallery-big-title {
+        font-size: 30px;
+        padding-left: 25px;
+    }
+
+    .gallery-row {
+        padding-inline: 15px;
+    }
+
+    .gallery-link {
+        font-size: 22px;
+        margin-right: 5px;
+    }
+
+    .gallery-arrow-img {
+        width: 25px;
+        padding-top: 0;
+    }
+
+    .gallery-arrow-div {
+        padding-right: 25px;
+    }
+
+    .feedback-big-title {
+        font-size: 30px;
+        padding-top: 30px;
+        padding-left: 25px;
+    }
+
+    .feedback-container {
+        padding-top: 15px;
+    }
+
+    .feedback-title {
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .feedback-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .banner-big-title {
+        font-size: 25px;
+    }
+
+    .banner-title {
+        font-size: 15px;
+    }
+
+    .banner-contact-p {
+        font-size: 15px;
+    }
+
+    .banner-contact-img {
+        width: 30px;
+        margin-top: -2px;
+    }
+
+    .banner-contact-div {
+        padding-inline: 10px;
+        margin-top: -5px;
+    }
+}
