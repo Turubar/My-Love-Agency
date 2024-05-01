@@ -12,5 +12,5 @@
 <p>2) Bootstrap 5</p>
 <br>
 <h2>Галерея</h2>
-<img width="500" src="https://github.com/Turubar/My-Love-Agency/assets/58067524/624ec69c-7fed-45d5-a79a-66e2ea1e69eb">
+<img width="100%" src="https://github.com/Turubar/My-Love-Agency/assets/58067524/624ec69c-7fed-45d5-a79a-66e2ea1e69eb">
 
