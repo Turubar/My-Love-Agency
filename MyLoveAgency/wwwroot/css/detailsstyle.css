@@ -130,18 +130,18 @@
 }
 
 .details-btn-contact {
-    font-family: "Scientia-Regular";    
+    font-family: "Scientia-Regular";
     font-size: 20px;
     background-color: transparent;
-    border-color: white;
     color: white;
     border-radius: 25px;
+    color: white !important;
+    border: 2px solid white !important;
 }
 
-.details-btn-contact:hover {
-    color: #d7bd8a;
-    background-color: transparent;
-    border-color: #d7bd8a;
+.details-btn-contact:hover, .details-btn-contact:focus, .details-btn-contact:active {
+    color: white !important;
+    border: 2px solid white !important;
 }
 
 .details-package-data {
@@ -231,21 +231,44 @@
 
 .details-btn-package {
     font-family: "Scientia-Regular";
-    background-color: transparent;
-    border-color: white;
-    color: white;
+    background-color: transparent !important;
+    color: white !important;
+    border: 2px solid white !important;
     font-size: 26px;
     width: 100%;
     border-radius: 25px;
     line-height: 115%;
 }
 
-.details-btn-package:hover {
-    color: #d7bd8a;
-    background-color: transparent;
-    border-color: #d7bd8a;
+.details-btn-package:hover, .details-btn-package:focus, .details-btn-package:active {
+    color: white !important;
+    border: 2px solid white !important;
 }
 
+
+@media (hover: hover) {
+    .details-btn-contact:hover {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+
+    .details-btn-package:hover {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+}
+
+@media (hover: none) {
+    .details-btn-contact:active {
+        color: white !important;
+        border: 2px solid white !important;
+    }
+
+    .details-btn-package:hover {
+        color: white !important;
+        border: 2px solid white !important;
+    }
+}
 
 @media (max-width: 1600px) {
     .details-service-data {

@@ -279,19 +279,18 @@
 
 .contact-check-btn {
     font-family: "Scientia-Regular";
-    color: white;
+    color: white !important;
     font-size: 20px;
-    border: 2px solid white;
+    border: 2px solid white !important;
     border-radius: 25px;
     width: 35%;
     margin: 0;
     padding-block: 3px;
 }
 
-.contact-check-btn:hover {
-    color: #d7bd8a;
-    border: 2px solid #d7bd8a;
-    border-radius: 25px;
+.contact-check-bt:hover, .contact-check-bt:focus, .contact-check-bt:active {
+    color: white !important;
+    border: 2px solid white !important;
 }
 
 .contact-modal-footer-close {
@@ -302,21 +301,43 @@
 
 .contact-close-btn {
     font-family: "Scientia-Regular";
-    color: white;
+    color: white !important;
     font-size: 20px;
-    border: 2px solid white;
+    border: 2px solid white !important;
     border-radius: 25px;
     width: 100%;
     margin: 0;
     padding-block: 3px;
 }
 
-.contact-close-btn:hover {
-    color: #d7bd8a;
-    border: 2px solid #d7bd8a;
-    border-radius: 25px;
+.contact-close-btn:hover, .contact-close-btn:focus, .contact-close-btn:active {
+    color: white !important;
+    border: 2px solid white !important;
 }
 
+@media (hover: hover) {
+    .contact-check-btn:hover {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+
+    .contact-close-btn:hover {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+}
+
+@media (hover: none) {
+    .contact-check-btn:active {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+
+    .contact-close-btn:active {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+}
 
 @media (max-width: 1525px) {
     .contact-form-container {

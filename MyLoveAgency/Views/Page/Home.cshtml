@@ -15,11 +15,11 @@
                         @{
                             if (Context.Request.Cookies["Language"] == "en")
                             {
-                                <p class="banner-title">@Html.Raw(HomeModelEnglish.slogan)</p>
+                                                <p class="banner-title">@Html.Raw(HomeModelEnglish.slogan)</p>
                             }
                             else
                             {
-                                <p class="banner-title">@Html.Raw(HomeModelUkrainian.slogan)</p>
+                                                <p class="banner-title">@Html.Raw(HomeModelUkrainian.slogan)</p>
                             }
                         }
                     </div>
@@ -39,11 +39,11 @@
                 @{
                     if (Context.Request.Cookies["Language"] == "en")
                     {
-                        <p class="about-title">About Us</p>
+                                        <p class="about-title">About Us</p>
                     }
                     else
                     {
-                        <p class="about-title">Про нас</p>
+                                        <p class="about-title">Про нас</p>
                     }
                 }
             </div>
@@ -53,11 +53,11 @@
                 @{
                     if (Context.Request.Cookies["Language"] == "en")
                     {
-                        <p class="about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
+                                        <p class="about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
                     }
                     else
                     {
-                        <p class="about-text">@Html.Raw(HomeModelUkrainian.aboutUsText)</p>
+                                        <p class="about-text">@Html.Raw(HomeModelUkrainian.aboutUsText)</p>
                     }
                 }
             </div>
@@ -76,11 +76,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                    <p class="services-title">Services</p>
+                                    <p class="services-title">Services</p>
                 }
                 else
                 {
-                    <p class="services-title">Послуги</p>
+                                    <p class="services-title">Послуги</p>
                 }
             }
         </div>
@@ -92,11 +92,11 @@
                     @{
                         if (Context.Request.Cookies["Language"] == "en")
                         {
-                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Datings" class="services-name-link"><p class="services-name">Datings</p></a>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="Datings" class="services-name-link"><p class="services-name">Datings</p></a>
                         }
                         else
                         {
-                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Datings" class="services-name-link"><p class="services-name">Побачення</p></a>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="Datings" class="services-name-link"><p class="services-name">Побачення</p></a>
                         }
                     }
                 </div>
@@ -108,11 +108,11 @@
                     @{
                         if (Context.Request.Cookies["Language"] == "en")
                         {
-                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Surprises" class="services-name-link"><p class="services-name">Surprises</p></a>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="Surprises" class="services-name-link"><p class="services-name">Surprises</p></a>
                         }
                         else
                         {
-                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Surprises" class="services-name-link"><p class="services-name">Сюрпризи</p></a>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="Surprises" class="services-name-link"><p class="services-name">Сюрпризи</p></a>
                         }
                     }
                 </div>
@@ -124,11 +124,11 @@
                     @{
                         if (Context.Request.Cookies["Language"] == "en")
                         {
-                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Proposals" class="services-name-link"><p class="services-name">Proposals</p></a>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="Proposals" class="services-name-link"><p class="services-name">Proposals</p></a>
                         }
                         else
                         {
-                            <a asp-controller="Main" asp-action="Services" asp-route-nameType="Proposals" class="services-name-link"><p class="services-name">Пропозиції</p></a>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="Proposals" class="services-name-link"><p class="services-name">Пропозиції</p></a>
                         }
                     }
                 </div>
@@ -143,11 +143,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                    <p class="advantages-big-title">Our Advantages</p>
+                                    <p class="advantages-big-title">Our Advantages</p>
                 }
                 else
                 {
-                    <p class="advantages-big-title">Наші Переваги</p>
+                                    <p class="advantages-big-title">Наші Переваги</p>
                 }
             }
         </div>
@@ -167,16 +167,16 @@
                         {
                             for (int i = 0; i < HomeModelEnglish.advantageTitle.Count; i++)
                             {
-                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelEnglish.advantageTitle[i]</p></div>
-                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelEnglish.advantageText[i]</p></div>
+                                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelEnglish.advantageTitle[i]</p></div>
+                                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelEnglish.advantageText[i]</p></div>
                             }
                         }
                         else
                         {
                             for (int i = 0; i < HomeModelUkrainian.advantageTitle.Count; i++)
                             {
-                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelUkrainian.advantageTitle[i]</p></div>
-                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelUkrainian.advantageText[i]</p></div>
+                                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelUkrainian.advantageTitle[i]</p></div>
+                                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelUkrainian.advantageText[i]</p></div>
                             }
                         }
                     }
@@ -208,11 +208,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                    <p class="stages-big-title">Stages of organization</p>
+                                    <p class="stages-big-title">Stages of organization</p>
                 }
                 else
                 {
-                    <p class="stages-big-title">Стадії організації</p>
+                                    <p class="stages-big-title">Стадії організації</p>
                 }
             }
         </div>
@@ -229,32 +229,32 @@
                     {
                         for (int i = 0; i < HomeModelEnglish.stageTitle.Count; i++)
                         {
-                            <div class="col-12 stages-div">
-                                <div style="display: flex; align-items: center;">
-                                    <div><p class="stages-index">@(i + 1)</p></div>
-                                </div>
+                                            <div class="col-12 stages-div">
+                                                <div style="display: flex; align-items: center;">
+                                                    <div><p class="stages-index">@(i + 1)</p></div>
+                                                </div>
 
-                                <div class="stages-text-div">
-                                    <p class="stages-title">@HomeModelEnglish.stageTitle[i]</p>
-                                    <p class="stages-text">@HomeModelEnglish.stageText[i]</p>
-                                </div>
-                            </div>
+                                                <div class="stages-text-div">
+                                                    <p class="stages-title">@HomeModelEnglish.stageTitle[i]</p>
+                                                    <p class="stages-text">@HomeModelEnglish.stageText[i]</p>
+                                                </div>
+                                            </div>
                         }
                     }
                     else
                     {
                         for (int i = 0; i < HomeModelUkrainian.stageTitle.Count; i++)
                         {
-                            <div class="col-12 stages-div">
-                                <div>
-                                    <p class="stages-index">@(i + 1)</p>
-                                </div>
+                                            <div class="col-12 stages-div">
+                                                <div>
+                                                    <p class="stages-index">@(i + 1)</p>
+                                                </div>
 
-                                <div class="stages-text-div">
-                                    <p class="stages-title">@HomeModelUkrainian.stageTitle[i]</p>
-                                    <p class="stages-text">@HomeModelUkrainian.stageText[i]</p>
-                                </div>
-                            </div>
+                                                <div class="stages-text-div">
+                                                    <p class="stages-title">@HomeModelUkrainian.stageTitle[i]</p>
+                                                    <p class="stages-text">@HomeModelUkrainian.stageText[i]</p>
+                                                </div>
+                                            </div>
                         }
                     }
                 }
@@ -268,11 +268,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                    <p class="gallery-big-title">Gallery</p>
+                                    <p class="gallery-big-title">Gallery</p>
                 }
                 else
                 {
-                    <p class="gallery-big-title">Галерея</p>
+                                    <p class="gallery-big-title">Галерея</p>
                 }
             }
         </div>
@@ -315,18 +315,18 @@
                         @{
                             if (Context.Request.Cookies["Language"] == "en")
                             {
-                                <a asp-controller="Main" asp-action="Gallery" class="gallery-link-a"><p class="gallery-link">See more</p></a>
+                                <a asp-controller="Page" asp-action="Gallery" class="gallery-link-a"><p class="gallery-link">See more</p></a>
                             }
                             else
                             {
-                                <a asp-controller="Main" asp-action="Gallery" class="gallery-link-a"><p class="gallery-link">Більше</p></a>
+                                <a asp-controller="Page" asp-action="Gallery" class="gallery-link-a"><p class="gallery-link">Більше</p></a>
                             }
                         }
                     </div>
                 </div>
 
                 <div class="gallery-img-arrow-div">
-                    <a asp-controller="Main" asp-action="Gallery" class="gallery-link-a"><img class="gallery-arrow-img" src="/data/arrow_link.png" alt="" /></a>
+                    <a asp-controller="Page" asp-action="Gallery" class="gallery-link-a"><img class="gallery-arrow-img" src="/data/arrow_link.png" alt="" /></a>
                 </div>
             </div>
         </div>
@@ -337,11 +337,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                    <p class="feedback-big-title">Feedback</p>
+                                    <p class="feedback-big-title">Feedback</p>
                 }
                 else
                 {
-                    <p class="feedback-big-title">Відгуки</p>
+                                    <p class="feedback-big-title">Відгуки</p>
                 }
             }
         </div>
@@ -373,14 +373,14 @@
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
                                 {
-                                    <p class="feedback-title">@HomeModelEnglish.feedbackTitle[i]</p>
+                                                    <p class="feedback-title">@HomeModelEnglish.feedbackTitle[i]</p>
                                 }
                             }
                             else
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
                                 {
-                                    <p class="feedback-title">@HomeModelUkrainian.feedbackTitle[i]</p>
+                                                    <p class="feedback-title">@HomeModelUkrainian.feedbackTitle[i]</p>
                                 }
                             }
                         }
@@ -392,14 +392,14 @@
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
                                 {
-                                    <p class="feedback-text">@HomeModelEnglish.feedbackText[i]</p>
+                                                    <p class="feedback-text">@HomeModelEnglish.feedbackText[i]</p>
                                 }
                             }
                             else
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
                                 {
-                                    <p class="feedback-text">@HomeModelUkrainian.feedbackText[i]</p>
+                                                    <p class="feedback-text">@HomeModelUkrainian.feedbackText[i]</p>
                                 }
                             }
                         }
@@ -574,7 +574,6 @@
         }
     }
 
-
     let indexAdvantage = 0;
     function changeAdvantage(step) {
         var index = indexAdvantage + step;
@@ -631,30 +630,17 @@
         indexFeedback = index;
     }
 
-    function contactClick() {
-        document.getElementsByClassName("banner-contact-link")[0].click();
-    }
-
-    function contactOver() {
-        document.getElementsByClassName("banner-contact-p")[0].style.color = "#d7bd8a";
-        document.getElementsByClassName("banner-contact-img")[0].src = "/data/contact_color.png";
-        document.body.style.cursor = "pointer";
-    }
-
-    function contactOut() {
-        document.getElementsByClassName("banner-contact-p")[0].style.color = "white";
-        document.getElementsByClassName("banner-contact-img")[0].src = "/data/contact.png";
-        document.body.style.cursor = "default";
-    }
-
     function galleryClick() {
         document.getElementsByClassName("gallery-link")[0].click();
     }
 
     function galleryOver() {
-        document.getElementsByClassName("gallery-link")[0].style.color = "#d7bd8a";
-        document.getElementsByClassName("gallery-arrow-img")[0].src = "/data/arrow_link_color.png";
-        document.body.style.cursor = "pointer";
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            document.getElementsByClassName("gallery-link")[0].style.color = "#d7bd8a";
+            document.getElementsByClassName("gallery-arrow-img")[0].src = "/data/arrow_link_color.png";
+            document.body.style.cursor = "pointer";
+        }
     }
 
     function galleryOut() {
@@ -664,12 +650,15 @@
     }
 
     function advantagesOver(side) {
-        if (side == 0) {
-            document.getElementsByClassName("advantages-btn-img")[0].src = "/data/arrow_left_color.png";
-        }
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            if (side == 0) {
+                document.getElementsByClassName("advantages-btn-img")[0].src = "/data/arrow_left_color.png";
+            }
 
-        if (side == 1) {
-            document.getElementsByClassName("advantages-btn-img")[1].src = "/data/arrow_right_color.png";
+            if (side == 1) {
+                document.getElementsByClassName("advantages-btn-img")[1].src = "/data/arrow_right_color.png";
+            }
         }
     }
 
@@ -684,12 +673,15 @@
     }
 
     function feedbackOver(side) {
-        if (side == 0) {
-            document.getElementsByClassName("feedback-btn-img")[0].src = "/data/arrow_left_color.png";
-        }
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            if (side == 0) {
+                document.getElementsByClassName("feedback-btn-img")[0].src = "/data/arrow_left_color.png";
+            }
 
-        if (side == 1) {
-            document.getElementsByClassName("feedback-btn-img")[1].src = "/data/arrow_right_color.png";
+            if (side == 1) {
+                document.getElementsByClassName("feedback-btn-img")[1].src = "/data/arrow_right_color.png";
+            }
         }
     }
 

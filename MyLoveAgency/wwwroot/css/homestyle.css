@@ -206,11 +206,6 @@ body {
     text-align: center;
 }
 
-.services-name:hover {
-    color: #d7bd8a;
-    transform: scale(1.2);
-}
-
 .services-name-link {
     text-decoration: none;
 }
@@ -516,6 +511,19 @@ body {
     font-size: 30px;
     margin-bottom: 0;
     text-align: justify;
+}
+
+@media (hover: hover) {
+    .services-name:hover {
+        color: #d7bd8a;
+        transform: scale(1.2);
+    }
+}
+
+@media (hover: none) {
+    .services-name:active {
+        color: #d7bd8a;
+    }
 }
 
 

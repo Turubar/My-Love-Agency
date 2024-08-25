@@ -1,11 +1,11 @@
 ﻿@{
     if (Context.Request.Cookies["UseCookies"] != "true")
     {
-        <style>
-            .footer {
-                margin-bottom: 60px;
-            }
-        </style>
+    <style>
+                .footer {
+                    margin-bottom: 60px;
+                }
+    </style>
     }
 }
 
@@ -18,15 +18,15 @@
     <div class="col-4 footer-social">
         <div class="footer-center-div">
             <div class="">
-                <a href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="footer-social-img" src="/data/facebook.png" alt="" onmouseover="this.src='/data/facebook_color.png';" onmouseout="this.src='/data/facebook.png';" /></a>
+                <a href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="footer-social-img footer-social-facebook" src="/data/facebook.png" alt="" onmouseover="facebookOver()" onmouseout="facebookOut()" /></a>
             </div>
 
             <div class="">
-                <a href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="footer-social-img footer-instagram" src="/data/instagram.png" alt="" onmouseover="this.src='/data/instagram_color.png';" onmouseout="this.src='/data/instagram.png';" /></a>
+                <a href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="footer-social-img footer-instagram footer-social-instagram" src="/data/instagram.png" alt="" onmouseover="instagramOver()" onmouseout="instagramOut()" /></a>
             </div>
 
             <div class="">
-                <a href="https://t.me/valery_moshchenskaya" target="_blank"><img class="footer-social-img" src="/data/telegram.png" alt="" onmouseover="this.src='/data/telegram_color.png';" onmouseout="this.src='/data/telegram.png';" /></a>
+                <a href="https://t.me/valery_moshchenskaya" target="_blank"><img class="footer-social-img footer-social-telegram" src="/data/telegram.png" alt="" onmouseover="telegramOver()" onmouseout="telegramOut()" /></a>
             </div>
         </div>
 
@@ -36,10 +36,10 @@
 
     </div>
 
-    <div class="col-4 footer-contact-div" onmouseover="footerOver()" onmouseout="footerOut()" onclick="footerClick()">
+    <div class="col-4 footer-contact-div" onmouseover="contactOver()" onmouseout="contactOut()" onclick="contactClick()">
         <div class="footer-contact">
             <div>
-                <a asp-controller="Main" asp-action="Contact" class="footer-contact-link"><img class="footer-contact-img" src="/data/contact.png" alt="" onmouseover="this.src='/data/contact_color.png';" onmouseout="this.src='/data/contact.png';" /></a>
+                <a asp-controller="Main" asp-action="Contact" class="footer-contact-link"><img class="footer-contact-img" src="/data/contact.png" alt="" /></a>
             </div>
         </div>
     </div>
@@ -48,16 +48,58 @@
 
 <script type="text/javascript">
 
-    function footerClick() {
+    function facebookOver() {
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            document.getElementsByClassName("footer-social-facebook")[0].src = "/data/facebook_color.png";
+            document.body.style.cursor = "pointer";
+        }
+    }
+
+    function facebookOut() {
+        document.getElementsByClassName("footer-social-facebook")[0].src = "/data/facebook.png";
+        document.body.style.cursor = "default";
+    }
+
+    function instagramOver() {
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            document.getElementsByClassName("footer-social-instagram")[0].src = "/data/instagram_color.png";
+            document.body.style.cursor = "pointer";
+        }
+    }
+
+    function instagramOut() {
+        document.getElementsByClassName("footer-social-instagram")[0].src = "/data/instagram.png";
+        document.body.style.cursor = "default";
+    }
+
+    function telegramOver() {
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            document.getElementsByClassName("footer-social-telegram")[0].src = "/data/telegram_color.png";
+            document.body.style.cursor = "pointer";
+        }
+    }
+
+    function telegramOut() {
+        document.getElementsByClassName("footer-social-telegram")[0].src = "/data/telegram.png";
+        document.body.style.cursor = "default";
+    }
+
+    function contactClick() {
         document.getElementsByClassName("footer-contact-link")[0].click();
     }
 
-    function footerOver() {
-        document.getElementsByClassName("footer-contact-img")[0].src = "/data/contact_color.png";
-        document.body.style.cursor = "pointer";
+    function contactOver() {
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            document.getElementsByClassName("footer-contact-img")[0].src = "/data/contact_color.png";
+            document.body.style.cursor = "pointer";
+        }
     }
 
-    function footerOut() {
+    function contactOut() {
         document.getElementsByClassName("footer-contact-img")[0].src = "/data/contact.png";
         document.body.style.cursor = "default";
     }

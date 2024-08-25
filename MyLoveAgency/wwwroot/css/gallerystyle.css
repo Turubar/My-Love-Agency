@@ -59,9 +59,23 @@
     border: 2px solid white;
 }
 
-.gallery-btn:hover {
-    color: #d7bd8a;
-    border: 2px solid #d7bd8a;
+.gallery-btn:hover, .gallery-btn:focus, .gallery-btn:active {
+    color: white !important;
+    border: 2px solid white !important;
+}
+
+@media (hover: hover) {
+    .gallery-btn:hover{
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
+}
+
+@media (hover: none) {
+    .gallery-btn:active {
+        color: #d7bd8a !important;
+        border: 2px solid #d7bd8a !important;
+    }
 }
 
 @media (max-width: 1500px) {

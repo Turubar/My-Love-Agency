@@ -17,6 +17,10 @@ namespace MyLoveAgency
 
             try
             {
+                var builder = WebApplication.CreateBuilder(args);
+                builder.Services.AddTransient<LovelyLoveDbContext>();
+
+
                 if (!ServiceClass.GetPassword()) throw new Exception("The password could not be set!");
 
                 if (ServiceClass.GetMailing() <= 0) throw new Exception("The mailing data was not set!");
@@ -105,20 +109,18 @@ namespace MyLoveAgency
                     throw new Exception("Data could not be read from the Service table!\r\n" + e);
                 }
 
-                var builder = WebApplication.CreateBuilder(args);
-
                 builder.Services.AddControllers().AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
                 });
                 builder.Services.AddMvc();
+
                 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
                 {
-                    options.AccessDeniedPath = "/Main/Home/";
+                    options.AccessDeniedPath = "/Page/Home/";
                     options.Cookie.HttpOnly = true;
                     options.Cookie.MaxAge = TimeSpan.FromDays(7);
                 });
-
                 builder.Services.AddAuthorization();
 
                 builder.WebHost.ConfigureKestrel(options =>
@@ -129,7 +131,6 @@ namespace MyLoveAgency
                 var app = builder.Build();
 
                 app.UseStaticFiles();
-
                 app.UseRouting();
 
                 app.UseAuthentication();
@@ -137,7 +138,7 @@ namespace MyLoveAgency
 
                 app.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Main}/{action=Home}/{id?}");
+                    pattern: "{controller=Page}/{action=Home}/{id?}");
 
                 app.Run();
             }

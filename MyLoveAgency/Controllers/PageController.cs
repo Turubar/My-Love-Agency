@@ -4,39 +4,31 @@ using Microsoft.AspNetCore.Mvc;
 using MyLoveAgency.Models;
 using MyLoveAgency.Models.Database;
 using System.Security.Claims;
-using System.IO;
-using System.Security.Cryptography;
-using System.Security.AccessControl;
-using System.Text.RegularExpressions;
-using System.Net.Mail;
-using Microsoft.Identity.Client.Extensions.Msal;
-using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 using System.Text;
-using Microsoft.AspNetCore.Identity;
 
 namespace MyLoveAgency.Controllers
 {
-    public class MainController : Controller
+    public class PageController : Controller
     {
-        public IActionResult Home()
+        public async Task<IActionResult> Home()
         {
             // Проверяем валидность cookie "Language"
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
-                return Redirect("~/Main/ChangeLanguage?refererPage=Home");
+                return Redirect("~/Page/ChangeLanguage?refererPage=Home");
 
             ViewBag.NamePage = "Home";
             return View();
         }
 
         [HttpGet]
-        [Route("/Main/Services/{nameType?}")]
-        public IActionResult Services(string nameType = "")
+        [Route("/Page/Services/{nameType?}")]
+        public async Task<IActionResult> Services(string nameType = "")
         {
             // Проверяем валидность cookie "Language"
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
-                return Redirect("~/Main/ChangeLanguage?refererPage=Services");
+                return Redirect("~/Page/ChangeLanguage?refererPage=Services");
 
-            if (DataClass.TypeService.Count() <= 0) return Redirect("~/Main/Home/");
+            if (DataClass.TypeService.Count() <= 0) return Redirect("~/Page/Home/");
 
             if (DataClass.TypeService.Where(x => x.NameEn == nameType).Count() == 1) ViewBag.SelectedType = nameType;
             else ViewBag.SelectedType = DataClass.TypeService[0].NameEn;
@@ -45,33 +37,33 @@ namespace MyLoveAgency.Controllers
             return View();
         }
 
-        public IActionResult Gallery()
+        public async Task<IActionResult> Gallery()
         {
             // Проверяем валидность cookie "Language"
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
-                return Redirect("~/Main/ChangeLanguage?refererPage=Gallery");
+                return Redirect("~/Page/ChangeLanguage?refererPage=Gallery");
 
             ViewBag.NamePage = "Gallery";
             return View();
         }
 
-        public IActionResult FAQ()
+        public async Task<IActionResult> FAQ()
         {
             // Проверяем валидность cookie "Language"
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
-                return Redirect("~/Main/ChangeLanguage?refererPage=FAQ");
+                return Redirect("~/Page/ChangeLanguage?refererPage=FAQ");
 
             ViewBag.NamePage = "FAQ";
             return View();
         }
 
         [HttpGet]
-        [Route("/Main/Contact/{selectedData?}")]
-        public IActionResult Contact(string selectedData = "")
+        [Route("/Page/Contact/{selectedData?}")]
+        public async Task<IActionResult> Contact(string selectedData = "")
         {
             // Проверяем валидность cookie "Language"
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
-                return Redirect("~/Main/ChangeLanguage?refererPage=Contact");
+                return Redirect("~/Page/ChangeLanguage?refererPage=Contact");
 
             string[] partData = selectedData.Split("|");
             ViewBag.SelectedData = partData;
@@ -80,14 +72,14 @@ namespace MyLoveAgency.Controllers
             return View();
         }
 
-        public IActionResult ChangeLanguage(string refererPage)
+        public async Task<IActionResult> ChangeLanguage(string refererPage)
         {
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
             {
                 Response.Cookies.Delete("Language");
                 CreateCookie("Language", "en", 7);
 
-                return Redirect("~/Main/" + refererPage);
+                return Redirect("~/Page/" + refererPage);
             }
             else
             {
@@ -102,14 +94,14 @@ namespace MyLoveAgency.Controllers
                     CreateCookie("Language", "en", 7);
                 }
 
-                return Redirect("~/Main/" + refererPage);
+                return Redirect("~/Page/" + refererPage);
             }
         }
 
-        public IActionResult AcceptCookies(string refererPage)
+        public async Task<IActionResult> AcceptCookies(string refererPage)
         {
             CreateCookie("UseCookies", "true", 7);
-            return Redirect("~/Main/" + refererPage);
+            return Redirect("~/Page/" + refererPage);
         }
 
         public string AcceptCookiesWR()
@@ -134,7 +126,7 @@ namespace MyLoveAgency.Controllers
             Response.Cookies.Append(key, value, options);
         }
 
-        public IActionResult Manager(string password)
+        public async Task<IActionResult> Manager(string password)
         {
             if (User?.FindFirst("Access") != null)
             {
@@ -158,7 +150,7 @@ namespace MyLoveAgency.Controllers
                     var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
                     HttpContext.SignInAsync(claimsPrincipal);
-                    return Redirect("~/Main/Manager/");
+                    return Redirect("~/Page/Manager/");
                 }
                 else
                 {
@@ -169,24 +161,26 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpGet]
-        [Route("/Main/Service/{id?}")]
-        public IActionResult ServiceDetails(string id)
+        [Route("/Page/Service/{id?}")]
+        public async Task<IActionResult> ServiceDetails(string id)
         {
             // Проверяем валидность cookie "Language"
             if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
-                return Redirect("~/Main/ChangeLanguage?refererPage=Service");
+                return Redirect("~/Page/ChangeLanguage?refererPage=Service");
 
-            if (DataClass.Services.Count() <= 0) return Redirect("~/Main/Home/");
+            if (DataClass.Services.Count() <= 0) return Redirect("~/Page/Home/");
 
             bool result = int.TryParse(id, out int idService);
-            if (!result || idService < 1) return Redirect("~/Main/Home/");
+            if (!result || idService < 1) return Redirect("~/Page/Home/");
 
             if (DataClass.Services.Where(x => x.Id == idService).Count() == 1) ViewBag.IdService = idService;
-            else return Redirect("~/Main/Home/");
+            else return Redirect("~/Page/Home/");
 
             ViewBag.NamePage = "Service/" + ViewBag.IdService;
             return View();
         }
+
+
 
         [HttpPost]
         public async Task<string> AddImageService(IFormFile imageServiceInput, string idService)
@@ -261,7 +255,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string DeleteImageService(string idService, string number)
+        public async Task<string> DeleteImageService(string idService, string number)
         {
             try
             {
@@ -310,7 +304,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string AddPackageService(string idService, string name, string price, string durationEn, string durationUa, string descriptionEn, string descriptionUa)
+        public async Task<string> AddPackageService(string idService, string name, string price, string durationEn, string durationUa, string descriptionEn, string descriptionUa)
         {
             try
             {
@@ -361,7 +355,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string UpdateServiceAndPackages(string idService, string idType, string nameEn, string nameUa, string price, string descriptionEn, string descriptionUa, List<List<string>> packages)
+        public async Task<string> UpdateServiceAndPackages(string idService, string idType, string nameEn, string nameUa, string price, string descriptionEn, string descriptionUa, List<List<string>> packages)
         {
             try
             {
@@ -462,7 +456,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string DeletePackageService(string idService, string name)
+        public async Task<string> DeletePackageService(string idService, string name)
         {
             try
             {
@@ -497,7 +491,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string DeleteService(string idService)
+        public async Task<string> DeleteService(string idService)
         {
             try
             {
@@ -546,7 +540,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string AddService(string nameEn, string nameUa, string price, string idType, string descriptionEn, string descriptionUa)
+        public async Task<string> AddService(string nameEn, string nameUa, string price, string idType, string descriptionEn, string descriptionUa)
         {
             try
             {
@@ -675,7 +669,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public List<StorageImageGallery>? DeleteImageGallery(string idImage)
+        public async Task<List<StorageImageGallery>>? DeleteImageGallery(string idImage)
         {
             try
             {
@@ -721,7 +715,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public List<StorageImageGallery>? ChangeImageGallery(string oldId, string newId)
+        public async Task<List<StorageImageGallery>>? ChangeImageGallery(string oldId, string newId)
         {
             try
             {
@@ -762,7 +756,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string UpdateFAQ(string id, string questionEn, string questionUa, string answerEn, string answerUa)
+        public async Task<string> UpdateFAQ(string id, string questionEn, string questionUa, string answerEn, string answerUa)
         {
             try
             {
@@ -800,7 +794,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string DeleteFAQ(string id)
+        public async Task<string> DeleteFAQ(string id)
         {
             try
             {
@@ -831,7 +825,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string AddFAQ(string questionEn, string questionUa, string answerEn, string answerUa)
+        public async Task<string> AddFAQ(string questionEn, string questionUa, string answerEn, string answerUa)
         {
             try
             {
@@ -1074,7 +1068,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string DeleteContact(string id)
+        public async Task<string> DeleteContact(string id)
         {
             try
             {
@@ -1102,7 +1096,7 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
-        public string ChangePassword(string oldPassword, string newPassword)
+        public async Task<string> ChangePassword(string oldPassword, string newPassword)
         {
             try
             {

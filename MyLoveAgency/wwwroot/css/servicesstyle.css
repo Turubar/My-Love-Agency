@@ -49,12 +49,6 @@
     color: white;
 }
 
-.services-div:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-    color: #d7bd8a;
-}
-
 .services-inner-div {
     display: flex;
     flex-direction: column;
@@ -124,6 +118,21 @@
     line-height: 100%;
     margin-bottom: 0;
     margin-right: 15px;
+}
+
+@media (hover: hover) {
+    .services-div:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+        color: #d7bd8a;
+    }
+}
+
+@media (hover: none) {
+    .services-div:active {
+        cursor: pointer;
+        color: #d7bd8a;
+    }
 }
 
 @media (max-width: 1650px) {

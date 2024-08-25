@@ -18,9 +18,9 @@
 
         <div id="galleryImageContainer" class="col-12 gallery-image-container">
 
-            @if (DataClass.GalleryImages.Count() > 12)
+            @if (DataClass.GalleryImages.Count() > 6)
             {
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 6; i++)
                 {
                     <div class="gallery-image-div">
                         <img class="gallery-image" src="/data/gallery/@(DataClass.GalleryImages[i].Path)" alt="" />
@@ -39,7 +39,7 @@
 
         </div>
 
-        @if (DataClass.GalleryImages.Count() > 12)
+        @if (DataClass.GalleryImages.Count() > 6)
         {
             <div id="galleryBtnDiv" class="gallery-btn-div">
 
@@ -132,7 +132,7 @@
     }
 
     var galleryArray = @Html.Raw(Json.Serialize(DataClass.GalleryImages));
-    var pointer = 12;
+    var pointer = 6;
     var increment = 3;
 
     function loadMoreImages() {

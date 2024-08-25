@@ -526,7 +526,7 @@
     }
 
     function sendEmail(email, name) {
-        fetch("/Main/SendEmail?email=" + email, {
+        fetch("/Page/SendEmail?email=" + email, {
             method: 'POST'
         })
             .then((response) => response.text())
@@ -615,7 +615,7 @@
         var selectPackage = document.getElementById("packageSelect");
         var idPackage = selectPackage.value;
 
-        fetch("/Main/SendContactForm?codeEmail=" + code + "&name=" + name + "&phoneNumber=" + phone + "&email=" + email + "&communication=" + communication
+        fetch("/Page/SendContactForm?codeEmail=" + code + "&name=" + name + "&phoneNumber=" + phone + "&email=" + email + "&communication=" + communication
             + "&message=" + message + "&idService=" + idService + "&idPackage=" + idPackage, {
             method: 'POST'
         })
@@ -726,7 +726,7 @@
     }
 
     function acceptCookiesWR() {
-        fetch("/Main/AcceptCookiesWR?", {
+        fetch("/Page/AcceptCookiesWR?", {
             method: 'GET'
         })
             .then((response) => response.text())

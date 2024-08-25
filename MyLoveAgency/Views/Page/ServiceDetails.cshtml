@@ -12,6 +12,7 @@
     <div id="mp-banner" class="col-9 mp-banner">
 
         <div class="carousel" data-bs-touch="false">
+
             <div id="banner-carousel-div" class="carousel-inner" style="position: relative;">
 
                 <div class="big-title-div">
@@ -24,30 +25,30 @@
                             {
                                 if (ViewBag.SelectedType == "Datings")
                                 {
-                                                    <p class="banner-service-title">Romantic dates</p>
+                                        <p class="banner-service-title">Romantic dates</p>
                                 }
                                 else if (ViewBag.SelectedType == "Surprises")
                                 {
-                                                    <p class="banner-service-title">Romantic surprises</p>
+                                        <p class="banner-service-title">Romantic surprises</p>
                                 }
                                 else
                                 {
-                                                    <p class="banner-service-title">Proposals</p>
+                                        <p class="banner-service-title">Proposals</p>
                                 }
                             }
                             else
                             {
                                 if (ViewBag.SelectedType == "Datings")
                                 {
-                                                    <p class="banner-service-title">Романтичні побачення</p>
+                                        <p class="banner-service-title">Романтичні побачення</p>
                                 }
                                 else if (ViewBag.SelectedType == "Surprises")
                                 {
-                                                    <p class="banner-service-title">Романтичні сюрпризи</p>
+                                        <p class="banner-service-title">Романтичні сюрпризи</p>
                                 }
                                 else
                                 {
-                                                    <p class="banner-service-title">Пропозиції руки та серця</p>
+                                        <p class="banner-service-title">Пропозиції руки та серця</p>
                                 }
                             }
                         }
@@ -57,6 +58,7 @@
                 </div>
 
             </div>
+
         </div>
 
     </div>
@@ -103,17 +105,17 @@
                                 {
                                     if (i == 0)
                                     {
-                                                    <button type="button" data-bs-target="#carouselInnerContainer" data-bs-slide-to="@(i)" class="carousel-indicator carousel-indicator-btn active" aria-current="true"></button>
+                                            <button type="button" data-bs-target="#carouselInnerContainer" data-bs-slide-to="@(i)" class="carousel-indicator carousel-indicator-btn active" aria-current="true"></button>
                                     }
                                     else
                                     {
-                                                    <button type="button" data-bs-target="#carouselInnerContainer" data-bs-slide-to="@(i)" class="carousel-indicator carousel-indicator-btn"></button>
+                                            <button type="button" data-bs-target="#carouselInnerContainer" data-bs-slide-to="@(i)" class="carousel-indicator carousel-indicator-btn"></button>
                                     }
                                 }
                             }
                             else
                             {
-                                            <button type="button" data-bs-target="#carouselInnerContainer" data-bs-slide-to="0" class="carousel-indicator carousel-indicator-btn active" aria-current="true"></button>
+                                    <button type="button" data-bs-target="#carouselInnerContainer" data-bs-slide-to="0" class="carousel-indicator carousel-indicator-btn active" aria-current="true"></button>
                             }
                         }
                     </div>
@@ -130,12 +132,12 @@
                             {
                                 for (int i = 0; i < listImg.Count(); i++)
                                 {
-                                                    <img class="details-carousel-img" src="/data/services/@(listImg[i].Path)" alt="" />
+                                        <img class="details-carousel-img" src="/data/services/@(listImg[i].Path)" alt="" />
                                 }
                             }
                             else
                             {
-                                <img class="details-carousel-img" src="/data/no-image.png" alt="" />
+                                    <img class="details-carousel-img" src="/data/no-image.png" alt="" />
                             }
                         }
                     </div>
@@ -161,13 +163,13 @@
                     @if (Context.Request.Cookies["Language"] == "en")
                     {
                         <p class="details-price-p">Price: start to @service.PriceZloty</p>
-                        <a asp-controller="Main" asp-action="Contact" asp-route-selectedData="@ViewBag.IdService" class="btn btn-success details-btn-contact" style="width: 100%;">Choose a service</a>
-                        
+                        <a asp-controller="Page" asp-action="Contact" asp-route-selectedData="@ViewBag.IdService" class="btn details-btn-contact" style="width: 100%;">Choose a service</a>
+
                     }
                     else
                     {
                         <p class="details-price-p">Вартість: від @service.PriceZloty</p>
-                        <a asp-controller="Main" asp-action="Contact" asp-route-selectedData="@ViewBag.IdService" class="btn btn-success details-btn-contact" style="width: 100%;">Вибрати послугу</a>
+                        <a asp-controller="Page" asp-action="Contact" asp-route-selectedData="@ViewBag.IdService" class="btn details-btn-contact" style="width: 100%;">Вибрати послугу</a>
                     }
 
                 </div>
@@ -211,7 +213,7 @@
                             <p class="package-details-p">Подробиці</p>
                         }
 
-                        @for (int j = 0; j < details?.Count();  j++)
+                        @for (int j = 0; j < details?.Count(); j++)
                         {
                             <p class="package-description-p">@details[j]</p>
                         }
@@ -234,11 +236,11 @@
                     <div class="col-12 package-third-div">
                         @if (Context.Request.Cookies["Language"] == "en")
                         {
-                            <a asp-controller="Main" asp-action="Contact" asp-route-selectedData="@(ViewBag.IdService)|@(packages[i].Id)" class="btn btn-success details-btn-package">Choose a package</a>
+                            <a asp-controller="Page" asp-action="Contact" asp-route-selectedData="@(ViewBag.IdService)|@(packages[i].Id)" class="btn btn-success details-btn-package">Choose a package</a>
                         }
                         else
                         {
-                            <a asp-controller="Main" asp-action="Contact" asp-route-selectedData="@(ViewBag.IdService)|@(packages[i].Id)" class="btn btn-success details-btn-package">Вибрати пакет</a>
+                            <a asp-controller="Page" asp-action="Contact" asp-route-selectedData="@(ViewBag.IdService)|@(packages[i].Id)" class="btn btn-success details-btn-package">Вибрати пакет</a>
                         }
                     </div>
 
@@ -463,19 +465,22 @@
         }
         else {
             for (var i = 0; i < arrayImg.length; i++) {
-                    arrayImg[i].style.display = "block";
-                    arrayImg[i].style.height = arrayImg[i].offsetWidth + "px";
+                arrayImg[i].style.display = "block";
+                arrayImg[i].style.height = arrayImg[i].offsetWidth + "px";
             }
         }
     }
 
     function carouselOver(side) {
-        if (side == 0) {
-            document.getElementsByClassName("details-btn-img")[0].src = "/data/arrow_left_color.png";
-        }
+        var media = window.matchMedia('(hover: hover)');
+        if (media.matches) {
+            if (side == 0) {
+                document.getElementsByClassName("details-btn-img")[0].src = "/data/arrow_left_color.png";
+            }
 
-        if (side == 1) {
-            document.getElementsByClassName("details-btn-img")[1].src = "/data/arrow_right_color.png";
+            if (side == 1) {
+                document.getElementsByClassName("details-btn-img")[1].src = "/data/arrow_right_color.png";
+            }
         }
     }
 
