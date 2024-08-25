@@ -15,7 +15,7 @@ namespace MyLoveAgency.Models
                 if (File.Exists(DataClass.pathToPasswordFile))
                 {
                     string data = File.ReadAllText(DataClass.pathToPasswordFile);
-                    if (data.Length < 6 || data.Length > 25) throw new Exception("Invalid password length!");
+                    if (data.Length <= 10 || data.Length > 32) throw new Exception("Invalid password length!");
 
                     DataClass.password = data;
                     return true;

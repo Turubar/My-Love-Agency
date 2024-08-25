@@ -15,11 +15,11 @@
                         @{
                             if (Context.Request.Cookies["Language"] == "en")
                             {
-                                                <p class="banner-title">@Html.Raw(HomeModelEnglish.slogan)</p>
+                                <p class="banner-title">@Html.Raw(HomeModelEnglish.slogan)</p>
                             }
                             else
                             {
-                                                <p class="banner-title">@Html.Raw(HomeModelUkrainian.slogan)</p>
+                                <p class="banner-title">@Html.Raw(HomeModelUkrainian.slogan)</p>
                             }
                         }
                     </div>
@@ -39,11 +39,11 @@
                 @{
                     if (Context.Request.Cookies["Language"] == "en")
                     {
-                                        <p class="about-title">About Us</p>
+                        <p class="about-title">About Us</p>
                     }
                     else
                     {
-                                        <p class="about-title">Про нас</p>
+                        <p class="about-title">Про нас</p>
                     }
                 }
             </div>
@@ -53,11 +53,11 @@
                 @{
                     if (Context.Request.Cookies["Language"] == "en")
                     {
-                                        <p class="about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
+                        <p class="about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
                     }
                     else
                     {
-                                        <p class="about-text">@Html.Raw(HomeModelUkrainian.aboutUsText)</p>
+                        <p class="about-text">@Html.Raw(HomeModelUkrainian.aboutUsText)</p>
                     }
                 }
             </div>
@@ -76,11 +76,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                                    <p class="services-title">Services</p>
+                    <p class="services-title">Services</p>
                 }
                 else
                 {
-                                    <p class="services-title">Послуги</p>
+                    <p class="services-title">Послуги</p>
                 }
             }
         </div>
@@ -143,11 +143,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                                    <p class="advantages-big-title">Our Advantages</p>
+                    <p class="advantages-big-title">Our Advantages</p>
                 }
                 else
                 {
-                                    <p class="advantages-big-title">Наші Переваги</p>
+                    <p class="advantages-big-title">Наші Переваги</p>
                 }
             }
         </div>
@@ -167,16 +167,16 @@
                         {
                             for (int i = 0; i < HomeModelEnglish.advantageTitle.Count; i++)
                             {
-                                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelEnglish.advantageTitle[i]</p></div>
-                                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelEnglish.advantageText[i]</p></div>
+                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelEnglish.advantageTitle[i]</p></div>
+                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelEnglish.advantageText[i]</p></div>
                             }
                         }
                         else
                         {
                             for (int i = 0; i < HomeModelUkrainian.advantageTitle.Count; i++)
                             {
-                                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelUkrainian.advantageTitle[i]</p></div>
-                                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelUkrainian.advantageText[i]</p></div>
+                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelUkrainian.advantageTitle[i]</p></div>
+                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelUkrainian.advantageText[i]</p></div>
                             }
                         }
                     }
@@ -191,7 +191,7 @@
                     <div><img class="advantages-img" src="/data/mainpage/advantages/6.png" alt="" /></div>
                 </div>
             </div>
-            
+
 
             <div class="col-1 advantages-btn-div">
                 <button class="advantages-btn" type="button" onclick="changeAdvantage(1)" onmouseover="advantagesOver(1)" onmouseout="advantagesOut(1)">
@@ -208,11 +208,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                                    <p class="stages-big-title">Stages of organization</p>
+                    <p class="stages-big-title">Stages of organization</p>
                 }
                 else
                 {
-                                    <p class="stages-big-title">Стадії організації</p>
+                    <p class="stages-big-title">Стадії організації</p>
                 }
             }
         </div>
@@ -229,32 +229,32 @@
                     {
                         for (int i = 0; i < HomeModelEnglish.stageTitle.Count; i++)
                         {
-                                            <div class="col-12 stages-div">
-                                                <div style="display: flex; align-items: center;">
-                                                    <div><p class="stages-index">@(i + 1)</p></div>
-                                                </div>
+                            <div class="col-12 stages-div">
+                                <div style="display: flex; align-items: center;">
+                                    <div><p class="stages-index">@(i + 1)</p></div>
+                                </div>
 
-                                                <div class="stages-text-div">
-                                                    <p class="stages-title">@HomeModelEnglish.stageTitle[i]</p>
-                                                    <p class="stages-text">@HomeModelEnglish.stageText[i]</p>
-                                                </div>
-                                            </div>
+                                <div class="stages-text-div">
+                                    <p class="stages-title">@HomeModelEnglish.stageTitle[i]</p>
+                                    <p class="stages-text">@HomeModelEnglish.stageText[i]</p>
+                                </div>
+                            </div>
                         }
                     }
                     else
                     {
                         for (int i = 0; i < HomeModelUkrainian.stageTitle.Count; i++)
                         {
-                                            <div class="col-12 stages-div">
-                                                <div>
-                                                    <p class="stages-index">@(i + 1)</p>
-                                                </div>
+                            <div class="col-12 stages-div">
+                                <div>
+                                    <p class="stages-index">@(i + 1)</p>
+                                </div>
 
-                                                <div class="stages-text-div">
-                                                    <p class="stages-title">@HomeModelUkrainian.stageTitle[i]</p>
-                                                    <p class="stages-text">@HomeModelUkrainian.stageText[i]</p>
-                                                </div>
-                                            </div>
+                                <div class="stages-text-div">
+                                    <p class="stages-title">@HomeModelUkrainian.stageTitle[i]</p>
+                                    <p class="stages-text">@HomeModelUkrainian.stageText[i]</p>
+                                </div>
+                            </div>
                         }
                     }
                 }
@@ -268,18 +268,18 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                                    <p class="gallery-big-title">Gallery</p>
+                    <p class="gallery-big-title">Gallery</p>
                 }
                 else
                 {
-                                    <p class="gallery-big-title">Галерея</p>
+                    <p class="gallery-big-title">Галерея</p>
                 }
             }
         </div>
 
         <div class="col-12">
             <div class="row gallery-row">
-                
+
                 <div class="col-4 mp-gallery-img-div">
                     <img class="gallery-img" src="/data/mainpage/gallery/1.jpg" alt="" />
                 </div>
@@ -291,7 +291,7 @@
                 <div class="col-4 mp-gallery-img-div">
                     <img class="gallery-img" src="/data/mainpage/gallery/3.jpg" alt="" />
                 </div>
-                
+
                 <div class="col-4 mp-gallery-img-div">
                     <img class="gallery-img" src="/data/mainpage/gallery/4.jpg" alt="" />
                 </div>
@@ -304,7 +304,7 @@
                     <img class="gallery-img" src="/data/mainpage/gallery/6.jpg" alt="" />
                 </div>
 
-                
+
             </div>
         </div>
 
@@ -337,11 +337,11 @@
             @{
                 if (Context.Request.Cookies["Language"] == "en")
                 {
-                                    <p class="feedback-big-title">Feedback</p>
+                    <p class="feedback-big-title">Feedback</p>
                 }
                 else
                 {
-                                    <p class="feedback-big-title">Відгуки</p>
+                    <p class="feedback-big-title">Відгуки</p>
                 }
             }
         </div>
@@ -373,14 +373,14 @@
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
                                 {
-                                                    <p class="feedback-title">@HomeModelEnglish.feedbackTitle[i]</p>
+                                    <p class="feedback-title">@HomeModelEnglish.feedbackTitle[i]</p>
                                 }
                             }
                             else
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
                                 {
-                                                    <p class="feedback-title">@HomeModelUkrainian.feedbackTitle[i]</p>
+                                    <p class="feedback-title">@HomeModelUkrainian.feedbackTitle[i]</p>
                                 }
                             }
                         }
@@ -392,14 +392,14 @@
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
                                 {
-                                                    <p class="feedback-text">@HomeModelEnglish.feedbackText[i]</p>
+                                    <p class="feedback-text">@HomeModelEnglish.feedbackText[i]</p>
                                 }
                             }
                             else
                             {
                                 for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
                                 {
-                                                    <p class="feedback-text">@HomeModelUkrainian.feedbackText[i]</p>
+                                    <p class="feedback-text">@HomeModelUkrainian.feedbackText[i]</p>
                                 }
                             }
                         }
@@ -523,7 +523,7 @@
         else {
             var windowInnerHeight = document.documentElement.clientHeight;
             var heightHeader = document.getElementById("header").offsetHeight;
-            
+
             var notification = document.getElementById("cookies-notification");
             var heightNotification = 0;
             if (notification != null) heightNotification = notification.offsetHeight;

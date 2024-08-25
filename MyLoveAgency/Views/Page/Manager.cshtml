@@ -357,7 +357,7 @@
 
         <div class="collapse collapse-gallery-div" id="collapseGallery">
             <div>
-                <form id="imageGalleryForm" asp-controller="Page" asp-action="AddImageGallery" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                <form id="imageGalleryForm" asp-controller="API" asp-action="AddImageGallery" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
                     <button id="addImageGalleryBtn" type="submit" class="btn btn-success" onclick="selectImageGallery()" style="width: 200px; margin-bottom: 15px;">Добавить</button>
                     <input id="addImageGalleryInput" name="imageGalleryInput" type="file" class="form-control" hidden onchange="loadImageGallery()" />
                 </form>
@@ -719,7 +719,7 @@
         var isDelete = confirm("Удалить изображение №" + number);
 
         if (isDelete) {
-            fetch("/Page/DeleteImageService?idService=" + idService + "&number=" + number, {
+            fetch("/API/DeleteImageService?idService=" + idService + "&number=" + number, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -847,7 +847,7 @@
             return;
         }
 
-        fetch("/Page/AddPackageService?idService=" + idService + "&name=" + stringName + "&price=" + stringPrice + "&durationEn=" +
+        fetch("/API/AddPackageService?idService=" + idService + "&name=" + stringName + "&price=" + stringPrice + "&durationEn=" +
             stringDurationEn + "&durationUa=" + stringDurationUa + "&descriptionEn=" + stringDescEn + "&descriptionUa=" + stringDescUa, {
             method: 'POST'
         })
@@ -894,7 +894,7 @@
         var serviceName = prompt("Введите название пакета, который хотите удалить:", "");
 
         if (serviceName != null && serviceName != "") {
-            fetch("/Page/DeletePackageService?idService=" + idService + "&name=" + serviceName, {
+            fetch("/API/DeletePackageService?idService=" + idService + "&name=" + serviceName, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -935,7 +935,7 @@
             var inputNumber = prompt("Услуга имеет [" + packageArray.length + "] пакет(а/ов), которые также будут удалены!\nВведите код [" + confirmNumber + "] для подтверждения удаления:", "");
 
             if (inputNumber == confirmNumber) {
-                fetch("/Page/DeleteService?idService=" + idService, {
+                fetch("/API/DeleteService?idService=" + idService, {
                     method: 'POST'
                 })
                     .then((response) => response.text())
@@ -1048,7 +1048,7 @@
             }
 
 
-            fetch("/Page/UpdateServiceAndPackages?idService=" + idService + "&idType=" + idType + "&nameEn=" + nameEn + "&nameUa=" + nameUa + "&price=" + priceService + "&descriptionEn=" +
+            fetch("/API/UpdateServiceAndPackages?idService=" + idService + "&idType=" + idType + "&nameEn=" + nameEn + "&nameUa=" + nameUa + "&price=" + priceService + "&descriptionEn=" +
                 descriptionServiceEn + "&descriptionUa=" + descriptionServiceUa + stringPackages, {
                 method: 'POST',
                 headers: {
@@ -1084,7 +1084,7 @@
             return;
         }
 
-        fetch("/Page/AddService?nameEn=" + nameEn + "&nameUa=" + nameUa + "&price=" + price + "&idType=" + type + "&descriptionEn=" + descriptionEn + "&descriptionUa=" + descriptionUa, {
+        fetch("/API/AddService?nameEn=" + nameEn + "&nameUa=" + nameUa + "&price=" + price + "&idType=" + type + "&descriptionEn=" + descriptionEn + "&descriptionUa=" + descriptionUa, {
             method: 'POST'
         })
             .then((response) => response.text())
@@ -1124,7 +1124,7 @@
             var form = document.getElementById("imageGalleryForm")
             var formData = new FormData(form);
 
-            fetch("/Page/AddImageGallery", {
+            fetch("/API/AddImageGallery", {
                 method: 'POST',
                 body: formData
             })
@@ -1192,7 +1192,7 @@
         var isDelete = confirm("Удалить фотографию №" + number + "?");
 
         if (isDelete) {
-            fetch("/Page/DeleteImageGallery?idImage=" + id, {
+            fetch("/API/DeleteImageGallery?idImage=" + id, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -1246,7 +1246,7 @@
         if (oldNumber == newNumber) return;
 
         if (isCorrect) {
-            fetch("/Page/ChangeImageGallery?oldId=" + oldId + "&newId=" + newId, {
+            fetch("/API/ChangeImageGallery?oldId=" + oldId + "&newId=" + newId, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -1290,7 +1290,7 @@
         var answerUa = document.getElementById("faqAnswerUa" + id).value.replace(/\s+/g, ' ').trim();
 
         if (questionEn.length > 0 && questionUa.length > 0 && answerEn.length > 0 && answerUa.length > 0) {
-            fetch("/Page/UpdateFAQ?id=" + id + "&questionEn=" + questionEn + "&questionUa=" + questionUa + "&answerEn=" + answerEn + "&answerUa=" + answerUa, {
+            fetch("/API/UpdateFAQ?id=" + id + "&questionEn=" + questionEn + "&questionUa=" + questionUa + "&answerEn=" + answerEn + "&answerUa=" + answerUa, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -1318,7 +1318,7 @@
 
         var isDelete = confirm("Удалить вопрос/ответ (FAQ)?");
         if (isDelete) {
-            fetch("/Page/DeleteFAQ?id=" + id, {
+            fetch("/API/DeleteFAQ?id=" + id, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -1340,7 +1340,7 @@
         var answerUa = document.getElementById("faqAnswerUaTemplate").value.replace(/\s+/g, ' ').trim();
 
         if (questionEn.length > 0 && questionUa.length > 0 && answerEn.length > 0 && answerUa.length > 0) {
-            fetch("/Page/AddFAQ?questionEn=" + questionEn + "&questionUa=" + questionUa + "&answerEn=" + answerEn + "&answerUa=" + answerUa, {
+            fetch("/API/AddFAQ?questionEn=" + questionEn + "&questionUa=" + questionUa + "&answerEn=" + answerEn + "&answerUa=" + answerUa, {
                 method: 'POST'
             })
                 .then((response) => response.text())
@@ -1404,7 +1404,7 @@
             var result = confirm("Удалить эту заявку?");
 
             if (result) {
-                fetch("/Page/DeleteContact?id=" + idContact, {
+                fetch("/API/DeleteContact?id=" + idContact, {
                     method: 'POST'
                 })
                     .then((response) => response.text())
@@ -1426,7 +1426,7 @@
             var oldPassword = prompt("Для подтверждения смены пароля, введите текущий пароль!", "");
 
             if (oldPassword != null && oldPassword != undefined) {
-                fetch("/Page/ChangePassword?oldPassword=" + oldPassword + "&newPassword=" + newPassword, {
+                fetch("/API/ChangePassword?oldPassword=" + oldPassword + "&newPassword=" + newPassword, {
                     method: 'POST'
                 })
                     .then((response) => response.text())
@@ -1445,7 +1445,7 @@
             }
         }
         else {
-            alert("Длина пароля должна быть манимум от 10 и максимум до 32 символов!");
+            alert("Длина пароля должна быть минимум от 10 и максимум до 32 символов!");
         }
     }
 

@@ -18,21 +18,46 @@ namespace MyLoveAgency
             try
             {
                 var builder = WebApplication.CreateBuilder(args);
+
+                DataClass.connectionString = builder.Configuration.GetConnectionString("Database");
+
                 builder.Services.AddTransient<LovelyLoveDbContext>();
 
-
-                if (!ServiceClass.GetPassword()) throw new Exception("The password could not be set!");
-
-                if (ServiceClass.GetMailing() <= 0) throw new Exception("The mailing data was not set!");
-
-                if (!ServiceClass.GetEmailForNotifications()) throw new Exception("The email for notifications was not set!");
-
-                // Чтение данных из таблицы Localization, заполнение буферных массивов
-                try
+                builder.Services.AddControllers().AddJsonOptions(options =>
                 {
-                    using (var context = new LovelyLoveDbContext())
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                });
+                builder.Services.AddMvc();
+
+                builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+                {
+                    options.AccessDeniedPath = "/Page/Home/";
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.MaxAge = TimeSpan.FromDays(7);
+                });
+                builder.Services.AddAuthorization();
+
+                builder.WebHost.ConfigureKestrel(options =>
+                {
+                    options.Limits.MaxRequestLineSize = 100000;
+                });
+
+                var app = builder.Build();
+
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<LovelyLoveDbContext>();
+
+                    if (!ServiceClass.GetPassword()) throw new Exception("The password could not be set!");
+
+                    if (ServiceClass.GetMailing() <= 0) throw new Exception("The mailing data was not set!");
+
+                    if (!ServiceClass.GetEmailForNotifications()) throw new Exception("The email for notifications was not set!");
+
+                    // Чтение данных из таблицы Localization, заполнение буферных массивов
+                    try
                     {
-                        var localizationTable = context.Localizations.ToList();
+                        var localizationTable = dbContext.Localizations.ToList();
 
                         var slogan = localizationTable.Where(x => x.Name == "Slogan").ToList();
                         HomeModelEnglish.slogan = slogan[0]?.En?.ToString();
@@ -83,52 +108,30 @@ namespace MyLoveAgency
                             HomeModelEnglish.feedbackText.Add(text?.En?.ToString());
                             HomeModelUkrainian.feedbackText.Add(text?.Ua?.ToString());
                         }
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Data could not be read from the Localization table!\r\n" + e);
-                }
 
-                // Чтение данных из таблиц, заполнение буферных массивов
-                try
-                {
-                    using (var context = new LovelyLoveDbContext())
+                        dbContext.Dispose();
+                    }
+                    catch (Exception e)
                     {
-                        DataClass.TypeService = context.TypeServices.ToList();
-                        DataClass.Services = context.Services.ToList();
-                        DataClass.Packages = context.PackageServices.ToList();
-                        DataClass.ServiceImages = context.StorageImageServices.ToList();
-                        DataClass.GalleryImages = context.StorageImageGalleries.ToList();
-                        DataClass.FAQ = context.Faqs.ToList();
-                        DataClass.Contacts = context.Contacts.Take(500).ToList();
+                        throw new Exception("Data could not be read from the Localization table!\r\n" + e);
+                    }
+
+                    // Чтение данных из таблиц, заполнение буферных массивов
+                    try
+                    {
+                        DataClass.TypeService = dbContext.TypeServices.ToList();
+                        DataClass.Services = dbContext.Services.ToList();
+                        DataClass.Packages = dbContext.PackageServices.ToList();
+                        DataClass.ServiceImages = dbContext.StorageImageServices.ToList();
+                        DataClass.GalleryImages = dbContext.StorageImageGalleries.ToList();
+                        DataClass.FAQ = dbContext.Faqs.ToList();
+                        DataClass.Contacts = dbContext.Contacts.Take(500).ToList();
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception("Data could not be read from the Service table!\r\n" + e);
                     }
                 }
-                catch (Exception e)
-                {
-                    throw new Exception("Data could not be read from the Service table!\r\n" + e);
-                }
-
-                builder.Services.AddControllers().AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-                });
-                builder.Services.AddMvc();
-
-                builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-                {
-                    options.AccessDeniedPath = "/Page/Home/";
-                    options.Cookie.HttpOnly = true;
-                    options.Cookie.MaxAge = TimeSpan.FromDays(7);
-                });
-                builder.Services.AddAuthorization();
-
-                builder.WebHost.ConfigureKestrel(options =>
-                {
-                    options.Limits.MaxRequestLineSize = 100000;
-                });
-
-                var app = builder.Build();
 
                 app.UseStaticFiles();
                 app.UseRouting();

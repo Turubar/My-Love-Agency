@@ -1,4 +1,5 @@
 ﻿using MyLoveAgency.Models.Database;
+using Microsoft.Extensions.Configuration;
 
 namespace MyLoveAgency.Models
 {
@@ -26,7 +27,7 @@ namespace MyLoveAgency.Models
         public static string pathToLogFile = "wwwroot/data/logs.txt";
 
         // Строка подключения к базе данных
-        public static string connectionString = "Data Source=DESKTOP-2U1B2GA\\SQLEXPRESS;Initial Catalog=LovelyLoveDB;Integrated Security=True;Encrypt=False;TrustServerCertificate=False;";
+        public static string? connectionString = "";
 
         // Массивы с контентом
         public static List<TypeService> TypeService = new List<TypeService>();
