@@ -2,12 +2,13 @@
 using MyLoveAgency.Models.Database;
 using MyLoveAgency.Models;
 using Microsoft.EntityFrameworkCore;
+using MyLoveAgency.Application;
 
 namespace MyLoveAgency.Controllers
 {
     public class APIController : Controller
     {
-        private LovelyLoveDbContext _dbContext;
+        private readonly LovelyLoveDbContext _dbContext;
 
         public APIController(LovelyLoveDbContext dbContext)
         {
@@ -703,7 +704,7 @@ namespace MyLoveAgency.Controllers
         #region Изменить пароль
 
         [HttpPost]
-        public async Task<string> ChangePassword(string oldPassword, string newPassword)
+        public string ChangePassword(string oldPassword, string newPassword)
         {
             try
             {

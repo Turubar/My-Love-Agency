@@ -17,6 +17,10 @@
                             {
                                 <p class="banner-title">@Html.Raw(HomeModelEnglish.slogan)</p>
                             }
+                            else if (Context.Request.Cookies["Language"] == "pl")
+                            {
+                                <p class="banner-title">@Html.Raw(HomeModelPoland.slogan)</p>
+                            }
                             else
                             {
                                 <p class="banner-title">@Html.Raw(HomeModelUkrainian.slogan)</p>
@@ -54,6 +58,10 @@
                     if (Context.Request.Cookies["Language"] == "en")
                     {
                         <p class="about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <p class="about-text">@Html.Raw(HomeModelPoland.aboutUsText)</p>
                     }
                     else
                     {
@@ -171,6 +179,14 @@
                                 <div class="advantages-text-div"><p class="advantages-text">@HomeModelEnglish.advantageText[i]</p></div>
                             }
                         }
+                        else if (Context.Request.Cookies["Language"] == "pl")
+                        {
+                            for (int i = 0; i < HomeModelEnglish.advantageTitle.Count; i++)
+                            {
+                                <div class="advantages-title-div"><p class="advantages-title">@HomeModelPoland.advantageTitle[i]</p></div>
+                                <div class="advantages-text-div"><p class="advantages-text">@HomeModelPoland.advantageText[i]</p></div>
+                            }
+                        }
                         else
                         {
                             for (int i = 0; i < HomeModelUkrainian.advantageTitle.Count; i++)
@@ -237,6 +253,22 @@
                                 <div class="stages-text-div">
                                     <p class="stages-title">@HomeModelEnglish.stageTitle[i]</p>
                                     <p class="stages-text">@HomeModelEnglish.stageText[i]</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        for (int i = 0; i < HomeModelEnglish.stageTitle.Count; i++)
+                        {
+                            <div class="col-12 stages-div">
+                                <div style="display: flex; align-items: center;">
+                                    <div><p class="stages-index">@(i + 1)</p></div>
+                                </div>
+
+                                <div class="stages-text-div">
+                                    <p class="stages-title">@HomeModelPoland.stageTitle[i]</p>
+                                    <p class="stages-text">@HomeModelPoland.stageText[i]</p>
                                 </div>
                             </div>
                         }
@@ -376,9 +408,16 @@
                                     <p class="feedback-title">@HomeModelEnglish.feedbackTitle[i]</p>
                                 }
                             }
+                            else if (Context.Request.Cookies["Language"] == "pl")
+                            {
+                                for (int i = 0; i < HomeModelPoland.feedbackTitle.Count; i++)
+                                {
+                                    <p class="feedback-title">@HomeModelPoland.feedbackTitle[i]</p>
+                                }
+                            }
                             else
                             {
-                                for (int i = 0; i < HomeModelEnglish.feedbackTitle.Count; i++)
+                                for (int i = 0; i < HomeModelUkrainian.feedbackTitle.Count; i++)
                                 {
                                     <p class="feedback-title">@HomeModelUkrainian.feedbackTitle[i]</p>
                                 }
@@ -395,9 +434,16 @@
                                     <p class="feedback-text">@HomeModelEnglish.feedbackText[i]</p>
                                 }
                             }
+                            else if (Context.Request.Cookies["Language"] == "pl")
+                            {
+                                for (int i = 0; i < HomeModelPoland.feedbackText.Count; i++)
+                                {
+                                    <p class="feedback-text">@HomeModelPoland.feedbackText[i]</p>
+                                }
+                            }
                             else
                             {
-                                for (int i = 0; i < HomeModelEnglish.feedbackText.Count; i++)
+                                for (int i = 0; i < HomeModelUkrainian.feedbackText.Count; i++)
                                 {
                                     <p class="feedback-text">@HomeModelUkrainian.feedbackText[i]</p>
                                 }

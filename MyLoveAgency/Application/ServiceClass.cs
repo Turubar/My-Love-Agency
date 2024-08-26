@@ -3,8 +3,9 @@ using MailKit.Net.Smtp;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
+using MyLoveAgency.Models;
 
-namespace MyLoveAgency.Models
+namespace MyLoveAgency.Application
 {
     public static class ServiceClass
     {
@@ -135,7 +136,7 @@ namespace MyLoveAgency.Models
             }
             catch
             {
-                
+
             }
         }
     }

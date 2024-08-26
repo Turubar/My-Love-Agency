@@ -95,3 +95,118 @@ System.InvalidOperationException: The ConnectionString property has not been ini
    at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 112
 
 Запуск приложения! Время: 26.08.2024 2:30:33
+Запуск приложения! Время: 26.08.2024 2:42:46
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 2:42:46
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 45
+
+Запуск приложения! Время: 26.08.2024 2:45:15
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 2:45:15
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 45
+
+Запуск приложения! Время: 26.08.2024 2:51:37
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 2:51:37
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 45
+
+Запуск приложения! Время: 26.08.2024 3:10:51
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:10:55
+Информация: System.Exception: Data could not be read from the Service table!
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'LovelyLoveDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_Model()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Collections.Generic.IEnumerable<TEntity>.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 130
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 140
+
+Запуск приложения! Время: 26.08.2024 3:11:15
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:11:18
+Информация: System.Exception: Data could not be read from the Service table!
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'LovelyLoveDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_Model()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Collections.Generic.IEnumerable<TEntity>.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 130
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 140
+
+Запуск приложения! Время: 26.08.2024 3:11:32
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:11:36
+Информация: System.Exception: Data could not be read from the Service table!
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'LovelyLoveDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_Model()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Collections.Generic.IEnumerable<TEntity>.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 130
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 140
+
+Запуск приложения! Время: 26.08.2024 3:11:46
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:11:50
+Информация: System.Exception: Data could not be read from the Service table!
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'LovelyLoveDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_Model()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Collections.Generic.IEnumerable<TEntity>.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 130
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 140
+
+Запуск приложения! Время: 26.08.2024 3:12:09
+Запуск приложения! Время: 26.08.2024 3:12:33
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:12:37
+Информация: System.Exception: Data could not be read from the Service table!
+System.ObjectDisposedException: Cannot access a disposed context instance. A common cause of this error is disposing a context instance that was resolved from dependency injection and then later trying to use the same context instance elsewhere in your application. This may occur if you are calling 'Dispose' on the context instance, or wrapping it in a using statement. If you are using dependency injection, you should let the dependency injection container take care of disposing context instances.
+Object name: 'LovelyLoveDbContext'.
+   at Microsoft.EntityFrameworkCore.DbContext.CheckDisposed()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_Model()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityType()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.get_EntityQueryable()
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.System.Collections.Generic.IEnumerable<TEntity>.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 130
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 140
+
+Запуск приложения! Время: 26.08.2024 3:13:52
+Запуск приложения! Время: 26.08.2024 3:26:45
+Новая контактная форма! Время: 26.08.2024 3:27:53
+Запуск приложения! Время: 26.08.2024 3:32:13

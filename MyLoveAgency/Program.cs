@@ -6,6 +6,7 @@ using MyLoveAgency.Models.Database;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System;
+using MyLoveAgency.Application;
 
 namespace MyLoveAgency
 {
@@ -62,16 +63,19 @@ namespace MyLoveAgency
                         var slogan = localizationTable.Where(x => x.Name == "Slogan").ToList();
                         HomeModelEnglish.slogan = slogan[0]?.En?.ToString();
                         HomeModelUkrainian.slogan = slogan[0]?.Ua?.ToString();
+                        HomeModelPoland.slogan = slogan[0]?.Pl?.ToString();
 
                         var aboutUs = localizationTable.Where(x => x.Name == "About_us").ToList();
                         HomeModelEnglish.aboutUsText = aboutUs[0]?.En?.ToString();
                         HomeModelUkrainian.aboutUsText = aboutUs[0]?.Ua?.ToString();
+                        HomeModelPoland.aboutUsText = aboutUs[0]?.Pl?.ToString();
 
                         var advantagesTitle = localizationTable.Where(x => x.Name.Contains("Advantage_title")).ToList();
                         foreach (var title in advantagesTitle)
                         {
                             HomeModelEnglish.advantageTitle.Add(title?.En?.ToString());
                             HomeModelUkrainian.advantageTitle.Add(title?.Ua?.ToString());
+                            HomeModelPoland.advantageTitle.Add(title?.Pl?.ToString());
                         }
 
                         var advantagesText = localizationTable.Where(x => x.Name.Contains("Advantage_text")).ToList();
@@ -79,6 +83,7 @@ namespace MyLoveAgency
                         {
                             HomeModelEnglish.advantageText.Add(text?.En?.ToString());
                             HomeModelUkrainian.advantageText.Add(text?.Ua?.ToString());
+                            HomeModelPoland.advantageText.Add(text?.Pl?.ToString());
                         }
 
                         var stagesTitle = localizationTable.Where(x => x.Name.Contains("SO_title")).ToList();
@@ -86,6 +91,7 @@ namespace MyLoveAgency
                         {
                             HomeModelEnglish.stageTitle.Add(title?.En?.ToString());
                             HomeModelUkrainian.stageTitle.Add(title?.Ua?.ToString());
+                            HomeModelPoland.stageTitle.Add(title?.Pl?.ToString());
                         }
 
                         var stagesText = localizationTable.Where(x => x.Name.Contains("SO_text")).ToList();
@@ -93,6 +99,7 @@ namespace MyLoveAgency
                         {
                             HomeModelEnglish.stageText.Add(text?.En?.ToString());
                             HomeModelUkrainian.stageText.Add(text?.Ua?.ToString());
+                            HomeModelPoland.stageText.Add(text?.Pl?.ToString());
                         }
 
                         var feedbackTitle = localizationTable.Where(x => x.Name.Contains("Feedback_title")).ToList();
@@ -100,6 +107,7 @@ namespace MyLoveAgency
                         {
                             HomeModelEnglish.feedbackTitle.Add(title?.En?.ToString());
                             HomeModelUkrainian.feedbackTitle.Add(title?.Ua?.ToString());
+                            HomeModelPoland.feedbackTitle.Add(title?.Pl?.ToString());
                         }
 
                         var feedbackText = localizationTable.Where(x => x.Name.Contains("Feedback_text")).ToList();
@@ -107,9 +115,8 @@ namespace MyLoveAgency
                         {
                             HomeModelEnglish.feedbackText.Add(text?.En?.ToString());
                             HomeModelUkrainian.feedbackText.Add(text?.Ua?.ToString());
+                            HomeModelPoland.feedbackText.Add(text?.Pl?.ToString());
                         }
-
-                        dbContext.Dispose();
                     }
                     catch (Exception e)
                     {
