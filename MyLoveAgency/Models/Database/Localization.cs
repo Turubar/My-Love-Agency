@@ -5,7 +5,7 @@ namespace MyLoveAgency.Models.Database;
 
 public partial class Localization
 {
-    public string Name { get; set; } = string.Empty;
+    public string? Name { get; set; }
 
     public string? En { get; set; }
 

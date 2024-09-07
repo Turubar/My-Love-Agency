@@ -1,37 +1,37 @@
 ﻿@{
     if (Context.Request.Cookies["UseCookies"] != "true")
     {
-    <style>
-                .footer {
-                    margin-bottom: 60px;
-                }
-    </style>
+        <style>
+            .footer {
+                margin-bottom: 60px;
+            }
+        </style>
     }
 }
 
 <div id="mainFooter" class="col-12 footer">
 
     <div class="col-4 footer-logo-div">
-        <img class="footer-logo" src="/data/footer_logo.png" alt="" />
+        <img class="footer-logo" src="/data/new_logo_footer.png" alt="" />
     </div>
 
     <div class="col-4 footer-social">
         <div class="footer-center-div">
             <div class="">
-                <a href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="footer-social-img footer-social-facebook" src="/data/facebook.png" alt="" onmouseover="facebookOver()" onmouseout="facebookOut()" /></a>
+                <a href="https://www.facebook.com/share/w9q92tYN9bfFR9mW/?mibextid=%22%22" target="_blank"><img class="footer-social-img footer-social-facebook" src="/data/facebook_footer.png" alt="" onmouseover="facebookOver()" onmouseout="facebookOut()" /></a>
             </div>
 
             <div class="">
-                <a href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="footer-social-img footer-instagram footer-social-instagram" src="/data/instagram.png" alt="" onmouseover="instagramOver()" onmouseout="instagramOut()" /></a>
+                <a href="https://www.instagram.com/lovely.love.agency/" target="_blank"><img class="footer-social-img footer-instagram footer-social-instagram" src="/data/instagram_footer.png" alt="" onmouseover="instagramOver()" onmouseout="instagramOut()" /></a>
             </div>
 
             <div class="">
-                <a href="https://t.me/valery_moshchenskaya" target="_blank"><img class="footer-social-img footer-social-telegram" src="/data/telegram.png" alt="" onmouseover="telegramOver()" onmouseout="telegramOut()" /></a>
+                <a href="https://t.me/valery_moshchenskaya" target="_blank"><img class="footer-social-img footer-social-telegram" src="/data/telegram_footer.png" alt="" onmouseover="telegramOver()" onmouseout="telegramOut()" /></a>
             </div>
         </div>
 
         <div>
-            <p class="p-copy">Copyrights ©️ 2024 Lovely Love Agency</p>
+            <p class="p-copy">Copyrights ©️ 2024 Rock & Roses</p>
         </div>
 
     </div>
@@ -57,7 +57,7 @@
     }
 
     function facebookOut() {
-        document.getElementsByClassName("footer-social-facebook")[0].src = "/data/facebook.png";
+        document.getElementsByClassName("footer-social-facebook")[0].src = "/data/facebook_footer.png";
         document.body.style.cursor = "default";
     }
 
@@ -70,7 +70,7 @@
     }
 
     function instagramOut() {
-        document.getElementsByClassName("footer-social-instagram")[0].src = "/data/instagram.png";
+        document.getElementsByClassName("footer-social-instagram")[0].src = "/data/instagram_footer.png";
         document.body.style.cursor = "default";
     }
 
@@ -83,7 +83,7 @@
     }
 
     function telegramOut() {
-        document.getElementsByClassName("footer-social-telegram")[0].src = "/data/telegram.png";
+        document.getElementsByClassName("footer-social-telegram")[0].src = "/data/telegram_footer.png";
         document.body.style.cursor = "default";
     }
 

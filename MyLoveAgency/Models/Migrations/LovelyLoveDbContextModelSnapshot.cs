@@ -121,6 +121,7 @@ namespace MyLoveAgency.Models.Migrations
                         .HasColumnName("en");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("name");
@@ -304,6 +305,10 @@ namespace MyLoveAgency.Models.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("description_ua");
 
+                    b.Property<string>("DescriptionPl")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("description_pl");
+
                     b.Property<string>("NameEn")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -315,6 +320,12 @@ namespace MyLoveAgency.Models.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("name_ua");
+
+                    b.Property<string>("NamePl")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("name_pl");
 
                     b.HasKey("Id")
                         .HasName("PK_Type");

@@ -102,7 +102,7 @@ namespace MyLoveAgency
                             HomeModelPoland.stageText.Add(text?.Pl?.ToString());
                         }
 
-                        var feedbackTitle = localizationTable.Where(x => x.Name.Contains("Feedback_title")).ToList();
+                        var feedbackTitle = localizationTable.Where(x => x.Name.Contains("Feedback_title")).OrderBy(x => x.Name).ToList();
                         foreach (var title in feedbackTitle)
                         {
                             HomeModelEnglish.feedbackTitle.Add(title?.En?.ToString());
@@ -110,7 +110,7 @@ namespace MyLoveAgency
                             HomeModelPoland.feedbackTitle.Add(title?.Pl?.ToString());
                         }
 
-                        var feedbackText = localizationTable.Where(x => x.Name.Contains("Feedback_text")).ToList();
+                        var feedbackText = localizationTable.Where(x => x.Name.Contains("Feedback_text")).OrderBy(x => x.Name).ToList();
                         foreach (var text in feedbackText)
                         {
                             HomeModelEnglish.feedbackText.Add(text?.En?.ToString());

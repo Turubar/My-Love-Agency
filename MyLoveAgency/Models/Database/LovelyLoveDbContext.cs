@@ -31,7 +31,8 @@ public partial class LovelyLoveDbContext : DbContext
 
     public virtual DbSet<TypeService> TypeServices { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(DataClass.connectionString);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+        optionsBuilder.UseSqlServer(DataClass.connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -86,6 +87,7 @@ public partial class LovelyLoveDbContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
+            entity.Property(e => e.Pl).HasColumnName("pl");
             entity.Property(e => e.Ua).HasColumnName("ua");
         });
 
@@ -177,10 +179,14 @@ public partial class LovelyLoveDbContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DescriptionEn).HasColumnName("description_en");
+            entity.Property(e => e.DescriptionPl).HasColumnName("description_pl");
             entity.Property(e => e.DescriptionUa).HasColumnName("description_ua");
             entity.Property(e => e.NameEn)
                 .HasMaxLength(50)
                 .HasColumnName("name_en");
+            entity.Property(e => e.NamePl)
+                .HasMaxLength(50)
+                .HasColumnName("name_pl");
             entity.Property(e => e.NameUa)
                 .HasMaxLength(50)
                 .HasColumnName("name_ua");

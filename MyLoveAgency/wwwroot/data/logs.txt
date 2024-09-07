@@ -210,3 +210,183 @@ Object name: 'LovelyLoveDbContext'.
 Запуск приложения! Время: 26.08.2024 3:26:45
 Новая контактная форма! Время: 26.08.2024 3:27:53
 Запуск приложения! Время: 26.08.2024 3:32:13
+Запуск приложения! Время: 26.08.2024 3:41:58
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:41:58
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 46
+
+Запуск приложения! Время: 26.08.2024 3:45:02
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:45:02
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 46
+
+Запуск приложения! Время: 26.08.2024 3:45:25
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:45:25
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 46
+
+Запуск приложения! Время: 26.08.2024 3:47:51
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:47:52
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 46
+
+Запуск приложения! Время: 26.08.2024 3:50:10
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 3:50:10
+Информация: Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+HostAbortedException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 46
+
+Запуск приложения! Время: 26.08.2024 4:02:55
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 4:02:59
+Информация: System.Exception: Data could not be read from the Service table!
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DescriptionPl'.
+Invalid column name 'NamePl'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 129
+ClientConnectionId:299b666c-7c67-4139-8461-b0f18a73556a
+Error Number:207,State:1,Class:16
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 139
+
+Запуск приложения! Время: 26.08.2024 4:03:09
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 4:03:13
+Информация: System.Exception: Data could not be read from the Service table!
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DescriptionPl'.
+Invalid column name 'NamePl'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 129
+ClientConnectionId:8a1ca021-5b97-4220-96fb-958ec17bb1de
+Error Number:207,State:1,Class:16
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 139
+
+Запуск приложения! Время: 26.08.2024 4:06:21
+Критическая ошибка, приложение остановлено! Время: 26.08.2024 4:06:26
+Информация: System.Exception: Data could not be read from the Service table!
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DescriptionPl'.
+Invalid column name 'NamePl'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 129
+ClientConnectionId:b58a112d-9ed0-4302-a19f-e213c9617f77
+Error Number:207,State:1,Class:16
+   at MyLoveAgency.Program.Main(String[] args) in D:\Solutions\My-Love-Agency\MyLoveAgency\Program.cs:line 139
+
+Запуск приложения! Время: 26.08.2024 4:10:31
+Запуск приложения! Время: 26.08.2024 4:21:22
+Запуск приложения! Время: 26.08.2024 21:38:33
+Запуск приложения! Время: 26.08.2024 21:40:21
+Запуск приложения! Время: 26.08.2024 21:41:31
+Запуск приложения! Время: 26.08.2024 21:42:47
+Запуск приложения! Время: 26.08.2024 21:43:38
+Запуск приложения! Время: 26.08.2024 21:47:09
+Запуск приложения! Время: 26.08.2024 21:50:26
+Запуск приложения! Время: 26.08.2024 22:41:39
+Запуск приложения! Время: 26.08.2024 23:08:16
+Запуск приложения! Время: 27.08.2024 1:19:20
+Запуск приложения! Время: 27.08.2024 1:20:02
+Запуск приложения! Время: 27.08.2024 1:31:06
+Запуск приложения! Время: 27.08.2024 2:43:52
+Запуск приложения! Время: 27.08.2024 14:37:00
+Запуск приложения! Время: 27.08.2024 14:46:13
+Запуск приложения! Время: 27.08.2024 14:48:35
+Запуск приложения! Время: 29.08.2024 3:22:35
+Запуск приложения! Время: 29.08.2024 3:46:25
+Запуск приложения! Время: 29.08.2024 4:51:12
+Запуск приложения! Время: 29.08.2024 5:04:17
+Запуск приложения! Время: 29.08.2024 5:08:35
+Запуск приложения! Время: 29.08.2024 5:13:31
+Запуск приложения! Время: 29.08.2024 5:13:39
+Запуск приложения! Время: 29.08.2024 5:20:17
+Запуск приложения! Время: 29.08.2024 5:29:30
+Запуск приложения! Время: 29.08.2024 5:41:35
+Запуск приложения! Время: 29.08.2024 6:39:32
+Запуск приложения! Время: 29.08.2024 6:50:57
+Запуск приложения! Время: 29.08.2024 21:21:12
+Запуск приложения! Время: 04.09.2024 10:30:04
+Запуск приложения! Время: 04.09.2024 15:36:26
+Запуск приложения! Время: 04.09.2024 16:23:03
+Запуск приложения! Время: 05.09.2024 18:30:21
+Запуск приложения! Время: 05.09.2024 19:22:34
+Запуск приложения! Время: 05.09.2024 19:24:51
+Запуск приложения! Время: 05.09.2024 19:27:01
+Запуск приложения! Время: 05.09.2024 19:35:54
+Запуск приложения! Время: 05.09.2024 20:30:55
+Запуск приложения! Время: 06.09.2024 17:21:37
+Запуск приложения! Время: 07.09.2024 9:57:23
+Запуск приложения! Время: 07.09.2024 10:13:38
+Запуск приложения! Время: 07.09.2024 10:44:18
+Запуск приложения! Время: 07.09.2024 11:58:12
+Запуск приложения! Время: 07.09.2024 12:23:57
+Запуск приложения! Время: 07.09.2024 12:59:55
+Запуск приложения! Время: 07.09.2024 15:16:07
+Запуск приложения! Время: 07.09.2024 15:47:30
+Запуск приложения! Время: 07.09.2024 15:58:32
+Запуск приложения! Время: 07.09.2024 16:05:04
+Запуск приложения! Время: 07.09.2024 17:06:41

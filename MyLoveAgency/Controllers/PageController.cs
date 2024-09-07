@@ -21,10 +21,15 @@ namespace MyLoveAgency.Controllers
         public IActionResult Home()
         {
             // Проверяем валидность cookie "Language"
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
                 return Redirect("~/Page/ChangeLanguage?refererPage=Home");
 
             ViewBag.NamePage = "Home";
+            return View();
+        }
+
+        public IActionResult NewHome()
+        {
             return View();
         }
 
@@ -33,7 +38,7 @@ namespace MyLoveAgency.Controllers
         public IActionResult Services(string nameType = "")
         {
             // Проверяем валидность cookie "Language"
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
                 return Redirect("~/Page/ChangeLanguage?refererPage=Services");
 
             if (DataClass.TypeService.Count() <= 0) return Redirect("~/Page/Home/");
@@ -48,7 +53,7 @@ namespace MyLoveAgency.Controllers
         public IActionResult Gallery()
         {
             // Проверяем валидность cookie "Language"
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
                 return Redirect("~/Page/ChangeLanguage?refererPage=Gallery");
 
             ViewBag.NamePage = "Gallery";
@@ -58,7 +63,7 @@ namespace MyLoveAgency.Controllers
         public IActionResult FAQ()
         {
             // Проверяем валидность cookie "Language"
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
                 return Redirect("~/Page/ChangeLanguage?refererPage=FAQ");
 
             ViewBag.NamePage = "FAQ";
@@ -70,7 +75,7 @@ namespace MyLoveAgency.Controllers
         public IActionResult Contact(string selectedData = "")
         {
             // Проверяем валидность cookie "Language"
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
                 return Redirect("~/Page/ChangeLanguage?refererPage=Contact");
 
             string[] partData = selectedData.Split("|");
@@ -80,9 +85,9 @@ namespace MyLoveAgency.Controllers
             return View();
         }
 
-        public IActionResult ChangeLanguage(string refererPage)
+        public IActionResult ChangeLanguage(string refererPage, string language)
         {
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
             {
                 Response.Cookies.Delete("Language");
                 CreateCookie("Language", "en", 7);
@@ -91,15 +96,10 @@ namespace MyLoveAgency.Controllers
             }
             else
             {
-                if (Request.Cookies["Language"] == "en")
+                if (language == "en" || language == "ua" || language == "pl") 
                 {
                     Response.Cookies.Delete("Language");
-                    CreateCookie("Language", "ua", 7);
-                }
-                else
-                {
-                    Response.Cookies.Delete("Language");
-                    CreateCookie("Language", "en", 7);
+                    CreateCookie("Language", language, 7);
                 }
 
                 return Redirect("~/Page/" + refererPage);
@@ -173,7 +173,7 @@ namespace MyLoveAgency.Controllers
         public IActionResult ServiceDetails(string id)
         {
             // Проверяем валидность cookie "Language"
-            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua")
+            if (Request.Cookies["Language"] != "en" && Request.Cookies["Language"] != "ua" && Request.Cookies["Language"] != "pl")
                 return Redirect("~/Page/ChangeLanguage?refererPage=Service");
 
             if (DataClass.Services.Count() <= 0) return Redirect("~/Page/Home/");

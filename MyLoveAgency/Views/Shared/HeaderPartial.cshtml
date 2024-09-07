@@ -10,6 +10,10 @@
             {
                 <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Home</p></a>
             }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Główny</p></a>
+            }
             else
             {
                 <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Головна</p></a>
@@ -23,6 +27,10 @@
                 if (Context.Request.Cookies["Language"] == "en")
                 {
                     <p id="services-title" class="p-title" style="display: inline-block; line-height: 100%;">Services</p>
+                }
+                else if (Context.Request.Cookies["Language"] == "pl")
+                {
+                    <p id="services-title" class="p-title" style="display: inline-block; line-height: 100%;">Usługi</p>
                 }
                 else
                 {
@@ -40,6 +48,14 @@
                         <li>
                             <a asp-controller="Page" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" class="dropdown-item dropdown-item-service">
                                 <p class="type-service">@DataClass.TypeService[i].NameEn</p>
+                            </a>
+                        </li>
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <li>
+                            <a asp-controller="Page" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" class="dropdown-item dropdown-item-service">
+                                <p class="type-service">@DataClass.TypeService[i].NamePl</p>
                             </a>
                         </li>
                     }
@@ -62,6 +78,10 @@
             {
                 <a asp-controller="Page" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-title">Gallery</p></a>
             }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <a asp-controller="Page" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-title">Galeria</p></a>
+            }
             else
             {
                 <a asp-controller="Page" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-title">Галерея</p></a>
@@ -74,17 +94,17 @@
         @{
             if (namePage == "Manager")
             {
-                <img class="logo-img" src="/data/logo_color.png" alt="" />
+                <img class="logo-img" src="/data/new_logo_color.png" alt="" />
             }
             else
             {
                 if (User?.FindFirst("Access")?.Value == DataClass.password)
                 {
-                    <a asp-controller="Page" asp-action="Manager"><img class="logo-img" src="/data/logo.png" alt="" onmouseover="this.src='/data/logo_color.png';" onmouseout="this.src='/data/logo.png';" /></a>
+                    <a asp-controller="Page" asp-action="Manager"><img class="logo-img" src="/data/new_logo.png" alt="" onmouseover="this.src='/data/new_logo_color.png';" onmouseout="this.src='/data/new_logo.png';" /></a>
                 }
                 else
                 {
-                    <img class="logo-img" src="/data/logo.png" alt="" />
+                    <img class="logo-img" src="/data/new_logo.png" alt="" />
                 }
             }
         }
@@ -102,6 +122,10 @@
             {
                 <a asp-controller="Page" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-title">Contact</p></a>
             }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <a asp-controller="Page" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-title">Kontakt</p></a>
+            }
             else
             {
                 <a asp-controller="Page" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-title">Заявка</p></a>
@@ -117,6 +141,10 @@
                     {
                         <img class="header-img-flag" src="/data/en_flag.png" />
                     }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <img class="header-img-flag" src="/data/pl_flag.png" />
+                    }
                     else
                     {
                         <img class="header-img-flag" src="/data/ua_flag.png" />
@@ -125,21 +153,51 @@
                 <img class="header-toggle btn-toggle" src="/data/toggle.png" onmouseover="this.src='/data/toggle_color.png';" onmouseout="this.src='/data/toggle.png';" />
             </button>
 
-            <ul class="dropdown-menu my-dropdowm-menu">
-                <li>
-                    <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="dropdown-item my-dropdown-item">
-                        @{
-                            if (Context.Request.Cookies["Language"] == "en")
-                            {
+            <ul class="dropdown-menu my-dropdown-menu">
+                @{
+                    if (Context.Request.Cookies["Language"] == "en")
+                    {
+                        <li style="padding-top: 5px !important;">
+                            <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="pl" class="dropdown-item my-dropdown-item">
+                                <img class="header-img-flag" src="/data/pl_flag.png" />
+                            </a>
+                        </li>
+
+                        <li style="padding-top: 6px !important;">
+                            <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="ua" class="dropdown-item my-dropdown-item">
                                 <img class="header-img-flag" src="/data/ua_flag.png" />
-                            }
-                            else
-                            {
+                            </a>
+                        </li>
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <li style="padding-top: 5px !important;">
+                            <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="en" class="dropdown-item my-dropdown-item">
                                 <img class="header-img-flag" src="/data/en_flag.png" />
-                            }
-                        }
-                    </a>
-                </li>
+                            </a>
+                        </li>
+
+                        <li style="padding-top: 6px !important;">
+                            <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="ua" class="dropdown-item my-dropdown-item">
+                                <img class="header-img-flag" src="/data/ua_flag.png" />
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li style="padding-top: 5px !important;">
+                            <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="pl" class="dropdown-item my-dropdown-item">
+                                <img class="header-img-flag" src="/data/pl_flag.png" />
+                            </a>
+                        </li>
+
+                        <li style="padding-top: 6px !important;">
+                            <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="en" class="dropdown-item my-dropdown-item">
+                                <img class="header-img-flag" src="/data/en_flag.png" />
+                            </a>
+                        </li>
+                    }
+                }
             </ul>
         </div>
     </div>
@@ -181,6 +239,10 @@
                     {
                         <a asp-controller="Page" asp-action="Home" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Home</p></a>
                     }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <a asp-controller="Page" asp-action="Home" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Główny</p></a>
+                    }
                     else
                     {
                         <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-menu">Головна</p></a>
@@ -193,6 +255,10 @@
                     if (Context.Request.Cookies["Language"] == "en")
                     {
                         <p id="services-title" class="p-menu" onclick="showTypeServices()">Services</p>
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <p id="services-title" class="p-menu" onclick="showTypeServices()">Usługi</p>
                     }
                     else
                     {
@@ -211,6 +277,10 @@
                                 {
                                     <a asp-controller="Page" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" style="text-decoration: none;"><p class="type-services-menu">@DataClass.TypeService[i].NameEn</p></a>
                                 }
+                                else if (Context.Request.Cookies["Language"] == "pl")
+                                {
+                                    <a asp-controller="Page" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NamePl" style="text-decoration: none;"><p class="type-services-menu">@DataClass.TypeService[i].NamePl</p></a>
+                                }
                                 else
                                 {
                                     <a asp-controller="Page" asp-action="Services" asp-route-nameType="@DataClass.TypeService[i].NameEn" style="text-decoration: none;"><p class="type-services-menu">@DataClass.TypeService[i].NameUa</p></a>
@@ -227,6 +297,10 @@
                     if (Context.Request.Cookies["Language"] == "en")
                     {
                         <a asp-controller="Page" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-menu">Gallery</p></a>
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <a asp-controller="Page" asp-action="Gallery" class="p-title-link"><p id="gallery-title" class="p-menu">Galeria</p></a>
                     }
                     else
                     {
@@ -247,6 +321,10 @@
                     {
                         <a asp-controller="Page" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-menu">Contact</p></a>
                     }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <a asp-controller="Page" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-menu">Kontakt</p></a>
+                    }
                     else
                     {
                         <a asp-controller="Page" asp-action="Contact" class="p-title-link"><p id="contact-title" class="p-menu">Заявка</p></a>
@@ -258,13 +336,18 @@
                 @{
                     if (Context.Request.Cookies["Language"] == "en")
                     {
-                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/en_flag.png" alt="" /></a>
-                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/ua_flag.png" alt="" /></a>
+                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="pl" class="p-title-link"><img class="flag" src="/data/pl_flag.png" alt="" /></a>
+                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="ua" class="p-title-link"><img class="flag" src="/data/ua_flag.png" alt="" /></a>
+                    }
+                    else if (Context.Request.Cookies["Language"] == "pl")
+                    {
+                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="en" class="p-title-link"><img class="flag" src="/data/en_flag.png" alt="" /></a>
+                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="ua" class="p-title-link"><img class="flag" src="/data/ua_flag.png" alt="" /></a>
                     }
                     else
                     {
-                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/ua_flag.png" alt="" /></a>
-                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" class="p-title-link"><img class="flag" src="/data/en_flag.png" alt="" /></a>
+                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="pl" class="p-title-link"><img class="flag" src="/data/pl_flag.png" alt="" /></a>
+                        <a asp-controller="Page" asp-action="ChangeLanguage" asp-route-refererPage="@(namePage)" asp-route-language="en" class="p-title-link"><img class="flag" src="/data/en_flag.png" alt="" /></a>
                     }
                 }
             </div>
@@ -296,6 +379,13 @@
                     <p class="p-cookies">
                         This site uses cookies to provide top-level services.<br>By continuing to use the site, you agree to the use of cookies.
                         <a style="text-decoration: none;" asp-controller="Page" asp-action="AcceptCookies" asp-route-refererPage="@(namePage)"><span class="p-accept-cookies">Accept</span></a>
+                    </p>
+                }
+                else @if (Context.Request.Cookies["Language"] == "pl")
+                {
+                    <p class="p-cookies">
+                        Ta strona używa plików cookie.<br>Kontynuując korzystanie z witryny, wyrażasz zgodę na korzystanie z plików cookie.
+                        <a style="text-decoration: none;" asp-controller="Page" asp-action="AcceptCookies" asp-route-refererPage="@(namePage)"><span class="p-accept-cookies">Zaakceptuj</span></a>
                     </p>
                 }
                 else
