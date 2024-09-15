@@ -3,6 +3,7 @@ using MyLoveAgency.Models.Database;
 using MyLoveAgency.Models;
 using Microsoft.EntityFrameworkCore;
 using MyLoveAgency.Application;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyLoveAgency.Controllers
 {
@@ -15,7 +16,7 @@ namespace MyLoveAgency.Controllers
             _dbContext = dbContext;
         }
 
-        #region Добавление/обновление/удаление услуг и пакетов
+        #region Добавление/обновление/удаление услуг, пакетов и категорий
 
         [HttpPost]
         public async Task<string> AddService(string nameEn, string nameUa, string price, string idType, string descriptionEn, string descriptionUa)
@@ -99,6 +100,58 @@ namespace MyLoveAgency.Controllers
 
                 PackageService package = DataClass.Packages.First(x => x.IdService == service.Id && x.Name == name);
                 return "true" + package.Id.ToString();
+            }
+            catch (Exception e)
+            {
+                ServiceClass.WriteLog("Что-то пошло не так! Время: " + DateTime.Now + "\r\n" + e + "\r\n");
+                return "false";
+            }
+        }
+
+        [HttpPost]
+        public async Task<string> UpdateTypeService(string idTypeService, string nameEn, string nameUa, string namePl, string number)
+        {
+            try
+            {
+                if (User?.FindFirst("Access")?.Value != DataClass.password) return "false";
+
+                if (idTypeService != null && nameEn != null && nameUa != null && namePl != null && number != null)
+                {
+                    bool result = int.TryParse(idTypeService, out int id);
+                    if (!result) return "false";
+
+                    result = int.TryParse(number, out int num);
+                    if (!result) return "false";
+                    if (num <= 0 || num > DataClass.TypeService.Count()) return "false";
+
+                    if (nameEn.Length <= 0 || nameUa.Length <= 0 || namePl.Length <= 0) return "false";
+                    if (nameEn.Length > 50 || nameUa.Length > 50 || namePl.Length > 50) return "false";
+
+                    TypeService? typeService = await _dbContext.TypeServices.FirstOrDefaultAsync(x => x.Id == id);
+                    if (typeService == null) return "false";
+
+                    TypeService? desiredTypeService = await _dbContext.TypeServices.FirstOrDefaultAsync(x => x.Number == num);
+                    if (desiredTypeService == null)
+                    {
+                        ServiceClass.WriteLog($"Не найдена категория услуги с искомым number [{typeService.Number} => {num}]! Время: " + DateTime.Now + "\r\n");
+                        return "false";
+                    }
+
+                    desiredTypeService.Number = typeService.Number;
+
+                    typeService.NameEn = nameEn;
+                    typeService.NameUa = nameUa;
+                    typeService.NamePl = namePl;
+                    typeService.Number = num;
+
+                    _dbContext.TypeServices.UpdateRange(desiredTypeService, typeService);
+                    await _dbContext.SaveChangesAsync();
+
+                    DataClass.TypeService = await _dbContext.TypeServices.OrderBy(x => x.Number).ToListAsync();
+
+                    return "Изменения успешно сохранены, страница будет перезагружена!";
+                }
+                else return "false";
             }
             catch (Exception e)
             {
@@ -206,6 +259,38 @@ namespace MyLoveAgency.Controllers
         }
 
         [HttpPost]
+        public async Task<string> DeleteTypeService(string idTypeService)
+        {
+            try
+            {
+                if (User?.FindFirst("Access")?.Value != DataClass.password) return "false";
+
+                if (idTypeService != null)
+                {
+                    bool result = int.TryParse(idTypeService, out int id);
+                    if (!result) return "false";
+
+                    TypeService? typeService = await _dbContext.TypeServices.FirstOrDefaultAsync(x => x.Id == id);
+                    if (typeService == null) return "false";
+
+
+                    
+                    await _dbContext.SaveChangesAsync();
+
+                    DataClass.TypeService = await _dbContext.TypeServices.OrderBy(x => x.Number).ToListAsync();
+
+                    return "true";
+                }
+                else return "false";
+            }
+            catch (Exception e)
+            {
+                ServiceClass.WriteLog("Что-то пошло не так! Время: " + DateTime.Now + "\r\n" + e + "\r\n");
+                return "false";
+            }
+        }
+
+        [HttpPost]
         public async Task<string> DeleteService(string idService)
         {
             try
@@ -283,7 +368,70 @@ namespace MyLoveAgency.Controllers
             }
         }
 
-        #region Добавление/удаление изображений для услуг
+        #region Добавление/удаление изображений для услуг и категорий
+
+        [HttpPost]
+        public async Task<string> AddImageTypeService(IFormFile addImageTypeServiceInput, string idTypeService)
+        {
+            try
+            {
+                if (User?.FindFirst("Access")?.Value != DataClass.password) return "false";
+
+                if (addImageTypeServiceInput != null && addImageTypeServiceInput.Length > 0 && idTypeService != null)
+                {
+                    bool result = int.TryParse(idTypeService, out int id);
+                    if (!result) return "false";
+
+                    TypeService? typeService = await _dbContext.TypeServices.FirstOrDefaultAsync(x => x.Id == id);
+                    if (typeService == null) return "false";
+                    if (typeService.Path != null) return "false";
+
+                    string[] part = addImageTypeServiceInput.FileName.Split(".");
+                    string extensionFile = part[part.Length - 1];
+
+                    Random ran = new Random();
+                    int nameFile = -1;
+
+                    while (nameFile == -1)
+                    {
+                        int numberRan = ran.Next(100000, 1000000);
+                        string futureName = numberRan.ToString() + "." + extensionFile.ToString();
+
+                        if (!System.IO.File.Exists(futureName)) nameFile = numberRan;
+                    }
+
+                    string path = nameFile.ToString() + "." + extensionFile;
+
+                    bool loaded = false;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        using (var fileStream = new FileStream("wwwroot/data/mainpage/services/" + path, FileMode.Create))
+                        {
+                            await addImageTypeServiceInput.CopyToAsync(fileStream);
+                            loaded = true;
+                        }
+                    }
+
+                    if (!loaded) return "false";
+
+                    typeService.Path = path;
+
+                    _dbContext.TypeServices.Update(typeService);
+                    await _dbContext.SaveChangesAsync();
+
+                    DataClass.TypeService = await _dbContext.TypeServices.OrderBy(x => x.Number).ToListAsync();
+
+                    return typeService.Path;
+                }
+                else return "false";
+
+            }
+            catch (Exception e)
+            {
+                ServiceClass.WriteLog("Что-то пошло не так! Время: " + DateTime.Now + "\r\n" + e + "\r\n");
+                return "false";
+            }
+        }
 
         [HttpPost]
         public async Task<string> AddImageService(IFormFile imageServiceInput, string idService)
@@ -388,6 +536,43 @@ namespace MyLoveAgency.Controllers
                     DataClass.ServiceImages = await _dbContext.StorageImageServices.ToListAsync();
 
                     if (System.IO.File.Exists(pathToImage)) System.IO.File.Delete(pathToImage);
+
+                    return "true";
+                }
+                else return "false";
+            }
+            catch (Exception e)
+            {
+                ServiceClass.WriteLog("Что-то пошло не так! Время: " + DateTime.Now + "\r\n" + e + "\r\n");
+                return "false";
+            }
+        }
+
+        [HttpPost]
+        public async Task<string> DeleteImageTypeService(string idTypeService)
+        {
+            try
+            {
+                if (User?.FindFirst("Access")?.Value != DataClass.password) return "false";
+
+                if (idTypeService != null)
+                {
+                    bool result = int.TryParse(idTypeService, out int id);
+                    if (!result) return "false";
+
+                    TypeService? typeService = await _dbContext.TypeServices.FirstOrDefaultAsync(x => x.Id == id);
+                    if (typeService == null) return "false";
+                    if (typeService.Path == null) return "false";
+
+                    string pathToImage = "wwwroot/data/mainpage/services/" + typeService.Path;
+                    if (System.IO.File.Exists(pathToImage)) System.IO.File.Delete(pathToImage);
+
+                    typeService.Path = null;
+
+                    _dbContext.TypeServices.Update(typeService);
+                    await _dbContext.SaveChangesAsync();
+
+                    DataClass.TypeService = await _dbContext.TypeServices.OrderBy(x => x.Number).ToListAsync();
 
                     return "true";
                 }

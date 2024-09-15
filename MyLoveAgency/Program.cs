@@ -86,6 +86,14 @@ namespace MyLoveAgency
                             HomeModelPoland.advantageText.Add(text?.Pl?.ToString());
                         }
 
+                        var advantages = localizationTable.Where(x => x.Name.Contains("Advantage_new")).ToList();
+                        foreach (var text in advantages)
+                        {
+                            HomeModelEnglish.advantage.Add(text?.En?.ToString());
+                            HomeModelUkrainian.advantage.Add(text?.Ua?.ToString());
+                            HomeModelPoland.advantage.Add(text?.Pl?.ToString());
+                        }
+
                         var stagesTitle = localizationTable.Where(x => x.Name.Contains("SO_title")).ToList();
                         foreach (var title in stagesTitle)
                         {
@@ -126,7 +134,7 @@ namespace MyLoveAgency
                     // Чтение данных из таблиц, заполнение буферных массивов
                     try
                     {
-                        DataClass.TypeService = dbContext.TypeServices.ToList();
+                        DataClass.TypeService = dbContext.TypeServices.OrderBy(x => x.Number).ToList();
                         DataClass.Services = dbContext.Services.ToList();
                         DataClass.Packages = dbContext.PackageServices.ToList();
                         DataClass.ServiceImages = dbContext.StorageImageServices.ToList();
@@ -148,7 +156,7 @@ namespace MyLoveAgency
 
                 app.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Page}/{action=Home}/{id?}");
+                    pattern: "{controller=Page}/{action=NewHome}/{id?}");
 
                 app.Run();
             }

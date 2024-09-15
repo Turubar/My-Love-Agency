@@ -6,12 +6,23 @@
     </div>
 
     <div id="nmp-about-us" class="col-10 nmp-about-us">
-        <p class="nmp-about-title">Про нас</p>
-        <p class="nmp-about-text">
-            Rock and Roses – ваш експерт у створенні незабутніх вражень. Ми не просто квітковий магазин – ми перетворюємо квіти на ключовий елемент вашої особистої історії. Незалежно від того, чи це подарунок для коханої людини, чи знак уваги для колеги, ми допоможемо вам висловити свої почуття через красу квітів.
-            <br /><br />
-            Ми допоможемо створити романтичну подію, яка буде такою ж яскравою і ніжною, як букет, що передає ваші почуття. Ми спеціалізуємося на організації пропозицій, несподіваних сюрпризів та незабутніх побачень, які наповнюють кожен момент квітковою магією. За нашими плечима понад 150 організованих романтичних побачень, і понад 50 дівчат сказали “Так” під час наших квіткових пропозицій руки і серця.
-        </p>
+        @{
+            if (Context.Request.Cookies["Language"] == "en")
+            {
+                <p class="nmp-about-title">About us</p>
+                <p class="nmp-about-text">@Html.Raw(HomeModelEnglish.aboutUsText)</p>
+            }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <p class="nmp-about-title">O nas</p>
+                <p class="nmp-about-text">@Html.Raw(HomeModelPoland.aboutUsText)</p>
+            }
+            else
+            {
+                <p class="nmp-about-title">Про нас</p>
+                <p class="nmp-about-text">@Html.Raw(HomeModelUkrainian.aboutUsText)</p>
+            }
+        }
     </div>
     
     <div id="nmp-advantages" class="col-10 nmp-advantages">
@@ -20,22 +31,86 @@
         </div>
 
         <div class="col-7 nmp-advantages-right">
-            <p class="nmp-advantages-title">Наші переваги</p>
+            @{
+                if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p class="nmp-advantages-title">Our advantages</p>
 
-            <p class="nmp-advantages-text">@* Ексклюзивність:  *@Унікальні дизайни букетів та оригінальні сценарії подій роблять кожну подію неповторною.</p>
-            
-            <p class="nmp-advantages-text">@* Зручність:  *@Ми беремо на себе всі організаційні моменти – від вибору квітів до підготовки сюрпризу, що дозволяє вам насолоджуватися моментом.</p>
-            
-            <p class="nmp-advantages-text">@* Якість:  *@Використовуємо тільки свіжі, відбірні квіти, щоб кожен букет був ідеальним.</p>
+                    <p class="nmp-advantages-text">@HomeModelEnglish.advantage[0]</p>
 
-            <p class="nmp-advantages-text">@* Доставка:  *@Ми гарантуємо швидку доставку букетів і сюрпризів по Кракову, щоб ваші почуття були висловлені вчасно.</p>
+                    <p class="nmp-advantages-text">@HomeModelEnglish.advantage[1]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelEnglish.advantage[2]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelEnglish.advantage[3]</p>
+                }
+                else if (Context.Request.Cookies["Language"] == "pl")
+                {
+                    <p class="nmp-advantages-title">Nasze atuty</p>
+
+                    <p class="nmp-advantages-text">@HomeModelPoland.advantage[0]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelPoland.advantage[1]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelPoland.advantage[2]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelPoland.advantage[3]</p>
+                }
+                else
+                {
+                    <p class="nmp-advantages-title">Наші переваги</p>
+
+                    <p class="nmp-advantages-text">@HomeModelUkrainian.advantage[0]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelUkrainian.advantage[1]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelUkrainian.advantage[2]</p>
+
+                    <p class="nmp-advantages-text">@HomeModelUkrainian.advantage[3]</p>
+                }
+            }
         </div>
     </div>
 
     <div class="col-10 nmp-services">
-        <p class="nmp-services-title">Наші послуги</p>
+        @{
+            if (Context.Request.Cookies["Language"] == "en")
+            {
+                <p class="nmp-services-title">Our services</p>
+            }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <p class="nmp-services-title">Nasze usługi</p>
+            }
+            else
+            {
+                <p class="nmp-services-title">Наші послуги</p>
+            }
+        }
 
         <div class="col-12 nmp-container-services">
+            @{
+                for (int i = 0; i < DataClass.TypeService.Count(); i++)
+                {
+                    <div class="col-2 nmp-services-div">
+                        <img class="nmp-services-img" src="/data/mainpage/services/@(DataClass.TypeService[i].Path)" alt="" />
+
+                        @if(Context.Request.Cookies["Language"] == "en")
+                        {
+                            <p class="nmp-services-text">@DataClass.TypeService[i].NameEn</p>
+                        }
+                        else if (Context.Request.Cookies["Language"] == "pl")
+                        {
+                            <p class="nmp-services-text">@DataClass.TypeService[i].NamePl</p>
+                        }
+                        else
+                        {
+                            <p class="nmp-services-text">@DataClass.TypeService[i].NameUa</p>
+                        }
+                    </div>
+                }
+            }
+
             <div class="col-2 nmp-services-div">
                 <img class="nmp-services-img" src="/data/servicepage/1.jpg" alt="" />
                 <p class="nmp-services-text">Букет авторских цветов</p>
@@ -81,6 +156,10 @@
             {
                 <p class="nmp-gallery-title">Gallery</p>
             }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <p class="nmp-gallery-title">Galeria</p>
+            }
             else
             {
                 <p class="nmp-gallery-title">Галерея</p>
@@ -125,7 +204,19 @@
 
         <div class="nmp-gallery-arrow">
             <a style="display: flex; text-decoration: none; color: black;" asp-controller="Page" asp-action="Gallery" onmouseover="galleryOver()" onmouseout="galleryOut()">
-                <p id="nmpArrowText" class="nmp-gallery-arrow-text">Бiльше</p>
+                @if (Context.Request.Cookies["Language"] == "en")
+                {
+                    <p id="nmpArrowText" class="nmp-gallery-arrow-text">See more</p>
+                }
+                else if (Context.Request.Cookies["Language"] == "pl")
+                {
+                    <p id="nmpArrowText" class="nmp-gallery-arrow-text">Zobacz więcej</p>
+                }
+                else
+                {
+                    <p id="nmpArrowText" class="nmp-gallery-arrow-text">Бiльше</p>
+                }
+               
                 <img class="nmpArrowImg" src="/data/arrow_link.png" width="80" alt="" />
             </a>
         </div>
@@ -137,6 +228,10 @@
             if (Context.Request.Cookies["Language"] == "en")
             {
                 <p class="nmp-feedback-big-title">Feedback</p>
+            }
+            else if (Context.Request.Cookies["Language"] == "pl")
+            {
+                <p class="nmp-feedback-big-title">Opinia</p>
             }
             else
             {

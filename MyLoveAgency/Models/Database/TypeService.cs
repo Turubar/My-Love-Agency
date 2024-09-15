@@ -13,11 +13,9 @@ public partial class TypeService
 
     public string NamePl { get; set; } = null!;
 
-    public string? DescriptionEn { get; set; }
+    public string? Path { get; set; }
 
-    public string? DescriptionUa { get; set; }
-
-    public string? DescriptionPl { get; set; }
+    public int Number { get; set; }
 
     public virtual ICollection<Service> Services { get; set; } = new List<Service>();
 }

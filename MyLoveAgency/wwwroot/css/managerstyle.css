@@ -171,6 +171,48 @@
     padding: 15px;
 }
 
+
+.collapse-type-services {
+    display: flex;
+    flex-direction: column;
+}
+
+.type-service-div {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px dashed white;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.type-service-div-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.type-service-div-right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.type-service-img {
+    width: 100%;
+    border: 2px solid white;
+}
+
+.type-service-title {
+    color: white;
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 10px;
+}
+
+
+
 .collapse-faq-div {
     display: flex;
     flex-direction: column;

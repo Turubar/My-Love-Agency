@@ -6,13 +6,10 @@ namespace MyLoveAgency.Models.Database;
 
 public partial class LovelyLoveDbContext : DbContext
 {
-    public LovelyLoveDbContext()
+    private readonly IConfiguration _configuration;
+    public LovelyLoveDbContext(IConfiguration configuration)
     {
-    }
-
-    public LovelyLoveDbContext(DbContextOptions<LovelyLoveDbContext> options)
-        : base(options)
-    {
+        _configuration = configuration;
     }
 
     public virtual DbSet<Contact> Contacts { get; set; }
@@ -31,8 +28,8 @@ public partial class LovelyLoveDbContext : DbContext
 
     public virtual DbSet<TypeService> TypeServices { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseSqlServer(DataClass.connectionString);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Database"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -178,9 +175,6 @@ public partial class LovelyLoveDbContext : DbContext
             entity.ToTable("TypeService");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DescriptionEn).HasColumnName("description_en");
-            entity.Property(e => e.DescriptionPl).HasColumnName("description_pl");
-            entity.Property(e => e.DescriptionUa).HasColumnName("description_ua");
             entity.Property(e => e.NameEn)
                 .HasMaxLength(50)
                 .HasColumnName("name_en");
@@ -190,6 +184,8 @@ public partial class LovelyLoveDbContext : DbContext
             entity.Property(e => e.NameUa)
                 .HasMaxLength(50)
                 .HasColumnName("name_ua");
+            entity.Property(e => e.Number).HasColumnName("number");
+            entity.Property(e => e.Path).HasColumnName("path");
         });
 
         OnModelCreatingPartial(modelBuilder);

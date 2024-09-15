@@ -8,15 +8,15 @@
         @{
             if (Context.Request.Cookies["Language"] == "en")
             {
-                <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Home</p></a>
+                <a asp-controller="Page" asp-action="NewHome" class="p-title-link"><p id="home-title" class="p-title">Home</p></a>
             }
             else if (Context.Request.Cookies["Language"] == "pl")
             {
-                <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Główny</p></a>
+                <a asp-controller="Page" asp-action="NewHome" class="p-title-link"><p id="home-title" class="p-title">Główny</p></a>
             }
             else
             {
-                <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-title">Головна</p></a>
+                <a asp-controller="Page" asp-action="NewHome" class="p-title-link"><p id="home-title" class="p-title">Головна</p></a>
             }
         }
     </div>
@@ -237,15 +237,15 @@
                 @{
                     if (Context.Request.Cookies["Language"] == "en")
                     {
-                        <a asp-controller="Page" asp-action="Home" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Home</p></a>
+                        <a asp-controller="Page" asp-action="NewHome" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Home</p></a>
                     }
                     else if (Context.Request.Cookies["Language"] == "pl")
                     {
-                        <a asp-controller="Page" asp-action="Home" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Główny</p></a>
+                        <a asp-controller="Page" asp-action="NewHome" class="p-title-link" style="text-decoration: none;"><p id="home-title" class="p-menu">Główny</p></a>
                     }
                     else
                     {
-                        <a asp-controller="Page" asp-action="Home" class="p-title-link"><p id="home-title" class="p-menu">Головна</p></a>
+                        <a asp-controller="Page" asp-action="NewHome" class="p-title-link"><p id="home-title" class="p-menu">Головна</p></a>
                     }
                 }
             </div>

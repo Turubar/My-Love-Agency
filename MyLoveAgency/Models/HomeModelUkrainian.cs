@@ -12,6 +12,7 @@ namespace MyLoveAgency.Models
 
         public static List<string?> stageTitle = new List<string?>();
         public static List<string?> stageText = new List<string?>();
+        public static List<string?> advantage = new List<string?>();
 
         public static List<string?> feedbackTitle = new List<string?>();
         public static List<string?> feedbackText = new List<string?>();

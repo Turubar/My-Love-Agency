@@ -15,73 +15,73 @@
         <div class="collapse" id="collapseServices">
 
             <button class="btn collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAllServices" onclick="changeServicesSize();" aria-expanded="false" aria-controls="collapseAllServices">
-                <p class="small-title">1) Список всех eслуг</p>
+                <p class="small-title">1) Список всех услуг</p>
             </button>
 
             <div class="collapse all-services-div" id="collapseAllServices">
                 @{
                     for (int i = 0; i < DataClass.Services.Count(); i++)
                     {
-                        <div id="serviceMainContainer@(DataClass.Services[i].Id)" class="service-div">
+                                    <div id="serviceMainContainer@(DataClass.Services[i].Id)" class="service-div">
 
-                            <div class="service-first-div">
+                                        <div class="service-first-div">
 
-                                <div class="col-7 service-data-div">
+                                            <div class="col-7 service-data-div">
 
-                                    <div class="col-12 service-row">
+                                                <div class="col-12 service-row">
 
-                                        <div class="col-7">
-                                            <p class="service-title">Название услуги (En)</p>
-                                            <input id="serviceNameEn@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].NameEn" />
-                                        </div>
+                                                    <div class="col-7">
+                                                        <p class="service-title">Название услуги (En)</p>
+                                                        <input id="serviceNameEn@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].NameEn" />
+                                                    </div>
 
-                                        <div class="col-4">
-                                            <p class="service-title">Цена услуги</p>
-                                            <input id="servicePrice@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].PriceZloty" style="text-align: center;" />
-                                        </div>
+                                                    <div class="col-4">
+                                                        <p class="service-title">Цена услуги</p>
+                                                        <input id="servicePrice@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].PriceZloty" style="text-align: center;" />
+                                                    </div>
 
-                                    </div>
+                                                </div>
 
-                                    <div class="col-12 service-row">
+                                                <div class="col-12 service-row">
 
-                                        <div class="col-7">
-                                            <p class="service-title">Название услуги (Ua)</p>
-                                            <input id="serviceNameUa@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].NameUa" />
-                                        </div>
+                                                    <div class="col-7">
+                                                        <p class="service-title">Название услуги (Ua)</p>
+                                                        <input id="serviceNameUa@(DataClass.Services[i].Id)" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].NameUa" />
+                                                    </div>
 
-                                        <div class="col-4">
-                                            <p class="service-title">Тип услуги</p>
-                                            <input id="serviceType@(DataClass.Services[i].Id)" list="typeServices" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].IdType" style="text-align: center;" />
-                                            <datalist id="typeServices">
-                                                @{
+                                                    <div class="col-4">
+                                                        <p class="service-title">Тип услуги</p>
+                                                        <input id="serviceType@(DataClass.Services[i].Id)" list="typeServices" class="data-input" type="text" minlength="4" maxlength="100" value="@DataClass.Services[i].IdType" style="text-align: center;" />
+                                                        <datalist id="typeServices">
+                                                            @{
                                                     for (int j = 0; j < DataClass.TypeService.Count; j++)
                                                     {
-                                                        <option>@DataClass.TypeService[j].Id</option>
+                                                                                <option>@DataClass.TypeService[j].Id</option>
                                                     }
-                                                }
-                                            </datalist>
-                                        </div>
+                                                            }
+                                                        </datalist>
+                                                    </div>
 
-                                    </div>
+                                                </div>
 
-                                    <div class="col-12 service-description">
-                                        <p class="service-title">Описание услуги (En)</p>
-                                        <textarea id="serviceDescriptionEn@(DataClass.Services[i].Id)" class="data-input" type="text" rows="3">@DataClass.Services[i].DescriptionEn</textarea>
-                                    </div>
+                                                <div class="col-12 service-description">
+                                                    <p class="service-title">Описание услуги (En)</p>
+                                                    <textarea id="serviceDescriptionEn@(DataClass.Services[i].Id)" class="data-input" type="text" rows="3">@DataClass.Services[i].DescriptionEn</textarea>
+                                                </div>
 
-                                    <div class="col-12 service-description">
-                                        <p class="service-title">Описание услуги (Ua)</p>
-                                        <textarea id="serviceDescriptionUa@(DataClass.Services[i].Id)" class="data-input" type="text" rows="3">@DataClass.Services[i].DescriptionUa</textarea>
-                                    </div>
+                                                <div class="col-12 service-description">
+                                                    <p class="service-title">Описание услуги (Ua)</p>
+                                                    <textarea id="serviceDescriptionUa@(DataClass.Services[i].Id)" class="data-input" type="text" rows="3">@DataClass.Services[i].DescriptionUa</textarea>
+                                                </div>
 
-                                </div>
+                                            </div>
 
-                                <div class="col-4 service-img-div">
+                                            <div class="col-4 service-img-div">
 
-                                    <div id="carouselService@(DataClass.Services[i].Id)" class="carousel slide">
+                                                <div id="carouselService@(DataClass.Services[i].Id)" class="carousel slide">
 
-                                        <div id="carouselIndicator@(DataClass.Services[i].Id)" class="carousel-indicators">
-                                            @{
+                                                    <div id="carouselIndicator@(DataClass.Services[i].Id)" class="carousel-indicators">
+                                                        @{
                                                 List<StorageImageService> listImg = DataClass.ServiceImages.Where(x => x.IdService == DataClass.Services[i].Id).OrderBy(x => x.Number).ToList();
                                                 int countImg = listImg.Count();
 
@@ -91,155 +91,155 @@
                                                     {
                                                         if (j == 0)
                                                         {
-                                                            <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="@(j)" class="active" aria-current="true"></button>
+                                                                                    <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="@(j)" class="active" aria-current="true"></button>
                                                         }
                                                         else
                                                         {
-                                                            <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="@(j)"></button>
+                                                                                    <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="@(j)"></button>
                                                         }
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                                                                            <button type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide-to="0" class="active" aria-current="true"></button>
                                                 }
-                                            }
-                                        </div>
+                                                        }
+                                                    </div>
 
-                                        <div id="carouselInner@(DataClass.Services[i].Id)" class="carousel-inner">
-                                            @{
+                                                    <div id="carouselInner@(DataClass.Services[i].Id)" class="carousel-inner">
+                                                        @{
                                                 if (countImg > 0)
                                                 {
                                                     for (int j = 0; j < countImg; j++)
                                                     {
                                                         if (j == 0)
                                                         {
-                                                            <div class="carousel-item active">
-                                                                <img src="/data/services/@(listImg[j].Path)" class="d-block w-100 carousel-service-img" alt="">
-                                                            </div>
+                                                                                    <div class="carousel-item active">
+                                                                                        <img src="/data/services/@(listImg[j].Path)" class="d-block w-100 carousel-service-img" alt="">
+                                                                                    </div>
                                                         }
                                                         else
                                                         {
-                                                            <div class="carousel-item">
-                                                                <img src="/data/services/@(listImg[j].Path)" class="d-block w-100 carousel-service-img" alt="">
-                                                            </div>
+                                                                                    <div class="carousel-item">
+                                                                                        <img src="/data/services/@(listImg[j].Path)" class="d-block w-100 carousel-service-img" alt="">
+                                                                                    </div>
                                                         }
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    <div class="carousel-item active">
-                                                        <img src="/data/no-image.png" class="d-block w-100 carousel-service-img" alt="">
-                                                    </div>
+                                                                            <div class="carousel-item active">
+                                                                                <img src="/data/no-image.png" class="d-block w-100 carousel-service-img" alt="">
+                                                                            </div>
                                                 }
-                                            }
+                                                        }
+                                                    </div>
+
+                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
+                                                    </button>
+
+                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black;"></span>
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
                                         </div>
 
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: black;"></span>
-                                        </button>
+                                        <div style="display: flex; flex-direction: row; justify-content: right;">
+                                            <div style="padding-right: 20px;">
+                                                <form id="imageServiceForm@(DataClass.Services[i].Id)" asp-controller="API" asp-action="AddImageService" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                                                    <button id="addImageServiceBtn@(DataClass.Services[i].Id)" type="submit" class="btn btn-success" onclick="selectImageService(@(DataClass.Services[i].Id))">Добавить</button>
+                                                    <button id="deleteImageServiceBtn@(DataClass.Services[i].Id)" type="submit" class="btn btn-danger" onclick="deleteImageService(@(DataClass.Services[i].Id))">Удалить</button>
+                                                    <input id="imageServiceInput@(DataClass.Services[i].Id)" name="imageServiceInput" type="file" class="form-control" hidden onchange="loadImageService(@(DataClass.Services[i].Id))" />
+                                                    <input id="idImageServiceInput" name="idService" type="text" hidden value="@(DataClass.Services[i].Id)" />
+                                                </form>
+                                            </div>
+                                        </div>
 
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselService@(DataClass.Services[i].Id)" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black;"></span>
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div style="display: flex; flex-direction: row; justify-content: right;">
-                                <div style="padding-right: 20px;">
-                                    <form id="imageServiceForm@(DataClass.Services[i].Id)" asp-controller="API" asp-action="AddImageService" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
-                                        <button id="addImageServiceBtn@(DataClass.Services[i].Id)" type="submit" class="btn btn-success" onclick="selectImageService(@(DataClass.Services[i].Id))">Добавить</button>
-                                        <button id="deleteImageServiceBtn@(DataClass.Services[i].Id)" type="submit" class="btn btn-danger" onclick="deleteImageService(@(DataClass.Services[i].Id))">Удалить</button>
-                                        <input id="imageServiceInput@(DataClass.Services[i].Id)" name="imageServiceInput" type="file" class="form-control" hidden onchange="loadImageService(@(DataClass.Services[i].Id))" />
-                                        <input id="idImageServiceInput" name="idService" type="text" hidden value="@(DataClass.Services[i].Id)" />
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="service-second-div">
-                                @{
+                                        <div class="service-second-div">
+                                            @{
                                     List<PackageService> listPackages = DataClass.Packages.Where(x => x.IdService == DataClass.Services[i].Id).ToList();
                                     int countPackage = listPackages.Count();
-                                }
-                                <p id="listServicesTitle" class="service-title">Список пакетов</p>
+                                            }
+                                            <p id="listServicesTitle" class="service-title">Список пакетов</p>
 
-                                <div id="servicePackageDiv@(DataClass.Services[i].Id)" class="services-packages-div">
-                                    @{
+                                            <div id="servicePackageDiv@(DataClass.Services[i].Id)" class="services-packages-div">
+                                                @{
                                         if (countPackage > 0)
                                         {
                                             for (int j = 0; j < countPackage; j++)
                                             {
-                                                <div id="packageId@(listPackages[j].Id)" class="package-div">
-                                                    <div class="col-12 package-row">
-                                                        <p class="service-title">Название пакета</p>
-                                                        <input class="data-input packageName" type="text" maxlength="100" value="@listPackages[j].Name" style="text-align: center;" />
-                                                    </div>
+                                                                        <div id="packageId@(listPackages[j].Id)" class="package-div">
+                                                                            <div class="col-12 package-row">
+                                                                                <p class="service-title">Название пакета</p>
+                                                                                <input class="data-input packageName" type="text" maxlength="100" value="@listPackages[j].Name" style="text-align: center;" />
+                                                                            </div>
 
-                                                    <div class="col-12 package-row">
-                                                        <p class="service-title">Цена пакета</p>
-                                                        <input class="data-input packagePrice" type="text" maxlength="100" value="@listPackages[j].PriceZloty" style="text-align: center;" />
-                                                    </div>
+                                                                            <div class="col-12 package-row">
+                                                                                <p class="service-title">Цена пакета</p>
+                                                                                <input class="data-input packagePrice" type="text" maxlength="100" value="@listPackages[j].PriceZloty" style="text-align: center;" />
+                                                                            </div>
 
-                                                    <div class="col-12 package-row">
-                                                        <p class="service-title">Продолжительность (En)</p>
-                                                        <input class="data-input packageDurationEn" type="text" maxlength="100" value="@listPackages[j].DurationEn" style="text-align: center;" />
-                                                    </div>
+                                                                            <div class="col-12 package-row">
+                                                                                <p class="service-title">Продолжительность (En)</p>
+                                                                                <input class="data-input packageDurationEn" type="text" maxlength="100" value="@listPackages[j].DurationEn" style="text-align: center;" />
+                                                                            </div>
 
-                                                    <div class="col-12 package-row">
-                                                        <p class="service-title">Продолжительность (Ua)</p>
-                                                        <input class="data-input packageDurationUa" type="text" maxlength="100" value="@listPackages[j].DurationUa" style="text-align: center;" />
-                                                    </div>
+                                                                            <div class="col-12 package-row">
+                                                                                <p class="service-title">Продолжительность (Ua)</p>
+                                                                                <input class="data-input packageDurationUa" type="text" maxlength="100" value="@listPackages[j].DurationUa" style="text-align: center;" />
+                                                                            </div>
 
-                                                    @{
+                                                                            @{
                                                         string? descriptionEn = listPackages[j]?.DescriptionEn?.Replace("|", "\n");
                                                         string? descriptionUa = listPackages[j]?.DescriptionUa?.Replace("|", "\n");
-                                                    }
+                                                                            }
 
-                                                    <div class="col-12 package-row">
-                                                        <p class="service-title">Детали пакета (En)</p>
-                                                        <textarea class="data-input packageDescriptionEn" cols="50" rows="10" style="text-align: center;">@Html.Raw(descriptionEn)</textarea>
-                                                    </div>
+                                                                            <div class="col-12 package-row">
+                                                                                <p class="service-title">Детали пакета (En)</p>
+                                                                                <textarea class="data-input packageDescriptionEn" cols="50" rows="10" style="text-align: center;">@Html.Raw(descriptionEn)</textarea>
+                                                                            </div>
 
-                                                    <div class="col-12 package-row" style="margin-bottom: 0;">
-                                                        <p class="service-title">Детали пакета (Ua)</p>
-                                                        <textarea class="data-input packageDescriptionUa" cols="50" rows="10" style="text-align: center;">@Html.Raw(descriptionUa)</textarea>
-                                                    </div>
-                                                </div>
+                                                                            <div class="col-12 package-row" style="margin-bottom: 0;">
+                                                                                <p class="service-title">Детали пакета (Ua)</p>
+                                                                                <textarea class="data-input packageDescriptionUa" cols="50" rows="10" style="text-align: center;">@Html.Raw(descriptionUa)</textarea>
+                                                                            </div>
+                                                                        </div>
                                             }
                                         }
                                         else
                                         {
-                                            <div id="countServicesTitle@(DataClass.Services[i].Id)">
-                                                <p class="service-title">Пакеты отсутствуют</p>
-                                            </div>
+                                                                    <div id="countServicesTitle@(DataClass.Services[i].Id)">
+                                                                        <p class="service-title">Пакеты отсутствуют</p>
+                                                                    </div>
                                         }
-                                    }
-                                </div>
-                            </div>
+                                                }
+                                            </div>
+                                        </div>
 
-                            <div class="service-third-div">
-                                <div>
-                                    <button id="addServicePackageBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-primary" onclick="addPackageServiceTemplate(@(DataClass.Services[i].Id))" style="width: 200px;">Добавить пакет</button>
-                                </div>
+                                        <div class="service-third-div">
+                                            <div>
+                                                <button id="addServicePackageBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-primary" onclick="addPackageServiceTemplate(@(DataClass.Services[i].Id))" style="width: 200px;">Добавить пакет</button>
+                                            </div>
 
-                                <div>
-                                    <button id="deleteServicePackageBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-danger" onclick="deletePackageService(@(DataClass.Services[i].Id))" style="width: 200px; margin-inline: 25px;">Удалить пакет</button>
-                                </div>
+                                            <div>
+                                                <button id="deleteServicePackageBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-danger" onclick="deletePackageService(@(DataClass.Services[i].Id))" style="width: 200px; margin-inline: 25px;">Удалить пакет</button>
+                                            </div>
 
-                                <div>
-                                    <button id="deleteServiceBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-danger" onclick="deleteService(@(DataClass.Services[i].Id))" style="width: 200px; margin-inline: 25px;">Удалить услугу</button>
-                                </div>
+                                            <div>
+                                                <button id="deleteServiceBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-danger" onclick="deleteService(@(DataClass.Services[i].Id))" style="width: 200px; margin-inline: 25px;">Удалить услугу</button>
+                                            </div>
 
-                                <div>
-                                    <button id="updateServiceDataBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-success" onclick="updateServiceData(@(DataClass.Services[i].Id))" style="width: 200px;">Сохранить</button>
-                                </div>
-                            </div>
+                                            <div>
+                                                <button id="updateServiceDataBtn@(DataClass.Services[i].Id)" type="button" class="btn btn-lg btn-success" onclick="updateServiceData(@(DataClass.Services[i].Id))" style="width: 200px;">Сохранить</button>
+                                            </div>
+                                        </div>
 
-                        </div>
+                                    </div>
                     }
                 }
             </div>
@@ -321,7 +321,7 @@
                                 @{
                                     for (int i = 0; i < DataClass.TypeService.Count; i++)
                                     {
-                                        <option>@DataClass.TypeService[i].Id</option>
+                                                    <option>@DataClass.TypeService[i].Id</option>
                                     }
                                 }
                             </datalist>
@@ -347,6 +347,92 @@
                 </div>
             </div>
 
+            <br />
+
+            <button class="btn collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTypeServices" aria-expanded="false" aria-controls="collapseTypeServices" style="margin-bottom: 15px;">
+                <p class="small-title">3) Список всех категорий</p>
+            </button>
+
+            <div id="collapseTypeServices" class="collapse">
+                <div class="col-12 collapse-type-services">
+                    @for(int i = 0; i < DataClass.TypeService.Count(); i++)
+                    {
+                        <div class="col-12 type-service-div">
+
+                            <div class="col-8 type-service-div-left">
+                                <div class="col-12">
+                                    <div class="col-12" style="display: flex; justify-content:space-between; margin-bottom: 25px;">
+                                        <div class="col-5">
+                                            <p class="type-service-title">Название категории (En)</p>
+                                            <input id="typeServiceNameEn@(DataClass.TypeService[i].Id)" class="data-input" type="text" maxlength="50" value="@(DataClass.TypeService[i].NameEn)" />
+                                        </div>
+
+                                        <div class="col-5">
+                                            <p class="type-service-title">Название категории (Ua)</p>
+                                            <input id="typeServiceNameUa@(DataClass.TypeService[i].Id)" class="data-input" type="text" maxlength="50" value="@(DataClass.TypeService[i].NameUa)" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12" style="display: flex; justify-content:space-between;">
+                                        <div class="col-5">
+                                            <p class="type-service-title">Название категории (Pl)</p>
+                                            <input id="typeServiceNamePl@(DataClass.TypeService[i].Id)" class="data-input" type="text" maxlength="50" value="@(DataClass.TypeService[i].NamePl)" />
+                                        </div>
+
+                                        <div class="col-5" style="display: flex; justify-content: space-between;">
+                                            <div class="col-5">
+                                                <p class="type-service-title">Номер</p>
+                                                <input id="typeServiceNumber@(DataClass.TypeService[i].Id)" class="data-input" type="text" maxlength="50" value="@(DataClass.TypeService[i].Number)" style="text-align:center;" />
+                                            </div>
+
+                                            <div class="col-5">
+                                                <p class="type-service-title">Id</p>
+                                                <input class="data-input" type="text" disabled maxlength="50" value="@(DataClass.TypeService[i].Id)" style="text-align:center;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12" style="display: flex; justify-content: space-between;">
+                                    <div class="col-5">
+                                        <button class="btn btn-danger" style="width: 100%;" onclick="deleteTypeService(@DataClass.TypeService[i].Id)">Удалить категорию</button>
+                                    </div>
+                                    <div class="col-5">
+                                        <button class="btn btn-success" style="width: 100%;" onclick="updateTypeService(@DataClass.TypeService[i].Id)">Сохранить изменения</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3 type-service-div-right">
+                                <div class="col-12">
+                                    @if(DataClass.TypeService[i].Path == null)
+                                    {
+                                        <img id="typeServiceImg@(DataClass.TypeService[i].Id)" class="type-service-img" src="/data/no-image.png" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img id="typeServiceImg@(DataClass.TypeService[i].Id)" class="type-service-img" src="/data/mainpage/services/@(DataClass.TypeService[i].Path)" alt="" />
+                                    }
+                                </div>
+                                <div class="col-12" style="display: flex; justify-content: space-between; padding-top: 15px;">
+                                    <div class="col-5">
+                                        <button id="deleteTypeServiceBtn@(DataClass.TypeService[i].Id)" class="btn btn-danger" style="width: 100%;" onclick="deleteImageTypeService(@(DataClass.TypeService[i].Id))">Удалить</button>
+                                    </div>
+                                    <div class="col-5">
+                                        <form id="addImageTypeServiceForm@(DataClass.TypeService[i].Id)" asp-controller="API" asp-action="AddImageTypeService" method="post" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                                            <button id="addImageTypeServiceBtn" type="submit" class="btn btn-success" onclick="selectImageTypeService(@(DataClass.TypeService[i].Id))" style="width: 100%;">Добавить</button>
+                                            <input id="addImageTypeServiceInput@(DataClass.TypeService[i].Id)" name="addImageTypeServiceInput" type="file" class="form-control" hidden onchange="loadImageTypeService(@(DataClass.TypeService[i].Id))" />
+                                            <input id="addImageTypeServiceId" name="idTypeService" type="text" hidden value="@(DataClass.TypeService[i].Id)" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+
         </div>
 
         <br />
@@ -368,19 +454,19 @@
                     @{
                         for (int i = 0; i < DataClass.GalleryImages.Count(); i++)
                         {
-                            <div id="galleryId@(DataClass.GalleryImages[i].Id)" class="col-3 gallery-img-div">
-                                <div class="col-12 gallery-img-container">
-                                    <img id="galleryImg@(DataClass.GalleryImages[i].Id)" class="gallery-img" src="/data/gallery/@(DataClass.GalleryImages[i].Path)" alt="" />
-                                </div>
-                                <div class="col-12 gallery-data">
-                                    <div class="col-5">
-                                        <input id="galleryInput@(DataClass.GalleryImages[i].Id)" class="gallery-input" type="text" onchange="changeImageGallery(this)" value="@(DataClass.GalleryImages[i].Number)" style="width: 100%; text-align: center;" />
-                                    </div>
-                                    <div class="col-5">
-                                        <button id="galleryDeleteBtn@(DataClass.GalleryImages[i].Id)" type="button" class="btn btn-danger" onclick="deleteImageGallery(this)" style="width: 100%; padding: 4px;">Удалить</button>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div id="galleryId@(DataClass.GalleryImages[i].Id)" class="col-3 gallery-img-div">
+                                            <div class="col-12 gallery-img-container">
+                                                <img id="galleryImg@(DataClass.GalleryImages[i].Id)" class="gallery-img" src="/data/gallery/@(DataClass.GalleryImages[i].Path)" alt="" />
+                                            </div>
+                                            <div class="col-12 gallery-data">
+                                                <div class="col-5">
+                                                    <input id="galleryInput@(DataClass.GalleryImages[i].Id)" class="gallery-input" type="text" onchange="changeImageGallery(this)" value="@(DataClass.GalleryImages[i].Number)" style="width: 100%; text-align: center;" />
+                                                </div>
+                                                <div class="col-5">
+                                                    <button id="galleryDeleteBtn@(DataClass.GalleryImages[i].Id)" type="button" class="btn btn-danger" onclick="deleteImageGallery(this)" style="width: 100%; padding: 4px;">Удалить</button>
+                                                </div>
+                                            </div>
+                                        </div>
                         }
                     }
                 </div>
@@ -412,33 +498,33 @@
                 @{
                     for (int i = 0; i < DataClass.FAQ.Count(); i++)
                     {
-                        <div id="faqId@(DataClass.FAQ[i].Id)" class="col-12 faq-container">
+                                    <div id="faqId@(DataClass.FAQ[i].Id)" class="col-12 faq-container">
 
-                            <div class="col-12">
-                                <p class="faq-title">Вопрос En</p>
-                                <textarea id="faqQuestionEn@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea question-en-textarea">@DataClass.FAQ[i].QuestionEn</textarea>
-                            </div>
+                                        <div class="col-12">
+                                            <p class="faq-title">Вопрос En</p>
+                                            <textarea id="faqQuestionEn@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea question-en-textarea">@DataClass.FAQ[i].QuestionEn</textarea>
+                                        </div>
 
-                            <div class="col-12">
-                                <p class="faq-title">Вопрос Ua</p>
-                                <textarea id="faqQuestionUa@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea question-ua-textarea">@DataClass.FAQ[i].QuestionUa</textarea>
-                            </div>
+                                        <div class="col-12">
+                                            <p class="faq-title">Вопрос Ua</p>
+                                            <textarea id="faqQuestionUa@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea question-ua-textarea">@DataClass.FAQ[i].QuestionUa</textarea>
+                                        </div>
 
-                            <div class="col-12">
-                                <p class="faq-title">Ответ En</p>
-                                <textarea id="faqAnswerEn@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea answer-en-textarea">@DataClass.FAQ[i].AnswerEn</textarea>
-                            </div>
+                                        <div class="col-12">
+                                            <p class="faq-title">Ответ En</p>
+                                            <textarea id="faqAnswerEn@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea answer-en-textarea">@DataClass.FAQ[i].AnswerEn</textarea>
+                                        </div>
 
-                            <div class="col-12" style="margin-bottom: 15px;">
-                                <p class="faq-title">Ответ Ua</p>
-                                <textarea id="faqAnswerUa@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea answer-ua-textarea">@DataClass.FAQ[i].AnswerUa</textarea>
-                            </div>
+                                        <div class="col-12" style="margin-bottom: 15px;">
+                                            <p class="faq-title">Ответ Ua</p>
+                                            <textarea id="faqAnswerUa@(DataClass.FAQ[i].Id)" rows="3" class="faq-textarea answer-ua-textarea">@DataClass.FAQ[i].AnswerUa</textarea>
+                                        </div>
 
-                            <div class="col-12 faq-btn-div">
-                                <button id="faqDeleteBtn@(DataClass.FAQ[i].Id)" onclick="deleteFAQ(this)" class="btn btn-danger">Удалить</button>
-                                <button id="faqUpdateBtn@(DataClass.FAQ[i].Id)" onclick="updateFAQ(this)" class="btn btn-success" style="margin-left: 15px;">Сохранить</button>
-                            </div>
-                        </div>
+                                        <div class="col-12 faq-btn-div">
+                                            <button id="faqDeleteBtn@(DataClass.FAQ[i].Id)" onclick="deleteFAQ(this)" class="btn btn-danger">Удалить</button>
+                                            <button id="faqUpdateBtn@(DataClass.FAQ[i].Id)" onclick="updateFAQ(this)" class="btn btn-success" style="margin-left: 15px;">Сохранить</button>
+                                        </div>
+                                    </div>
                     }
                 }
             </div>
@@ -1098,6 +1184,110 @@
                 }
             })
     }
+
+    function selectImageTypeService(idTypeService) {
+        document.getElementById("addImageTypeServiceInput" + idTypeService).click();
+    }
+
+    function loadImageTypeService(idTypeService) {
+        var inputFile = document.getElementById("addImageTypeServiceInput" + idTypeService);
+
+        if (inputFile.files[0] != null) {
+            var form = document.getElementById("addImageTypeServiceForm" + idTypeService)
+            var formData = new FormData(form);
+
+            fetch("/API/AddImageTypeService", {
+                method: 'POST',
+                body: formData
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != "false") {
+                        const img = document.getElementById("typeServiceImg" + idTypeService);
+                        img.src = "/data/mainpage/services/" + data;
+
+                        inputFile.files = null;
+                    }
+                    else {
+                        console.log(data);
+                        alert("Что-то пошло не так! Не удалось добавить изображение...");
+
+                        inputFile.files = null;
+                    }
+                })
+        }
+        else {
+            alert("Фотография не выбрана!");
+        }
+    }
+
+    function deleteImageTypeService(idTypeService) {
+        const img = document.getElementById("typeServiceImg" + idTypeService);
+
+        var isDelete = confirm("Удалить эту фотографию?");
+
+        if (isDelete) {
+            fetch("/API/DeleteImageTypeService?idTypeService=" + idTypeService, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != "false") {
+                        img.src = "/data/no-image.png";
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить изображение...");
+                    }
+                })
+        }
+    }
+
+    function updateTypeService(idTypeService) {
+        const nameEn = document.getElementById("typeServiceNameEn" + idTypeService).value;
+        const nameUa = document.getElementById("typeServiceNameUa" + idTypeService).value;
+        const namePl = document.getElementById("typeServiceNamePl" + idTypeService).value;
+        const number = document.getElementById("typeServiceNumber" + idTypeService).value;
+
+        var isDelete = confirm("Сохранить изменения?");
+
+        if (isDelete) {
+            fetch("/API/UpdateTypeService?idTypeService=" + idTypeService + "&nameEn=" + nameEn + "&nameUa=" + nameUa + "&namePl=" + namePl + "&number=" + number, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != "false") {
+                        alert(data);
+                        location.reload();
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить сохранить изменения...");
+                    }
+                })
+        }
+    }
+
+    function deleteTypeService(idTypeService) { 
+        var confirmNumber = Math.floor(Math.random() * 899999) + 100000;
+        var inputNumber = prompt("Удалить категорию?\nДанная категория может иметь услуги и пакеты, которые безвозвратно будут удалены!!!\nВведите код [" + confirmNumber + "] для подтверждения удаления:", "");
+
+        if (inputNumber == confirmNumber) {
+            fetch("/API/DeleteTypeService?idTypeService=" + idTypeService, {
+                method: 'POST'
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    if (data != "false") {
+                        console.log(true);
+                    }
+                    else {
+                        alert("Что-то пошло не так! Не удалось удалить категорию!");
+                    }
+                })
+        }
+    }
+    
+
 
     function changeGallerySize() {
         var divArray = document.getElementsByClassName("gallery-img-div");
